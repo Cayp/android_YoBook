@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:id="@+id/firstoolbar"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:background="#7e9ec7fe"
+    android:fitsSystemWindows="true"
+    >
+    <TextView
+        android:id="@+id/head"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:layout_gravity="center"/>
+</android.support.v7.widget.Toolbar>

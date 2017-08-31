@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NavbarView">
+        <attr name="mTextSize" format="dimension"/>
+        <attr name="backGroundColor" format="color"/>
+        <attr name="mTextColor" format="color"/>
+        <attr name="mIcon" format="reference"/>
+        <attr name="mText" format="string"/>
+    </declare-styleable>
+</resources>
