@@ -1,4 +1,4 @@
-package com.example.book.view;
+package com.example.book.view.AbstractView;
 
 import com.example.book.EntityClass.UserRegisterMsg;
 

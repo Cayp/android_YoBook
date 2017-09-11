@@ -2,7 +2,7 @@ package com.example.book.Presenter;
 
 import com.example.book.EntityClass.UserRegisterMsg;
 import com.example.book.Model.RegisterModel;
-import com.example.book.view.RegisterView;
+import com.example.book.view.AbstractView.RegisterView;
 
 /**
  * Created by ljp on 2017/7/26.

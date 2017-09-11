@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true">
+    <ImageView
+    android:id="@+id/sendbokbutn"
+    android:layout_width="@dimen/publishwidth"
+    android:layout_height="@dimen/publishheight"
+    android:layout_marginLeft="25dp"
+    android:src="@drawable/sendbokbutton"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_marginStart="25dp"
+    android:layout_marginBottom="99dp"
+    android:clickable="true"
+    tools:ignore="ContentDescription" />
+    <ImageView
+        android:id="@+id/sharebutton"
+        android:layout_width="@dimen/publishwidth"
+        android:layout_height="@dimen/publishheight"
+        android:src="@drawable/sharebutton"
+        android:layout_alignTop="@+id/sendbokbutn"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        tools:ignore="ContentDescription" />
+    <ImageView
+        android:id="@+id/writebutton"
+        android:layout_width="@dimen/publishwidth"
+        android:layout_height="@dimen/publishheight"
+        android:src="@drawable/writebutton"
+        android:layout_alignTop="@+id/sharebutton"
+        android:layout_toRightOf="@+id/sharebutton"
+        android:layout_toEndOf="@+id/sharebutton"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
+        android:clickable="true"
+        tools:ignore="ContentDescription" />
+    <FrameLayout
+        android:id="@+id/bottomwindow"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorwhite"
+        android:clickable="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <ImageView
+            android:id="@+id/cancelicon"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:layout_gravity="center"
+            android:src="@drawable/cancelicon"
+            android:clickable="true"
+            tools:ignore="ContentDescription" />
+    </FrameLayout>
+</RelativeLayout>

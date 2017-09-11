@@ -1,14 +1,28 @@
 package com.example.book.view;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
+import com.example.book.Adapter.MainPagerAdapter;
 import com.example.book.Base.BaseActivity;
+import com.example.book.Fragment.FindFragment;
+import com.example.book.Fragment.MyDataFragment;
+import com.example.book.Fragment.RecommedFragment;
+import com.example.book.Fragment.ShareFragment;
+import com.example.book.MyView.MoreWindow;
 import com.example.book.MyView.NavbarView;
+import com.example.book.MyView.NoScrollViewPager;
 import com.example.book.R;
+import com.example.book.Tools.FragmentFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -26,31 +40,48 @@ public class MainActivity extends BaseActivity {
     NavbarView navbar_recomd ;
     @BindView(R.id.Navbar_me)
     NavbarView navbar_me ;
+    @BindView(R.id.menubutton)
+    ImageView  menubutton;
+    @BindView(R.id.pager)
+    NoScrollViewPager viewPager;
+    MoreWindow mMoreWindow;
+    View layout;
+    MainPagerAdapter mainPagerAdapter ;
     ArrayList<NavbarView> fourtablist = new ArrayList<NavbarView>();
+    List<Fragment> fragmentList = new ArrayList<Fragment>();
     @Override
     protected void initView(Bundle savedInstanceState) {
+     layout = LayoutInflater.from(this).inflate(R.layout.mainactivity,null);
      setNavbarobj();
+     setFragments();
+     setViewPager();
     }
 
     @Override
     protected int setContentViewId() {
         return R.layout.mainactivity;
     }
-    @OnClick({R.id.Navbar_me,R.id.Navbar_recomd,R.id.Navbar_great,R.id.Navbar_find})
+    @OnClick({R.id.Navbar_me,R.id.Navbar_recomd,R.id.Navbar_great,R.id.Navbar_find,R.id.menubutton})
     public void tabOnClick(View view){
         switch (view.getId()){
             case R.id.Navbar_find:
                 selectTab(0);
+                viewPager.setCurrentItem(0,false);
                 break;
             case R.id.Navbar_great:
                 selectTab(1);
+                viewPager.setCurrentItem(1,false);
                 break;
             case R.id.Navbar_recomd:
                 selectTab(2);
+                viewPager.setCurrentItem(2,false);
                 break;
             case R.id.Navbar_me:
                 selectTab(3);
+                viewPager.setCurrentItem(3,false);
                 break;
+            case R.id.menubutton:
+              showMoreWindow(layout);
         }
     }
 
@@ -71,4 +102,22 @@ public class MainActivity extends BaseActivity {
         fourtablist.add(navbar_recomd);
         fourtablist.add(navbar_me);
     }
+    private void showMoreWindow(View view){
+        if (null == mMoreWindow) {
+            mMoreWindow = new MoreWindow(this);
+        }
+        mMoreWindow.init();
+        mMoreWindow.showMoreWindow(view);
+    }
+    private void setFragments(){
+        fragmentList.add(FragmentFactory.creatFragment(FindFragment.class.getName()));
+        fragmentList.add(FragmentFactory.creatFragment(ShareFragment.class.getName()));
+        fragmentList.add(FragmentFactory.creatFragment(RecommedFragment.class.getName()));
+        fragmentList.add(FragmentFactory.creatFragment(MyDataFragment.class.getName()));
+        mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager(),fragmentList);
+    }
+    private void setViewPager(){
+        viewPager.setAdapter(mainPagerAdapter);
+    }
+
 }

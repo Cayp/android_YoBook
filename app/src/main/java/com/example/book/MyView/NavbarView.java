@@ -20,7 +20,7 @@ import com.example.book.R;
 public class NavbarView extends RelativeLayout {
     private ImageView icon ;
     private TextView  text ;
-    private int mtextSize = 15 ;
+    private int mtextSize = 10 ;
     private String mtext = "初始化";
     private int mTextColor = 0x000000;
     private int backGroundColor = 0xffffff;

@@ -1,10 +1,7 @@
 package com.example.book.view;
 
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,11 +14,10 @@ import com.example.book.Base.BaseActivity;
 import com.example.book.Presenter.RegisterPresenter;
 import com.example.book.R;
 import com.example.book.Tools.Constant;
-import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.MyToast;
-import com.example.book.Tools.Mylog;
 import com.example.book.Tools.UrlHelper;
 import com.example.book.EntityClass.UserRegisterMsg;
+import com.example.book.view.AbstractView.RegisterView;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 

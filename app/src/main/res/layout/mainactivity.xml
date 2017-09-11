@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cayp="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <android.support.v4.view.ViewPager
+    android:layout_height="match_parent"
+    android:clipChildren="false">
+    <com.example.book.MyView.NoScrollViewPager
+        android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         >
-    </android.support.v4.view.ViewPager>
+    </com.example.book.MyView.NoScrollViewPager>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colordarkgray"/>
      <LinearLayout
+         android:id="@+id/bottommenu"
          android:layout_width="match_parent"
-         android:layout_height="50dp">
+         android:layout_height="50dp"
+         android:layout_gravity="bottom"
+         tools:ignore="UselessParent">
          <com.example.book.MyView.NavbarView
              android:id="@+id/Navbar_find"
              android:layout_width="@dimen/zerodp"
@@ -30,6 +40,18 @@
              cayp:mIcon="@drawable/icon_great_selector"
              cayp:mText="书香"
              cayp:mTextColor="@color/black"/>
+
+         <ImageView
+             android:id="@+id/menubutton"
+             android:layout_width="@dimen/zerodp"
+             android:layout_height="75dp"
+             android:layout_weight="1.20"
+             android:contentDescription=""
+             android:layout_gravity="bottom"
+             android:src="@drawable/menubutton"
+             android:layout_marginBottom="4dp"
+             tools:ignore="ContentDescription" />
+
          <com.example.book.MyView.NavbarView
              android:id="@+id/Navbar_recomd"
              android:layout_width="@dimen/zerodp"
@@ -47,8 +69,4 @@
              cayp:mText="我的"
              cayp:mTextColor="@color/black"/>
      </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        />
 </LinearLayout>

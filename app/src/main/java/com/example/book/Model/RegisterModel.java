@@ -25,7 +25,6 @@ import okhttp3.Cookie;
  */
 
 public class RegisterModel {
-    private List<Cookie> cookies = new ArrayList<>();
     private static final String TAG = "RegisterModel";
     private RegisterPresenter registerPresenter ;
 
@@ -37,7 +36,6 @@ public class RegisterModel {
             Mylog.d(TAG,"进来");
          try{
              OkHttpUtils.post().url(UrlHelper.REGISTER_URL)
-                     .addHeader("cookie",getCookie())
                      .addParams("account",userRegisterMsg.getAccount())
                      .addParams("password",userRegisterMsg.getPassword())
                      .addParams("username",userRegisterMsg.getUsername())
@@ -84,17 +82,6 @@ public class RegisterModel {
             return false;
         }
         return true ;
-    }
-    private String getCookie() {
-        CookieJarImpl cookieJar = (CookieJarImpl) OkHttpUtils.getInstance().getOkHttpClient().cookieJar();
-        cookies = cookieJar.getCookieStore().getCookies();
-        StringBuilder sb = new StringBuilder();
-        for (Cookie cookie : cookies) {
-            sb.append(cookie);
-        }
-        String cookieString = sb.toString();
-        Mylog.d(TAG,cookieString+"这是cookiesregister");
-        return cookieString;
     }
 
 }

@@ -1,18 +1,12 @@
 package com.example.book.view;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.Paint;
-import android.nfc.Tag;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.book.Base.BaseActivity;
@@ -22,12 +16,13 @@ import com.example.book.R;
 import com.example.book.Tools.Constant;
 import com.example.book.Tools.LoginHelper;
 import com.example.book.Tools.MyToast;
-import com.example.book.Tools.Mylog;
+import com.example.book.view.AbstractView.LoginView;
+import com.example.book.view.AbstractView.LogoutView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class LoginActivity extends BaseActivity implements LoginView,LogoutView{
+public class LoginActivity extends BaseActivity implements LoginView,LogoutView {
     @BindView(R.id.toregister)
     TextView toRegister;
     @BindView(R.id.account)

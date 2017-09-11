@@ -1,6 +1,8 @@
 <component name="ProjectDictionaryState">
   <dictionary name="ljp">
     <words>
+      <w>bottomwindow</w>
+      <w>cancelicon</w>
       <w>cantget</w>
       <w>checkcode</w>
       <w>checkcodewrapper</w>
@@ -18,6 +20,7 @@
       <w>loginbackgroud</w>
       <w>loginfailure</w>
       <w>loginsuccess</w>
+      <w>menubutton</w>
       <w>navbar</w>
       <w>navbarobj</w>
       <w>passwordcheck</w>
@@ -25,11 +28,20 @@
       <w>paswordchekwrapper</w>
       <w>paswrdchkwrapper</w>
       <w>paswrddifd</w>
+      <w>popupin</w>
+      <w>popupout</w>
+      <w>publishbackgroud</w>
+      <w>publishheight</w>
+      <w>publishwidth</w>
       <w>recomd</w>
       <w>regiseter</w>
       <w>registerbackgroud</w>
       <w>registersuccess</w>
+      <w>sendbokbutn</w>
+      <w>sendbokbutton</w>
+      <w>sharebutton</w>
       <w>toregister</w>
+      <w>writebutton</w>
       <w>zerodp</w>
     </words>
   </dictionary>

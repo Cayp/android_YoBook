@@ -24,7 +24,6 @@ import okhttp3.Cookie;
 
 public class LoginModel {
     private LoginPresenter loginPresenter ;
-    private List<Cookie> cookies = new ArrayList<>();
     private static final String TAG = "LoginModel";
     public LoginModel(LoginPresenter loginPresenter) {
         this.loginPresenter = loginPresenter;
@@ -37,7 +36,6 @@ public class LoginModel {
             try {
                 loginPresenter.showProgress();
                 OkHttpUtils.post().url(UrlHelper.LOGIN_URL)
-                                  .addHeader("cookie",getCookie())
                                   .addParams("account",account)
                                   .addParams("password",password+"BookCLZJ")
                                   .build().execute(new StringCallback() {
@@ -65,15 +63,5 @@ public class LoginModel {
             }
         }
     }
-    private String getCookie() {
-        CookieJarImpl cookieJar = (CookieJarImpl) OkHttpUtils.getInstance().getOkHttpClient().cookieJar();
-        cookies = cookieJar.getCookieStore().getCookies();
-        StringBuilder sb = new StringBuilder();
-        for (Cookie cookie : cookies) {
-            sb.append(cookie);
-        }
-        String cookieString = sb.toString();
-        Mylog.d(TAG,cookieString+"这是cookies");
-        return cookieString;
-    }
+
 }

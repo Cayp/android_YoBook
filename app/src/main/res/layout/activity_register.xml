@@ -8,6 +8,12 @@
     tools:context="com.example.book.view.RegisterActivity"
 >
 <include layout="@layout/toolbar"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/checkcodeView"
         android:layout_width="100dp"
@@ -158,5 +164,6 @@
             app:layout_constraintRight_toRightOf="parent"
             tools:ignore="RtlHardcoded" />
     </android.support.design.widget.TextInputLayout>
-
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

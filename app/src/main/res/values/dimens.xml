@@ -3,4 +3,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="zerodp">0dp</dimen>
+    <dimen name="publishwidth">90dp</dimen>
+    <dimen name="publishheight">180dp</dimen>
 </resources>
