@@ -1,4 +1,4 @@
-package com.example.book.Tools;
+package com.example.book.EntityClass;
 
 /**
  * Created by ljp on 2017/7/31.

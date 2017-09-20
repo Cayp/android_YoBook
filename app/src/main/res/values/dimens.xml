@@ -5,4 +5,5 @@
     <dimen name="zerodp">0dp</dimen>
     <dimen name="publishwidth">90dp</dimen>
     <dimen name="publishheight">180dp</dimen>
+    <dimen name="textsize">17sp</dimen>
 </resources>

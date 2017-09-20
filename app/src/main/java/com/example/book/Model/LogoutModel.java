@@ -1,8 +1,7 @@
 package com.example.book.Model;
 
 import com.example.book.Presenter.LogoutPresenter;
-import com.example.book.Tools.Constant;
-import com.example.book.Tools.LogoutHelper;
+import com.example.book.EntityClass.LogoutHelper;
 import com.example.book.Tools.UrlHelper;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;

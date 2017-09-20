@@ -1,9 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-    <TextView
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<android.support.design.widget.AppBarLayout
+    android:id="@+id/bar"
+    android:layout_width="match_parent"
+    android:layout_height="240dp"
+    >
+    <android.support.design.widget.CollapsingToolbarLayout
+        android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="1"
-        android:textSize="40dp"/>
-</RelativeLayout>
+        app:titleEnabled="false"
+        app:contentScrim="@color/black"
+        app:statusBarScrim="@color/colorgray"
+        app:scrimAnimationDuration="200"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        >
+        <ImageView
+            android:id="@+id/bar_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            app:layout_collapseMode="parallax"
+            app:layout_collapseParallaxMultiplier="0.8"
+            android:src="@drawable/findbackground"
+            tools:ignore="ContentDescription" />
+       <include layout="@layout/changetoolbar"
+           android:id="@+id/find_toolbar"
+           android:gravity="top"
+           android:minHeight="55dp"
+           />
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="bottom"
+            app:tabSelectedTextColor="@color/colorwhite"
+            app:tabTextColor="@color/colordarkgray"
+            app:tabIndicatorColor="@color/colordarkgray"
+            app:tabIndicatorHeight="4dp"
+            app:layout_collapseMode="pin"
+            />
+    </android.support.design.widget.CollapsingToolbarLayout>
+</android.support.design.widget.AppBarLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/find_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+</android.support.design.widget.CoordinatorLayout>

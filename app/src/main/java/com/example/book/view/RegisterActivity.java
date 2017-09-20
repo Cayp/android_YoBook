@@ -103,6 +103,7 @@ public class RegisterActivity extends BaseActivity implements RegisterView,View.
     @Override
     public void registerSuccess() {
      MyToast.toast("注册成功");
+     changeActivity(LoginActivity.class);
     }
 
     @Override

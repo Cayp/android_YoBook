@@ -2,7 +2,6 @@ package com.example.book.MyView;
 
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.PopupWindow;
 
 /**
  * Created by ljp on 2017/9/6.

@@ -16,5 +16,9 @@ public class UrlHelper {
     public static final String UPLOADHEADBIMP = BASE_URL + "Home/User/uploadAvatar";
     public static final String GETFAN = BASE_URL + "Home/Fan/getFan";
     public static final String GETFOLLOW = BASE_URL + "Home/Fan/getFollow";
+    public static final String GETSECONDBOOKCOVER = BASE_URL + "SecondBook/";
+    public static final String GETALLSECONDBOOK = BASE_URL + "Home/SecondBook/getAllSecondBook";
+    public static final String GETAVATAR = BASE_URL + "Avatar/";
+    public static final String GETUSERINFO = BASE_URL + "Home/User/getUserInfo";
 
 }

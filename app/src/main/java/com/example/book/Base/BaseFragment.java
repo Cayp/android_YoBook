@@ -3,19 +3,22 @@ package com.example.book.Base;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 
 /**
  * Created by ljp on 2017/8/1.
  */
 
-public abstract class BaseFragment extends LazyLoadFragment{
+public abstract class BaseFragment extends Fragment {
     protected  View rootView;
     protected  abstract void initView(View view, Bundle savedInstanceState);
     protected  abstract int setLayoutId();
@@ -41,11 +44,10 @@ public abstract class BaseFragment extends LazyLoadFragment{
         super.onDestroyView();
         ((ViewGroup)rootView.getParent()).removeView(rootView);
     }
-    protected void initActionBar(Toolbar toolbar){
-
-    }
-    protected void changeActivity(Class<?> cls){
+    protected void changeActivity(Class<?> cls,int kind){
         Intent intent = new Intent(getActivity(),cls);
+        intent.putExtra("kind",kind);
         startActivity(intent);
     }
+
 }

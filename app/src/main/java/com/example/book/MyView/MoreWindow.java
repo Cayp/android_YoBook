@@ -20,6 +20,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.example.book.MyView.KickBackAnimator;
+import com.example.book.MyView.OnClickPublishTouchListener;
 import com.example.book.R;
 import android.widget.RelativeLayout;
 import com.example.book.Tools.FastBlur;
@@ -50,8 +53,6 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
         statusBarHeight = frame.top;
         setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
         setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
-        overlay = null;
-        mBitmap = null;
     }
 
     private Bitmap blur() {
@@ -63,7 +64,8 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
         int width = mBitmap.getWidth();
         int height = mBitmap.getHeight();
         overlay = Bitmap.createBitmap(mBitmap, 0, statusBarHeight, width, height - statusBarHeight);
-        overlay = FastBlur.doBlur(overlay, (int) radius, true);
+        overlay = FastBlur.doBlur(overlay, (int) radius, false);
+        view.destroyDrawingCache(); //清除缓存
         return overlay;
     }
 
@@ -71,7 +73,7 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
         layout = (RelativeLayout) LayoutInflater.from(mContext).inflate(R.layout.publish, null);
         setContentView(layout);
         showAnimation(layout);
-        setBackgroundDrawable(new BitmapDrawable(mContext.getResources(), blur()));
+        setBackgroundDrawable(new BitmapDrawable(null, blur()));
         setOutsideTouchable(true);
         setFocusable(true);
         this.setAnimationStyle(R.style.AnimBottom);
@@ -105,7 +107,7 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
                     PropertyValuesHolder moveAnim = PropertyValuesHolder.ofFloat("translationY", 600, 0);
                     PropertyValuesHolder alphaAnim = PropertyValuesHolder.ofFloat("alpha", 0, 1);
                     ObjectAnimator fadeAnim = ObjectAnimator.ofPropertyValuesHolder(child, moveAnim, alphaAnim);
-                    fadeAnim.setDuration(300);
+                    fadeAnim.setDuration(250);
                     KickBackAnimator kickAnimator = new KickBackAnimator();
                     kickAnimator.setDuration(150);
                     fadeAnim.setEvaluator(kickAnimator);
@@ -165,6 +167,7 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
     @Override
     public void onClick(View v) {
         closeAnimation(layout);
+        destroy();
     }
 
 //    OnclickPublishTouchListener 中调用
@@ -185,6 +188,16 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
         Intent intent = new Intent(MyApplication.getContext(),act);
         MyApplication.getContext().startActivity(intent);
         this.dismiss();
+    }
+    public void destroy() {
+        if (null != overlay) {
+            overlay = null;
+            System.gc();
+        }
+        if (null != mBitmap) {
+            mBitmap = null;
+            System.gc();
+        }
     }
 
 }

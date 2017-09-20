@@ -1,7 +1,7 @@
 package com.example.book.Presenter;
 
 import com.example.book.Model.LoginModel;
-import com.example.book.Tools.LoginHelper;
+import com.example.book.EntityClass.LoginHelper;
 import com.example.book.view.AbstractView.LoginView;
 
 /**

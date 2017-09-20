@@ -1,9 +1,12 @@
 <component name="ProjectDictionaryState">
   <dictionary name="ljp">
     <words>
+      <w>bookname</w>
       <w>bottomwindow</w>
       <w>cancelicon</w>
       <w>cantget</w>
+      <w>cantouch</w>
+      <w>changetoolbar</w>
       <w>checkcode</w>
       <w>checkcodewrapper</w>
       <w>checkdata</w>
@@ -14,13 +17,18 @@
       <w>errorid</w>
       <w>firstoolbar</w>
       <w>fourtablist</w>
+      <w>headsearch</w>
       <w>inputaccount</w>
       <w>inputpassword</w>
+      <w>itemcenter</w>
+      <w>itemend</w>
+      <w>itemhead</w>
       <w>loadcheckcode</w>
       <w>loginbackgroud</w>
       <w>loginfailure</w>
       <w>loginsuccess</w>
       <w>menubutton</w>
+      <w>mychgesearch</w>
       <w>navbar</w>
       <w>navbarobj</w>
       <w>passwordcheck</w>
@@ -40,6 +48,7 @@
       <w>sendbokbutn</w>
       <w>sendbokbutton</w>
       <w>sharebutton</w>
+      <w>tablayout</w>
       <w>toregister</w>
       <w>writebutton</w>
       <w>zerodp</w>

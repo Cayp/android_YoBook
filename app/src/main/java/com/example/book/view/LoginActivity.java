@@ -14,7 +14,7 @@ import com.example.book.Presenter.LoginPresenter;
 import com.example.book.Presenter.LogoutPresenter;
 import com.example.book.R;
 import com.example.book.Tools.Constant;
-import com.example.book.Tools.LoginHelper;
+import com.example.book.EntityClass.LoginHelper;
 import com.example.book.Tools.MyToast;
 import com.example.book.view.AbstractView.LoginView;
 import com.example.book.view.AbstractView.LogoutView;
@@ -50,6 +50,7 @@ public class LoginActivity extends BaseActivity implements LoginView,LogoutView 
     @Override
     public void loginsuccess(LoginHelper loginHelper) {
         hideProgress();
+        changeActivity(MainActivity.class);
 
     }
 

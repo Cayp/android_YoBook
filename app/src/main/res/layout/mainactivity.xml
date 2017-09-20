@@ -41,15 +41,15 @@
              cayp:mText="书香"
              cayp:mTextColor="@color/black"/>
 
-         <ImageView
+         <ImageButton
              android:id="@+id/menubutton"
              android:layout_width="@dimen/zerodp"
              android:layout_height="75dp"
-             android:layout_weight="1.20"
+             android:layout_weight="1.05"
              android:contentDescription=""
              android:layout_gravity="bottom"
-             android:src="@drawable/menubutton"
-             android:layout_marginBottom="4dp"
+             android:background="@drawable/menubutton"
+             android:layout_marginBottom="3dp"
              tools:ignore="ContentDescription" />
 
          <com.example.book.MyView.NavbarView

@@ -14,5 +14,6 @@ public class Constant {
     public static final int ERROR_JSONGETWRONG = 26;
     public static final int ERROR_LOGINFAILURE = 27;
     public static final int ERROR_LOGIN_NULL = 28 ;
+    public static final int ERROR_NOMOREUPDATE =29;
 
 }

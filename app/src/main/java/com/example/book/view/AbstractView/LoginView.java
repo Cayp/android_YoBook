@@ -1,6 +1,6 @@
 package com.example.book.view.AbstractView;
 
-import com.example.book.Tools.LoginHelper;
+import com.example.book.EntityClass.LoginHelper;
 
 /**
  * Created by ljp on 2017/7/29.

@@ -4,13 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.book.Base.BaseFragment;
+import com.example.book.Base.LazyLoadFragment;
 import com.example.book.R;
 
 /**
  * Created by ljp on 2017/9/8.
  */
 
-public class MyDataFragment extends BaseFragment {
+public class MyDataFragment extends LazyLoadFragment {
     public MyDataFragment() {
     }
 

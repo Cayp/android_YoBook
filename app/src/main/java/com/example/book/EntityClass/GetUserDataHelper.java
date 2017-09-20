@@ -1,20 +1,20 @@
-package com.example.book.Tools;
+package com.example.book.EntityClass;
 
 /**
- * Created by ljp on 2017/7/29.
+ * Created by ljp on 2017/9/18.
  */
 
-public class LoginHelper {
+public class GetUserDataHelper {
     /**
      * code : 20000
-     * message : 登录成功
-     * data : {"id":23,"account":"13692190631","password":null,"username":"Clanne","sex":"m","brief":null,"avatar":"13692190631"}
+     * message : 获取用户信息成功
+     * data : {"id":24,"account":null,"password":null,"username":"Cafe","sex":"m","brief":null,"avatar":null}
      * dataList : null
      */
 
     private int code;
     private String message;
-    private DataBean data;
+    private UserData data;
     private Object dataList;
 
     public int getCode() {
@@ -33,11 +33,11 @@ public class LoginHelper {
         this.message = message;
     }
 
-    public DataBean getData() {
+    public UserData getData() {
         return data;
     }
 
-    public void setData(DataBean data) {
+    public void setData(UserData data) {
         this.data = data;
     }
 
@@ -49,23 +49,23 @@ public class LoginHelper {
         this.dataList = dataList;
     }
 
-    public static class DataBean {
+    public static class UserData {
         /**
-         * id : 23
-         * account : 13692190631
+         * id : 24
+         * account : null
          * password : null
-         * username : Clanne
+         * username : Cafe
          * sex : m
          * brief : null
-         * avatar : 13692190631
+         * avatar : null
          */
 
         private int id;
         private String account;
-        private Object password;
+        private String password;
         private String username;
         private String sex;
-        private Object brief;
+        private String brief;
         private String avatar;
 
         public int getId() {
@@ -84,11 +84,11 @@ public class LoginHelper {
             this.account = account;
         }
 
-        public Object getPassword() {
+        public String getPassword() {
             return password;
         }
 
-        public void setPassword(Object password) {
+        public void setPassword(String password) {
             this.password = password;
         }
 
@@ -108,11 +108,11 @@ public class LoginHelper {
             this.sex = sex;
         }
 
-        public Object getBrief() {
+        public String getBrief() {
             return brief;
         }
 
-        public void setBrief(Object brief) {
+        public void setBrief(String brief) {
             this.brief = brief;
         }
 

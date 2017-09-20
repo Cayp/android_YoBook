@@ -9,7 +9,7 @@ import android.support.v4.app.Fragment;
  * Created by ljp on 2017/9/9.
  */
 
-public abstract class LazyLoadFragment extends Fragment{
+public abstract class LazyLoadFragment extends BaseFragment{
     protected boolean isViewInitiated;
     protected boolean isVisibleToUser;
     protected boolean isDataInitiated;
@@ -23,7 +23,6 @@ public abstract class LazyLoadFragment extends Fragment{
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         isViewInitiated = true;
-        prepareFetchData();
     }
 
     @Override

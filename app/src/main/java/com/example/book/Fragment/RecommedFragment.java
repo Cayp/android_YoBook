@@ -4,13 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.book.Base.BaseFragment;
+import com.example.book.Base.LazyLoadFragment;
 import com.example.book.R;
 
 /**
  * Created by ljp on 2017/9/8.
  */
 
-public class RecommedFragment extends BaseFragment {
+public class RecommedFragment extends LazyLoadFragment {
     public RecommedFragment() {
     }
 
