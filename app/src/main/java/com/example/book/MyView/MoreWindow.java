@@ -28,6 +28,7 @@ import android.widget.RelativeLayout;
 import com.example.book.Tools.FastBlur;
 import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.MyToast;
+import com.example.book.view.PublishSecBookActivity;
 
 /**
  * Created by ljp on 2017/9/3.
@@ -174,7 +175,9 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
     public void publishOnClick(View view){
         switch (view.getId()){
             case R.id.sendbokbutn:
-                MyToast.toast("sendbokbutn");
+                Intent intent = new Intent(MyApplication.getContext(), PublishSecBookActivity.class);
+                MyApplication.getContext().startActivity(intent);
+                dismiss();
                 break;
             case R.id.sharebutton:
                 MyToast.toast("sharebutton");

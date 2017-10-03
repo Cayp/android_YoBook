@@ -33,6 +33,7 @@
            android:id="@+id/find_toolbar"
            android:gravity="top"
            android:minHeight="55dp"
+
            />
         <android.support.design.widget.TabLayout
             android:id="@+id/tablayout"
@@ -47,9 +48,12 @@
             />
     </android.support.design.widget.CollapsingToolbarLayout>
 </android.support.design.widget.AppBarLayout>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/find_viewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+    </android.support.v4.view.ViewPager>
+
 </android.support.design.widget.CoordinatorLayout>

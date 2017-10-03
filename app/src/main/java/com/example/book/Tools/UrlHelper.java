@@ -20,5 +20,7 @@ public class UrlHelper {
     public static final String GETALLSECONDBOOK = BASE_URL + "Home/SecondBook/getAllSecondBook";
     public static final String GETAVATAR = BASE_URL + "Avatar/";
     public static final String GETUSERINFO = BASE_URL + "Home/User/getUserInfo";
-
+    public static final String GETSECONDBOOKBYTYPE = BASE_URL + "Home/SecondBook/getSecondBookByType";
+    public static final String GETALLTYPE = BASE_URL + "Home/Type/getAllType";
+    public static final String PUBLISHSECBOOK = BASE_URL + "Home/SecondBook/publishBook";
 }

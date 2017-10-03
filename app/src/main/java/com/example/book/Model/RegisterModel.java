@@ -5,6 +5,7 @@ import com.example.book.EntityClass.RegisterHelper;
 import com.example.book.EntityClass.UserRegisterMsg;
 import com.example.book.Presenter.RegisterPresenter;
 import com.example.book.Tools.Constant;
+import com.example.book.Tools.MyToast;
 import com.example.book.Tools.Mylog;
 import com.example.book.Tools.UrlHelper;
 import com.google.gson.Gson;
@@ -50,11 +51,10 @@ public class RegisterModel {
                  public void onResponse(String response, int id) {
                    RegisterHelper registerHelper = new Gson().fromJson(response , RegisterHelper.class);
                    int code = registerHelper.getCode();
-                     if(code == 40000){
+                     if(code == 40000)
+                         MyToast.toast(registerHelper.getMessage());
+                     else if(code == 20000){
                          registerPresenter.registersuccess();
-                     }else{
-                         Mylog.d(TAG,"收到东西失败");
-                         registerPresenter.registerFailure(Constant.ERROR_REGISTER_FAILURE);
                      }
                  }
              });

@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+  <ProgressBar
+      android:id="@+id/loading_progressbar"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:layout_toLeftOf="@+id/loading_text"
+      android:layout_marginTop="75dp"
+      tools:ignore="RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/loading_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:text="正在加载...."
+        android:textColor="@color/colordarkgray"
+        android:textSize="13sp"
+        android:visibility="visible"
+        tools:ignore="HardcodedText" />
 <com.github.jdsjlzx.recyclerview.LRecyclerView
     android:id="@+id/book_recyclerView"
     android:layout_width="match_parent"

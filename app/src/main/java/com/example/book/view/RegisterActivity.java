@@ -14,16 +14,22 @@ import com.example.book.Base.BaseActivity;
 import com.example.book.Presenter.RegisterPresenter;
 import com.example.book.R;
 import com.example.book.Tools.Constant;
+
+import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.MyToast;
 import com.example.book.Tools.UrlHelper;
 import com.example.book.EntityClass.UserRegisterMsg;
 import com.example.book.view.AbstractView.RegisterView;
 import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
+
 
 import butterknife.BindView;
 
 import butterknife.OnClick;
+
+import static com.squareup.picasso.Picasso.with;
 
 public class RegisterActivity extends BaseActivity implements RegisterView,View.OnClickListener{
     private static final String TAG = "RegisterActivity";
@@ -56,6 +62,7 @@ public class RegisterActivity extends BaseActivity implements RegisterView,View.
     @Override
     protected void initView(Bundle savedInstanceState)
     {
+        
         loadCheckCode();  //加载验证码
         initActionBar(toolbar,true);
         headText.setText("注册");
@@ -96,7 +103,7 @@ public class RegisterActivity extends BaseActivity implements RegisterView,View.
     }
     @Override
     public void  loadCheckCode() {
-        Picasso.with(this).load(UrlHelper.CHECKCODE_URL)
+        Picasso.with(MyApplication.getContext()).load(UrlHelper.CHECKCODE_URL)
                 .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)                //不缓存在硬盘
                 .into(imageView);
     }

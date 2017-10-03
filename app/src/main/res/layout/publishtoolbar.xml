@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+<!--<ImageView-->
+    <!--android:id="@+id/backicon"-->
+    <!--android:layout_width="15dp"-->
+    <!--android:layout_height="15dp"-->
+    <!--android:src="@drawable/leftback"-->
+    <!--tools:ignore="ContentDescription" />-->
+<TextView
+    android:id="@+id/publishText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:textSize="17sp"
+    android:textColor="@color/black"
+    tools:text="填 写"/>
+</android.support.v7.widget.Toolbar>

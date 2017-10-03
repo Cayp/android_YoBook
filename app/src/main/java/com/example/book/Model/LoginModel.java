@@ -44,7 +44,7 @@ public class LoginModel {
                         loginPresenter.hideProgress();
                         LoginHelper loginHelper = new Gson().fromJson(response , LoginHelper.class);
                         int code = loginHelper.getCode() ;
-                        if(code == 40000){
+                        if(code == 20000){
                          loginPresenter.loginsuccess(loginHelper);
                         }else {
                             loginPresenter.loginfailure(Constant.ERROR_LOGIN_WRONG);

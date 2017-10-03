@@ -15,6 +15,7 @@ import com.example.book.Base.LazyLoadFragment;
 import com.example.book.R;
 import com.example.book.Tools.FragmentFactory;
 import com.example.book.Tools.MyToast;
+import com.example.book.view.TestActivity;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 
 import java.util.ArrayList;
@@ -84,16 +85,12 @@ public class FindFragment extends LazyLoadFragment {
     @OnClick({R.id.cantouch})
     public void onClick(View v) {
         MyToast.toast("搜索");
+        changeActivity(TestActivity.class,1);
     }
     public void setFragment(){
-        for(int i =0;i<3;i++){
-            fragmentList.add(FragmentFactory.creatFragment(ShowoBookFragment.class.getName()));
-        }
+        fragmentList.add(FragmentFactory.creatFragment(ShowoBookFragment.class.getName()));
+        fragmentList.add(FragmentFactory.creatFragment(ShowTypedBookFragment.class.getName()));
+        fragmentList.add(FragmentFactory.creatFragment(ShowTypeBoolFragment2.class.getName()));
         pagerAdapter = new MainPagerAdapter(getFragmentManager(),fragmentList);
-    }
-    public void setTabLayout(TabLayout tabLayout){
-        tabLayout.addTab(tabLayout.newTab().setText("全部"));
-        tabLayout.addTab(tabLayout.newTab().setText("教科书"));
-        tabLayout.addTab(tabLayout.newTab().setText("课外书"));
     }
 }

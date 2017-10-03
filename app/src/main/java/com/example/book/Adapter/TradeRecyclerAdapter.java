@@ -1,9 +1,7 @@
 package com.example.book.Adapter;
 
-import android.app.Application;
-import android.graphics.drawable.RippleDrawable;
-import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.book.EntityClass.SecondBookAllData;
 import com.example.book.R;
+import com.example.book.Tools.Constant;
 import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.UrlHelper;
 import com.squareup.picasso.MemoryPolicy;
@@ -26,6 +25,7 @@ import java.util.List;
  */
 
 public class TradeRecyclerAdapter extends RecyclerView.Adapter<TradeRecyclerAdapter.ViewHolder> {
+    private static final String TAG = "TradeRecyclerAdapter";
     private List<SecondBookAllData> mTradedatalist = new ArrayList<>();
     static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView head_icon;
@@ -36,6 +36,8 @@ public class TradeRecyclerAdapter extends RecyclerView.Adapter<TradeRecyclerAdap
         TextView description;
         RelativeLayout to_chat;
         RelativeLayout like;
+        TextView price;
+        TextView typeText;
         public ViewHolder(View itemView) {
             super(itemView);
             head_icon = (ImageView)itemView.findViewById(R.id.user_icon);
@@ -46,6 +48,8 @@ public class TradeRecyclerAdapter extends RecyclerView.Adapter<TradeRecyclerAdap
             description = (TextView)itemView.findViewById(R.id.description);
             to_chat = (RelativeLayout)itemView.findViewById(R.id.to_chat);
             like = (RelativeLayout)itemView.findViewById(R.id.like);
+            typeText = (TextView)itemView.findViewById(R.id.typeText);
+            price = (TextView)itemView.findViewById(R.id.price);
         }
 
     }
@@ -62,10 +66,21 @@ public class TradeRecyclerAdapter extends RecyclerView.Adapter<TradeRecyclerAdap
         holder.user_name.setText(onePisData.getUserName());
         holder.book_name.setText(onePisData.getBookName());
         holder.description.setText(onePisData.getDescription());
+        Log.d(TAG, "fucj"+onePisData.getTypedId());
+        if(onePisData.getTypedId()== Constant.CLASSBOOK){
+            Log.d(TAG, "fuck2"+onePisData.getTypedId());
+            holder.typeText.setText("教科书");
+        }else{
+            holder.typeText.setText("课外书");
+        }
+        Log.d(TAG, "price"+onePisData.getPrice());
+        holder.price.setText(onePisData.getPrice());
         Picasso.with(MyApplication.getContext()).load(UrlHelper.GETSECONDBOOKCOVER+onePisData.getUserId()+"/"+onePisData.getBookCover())
+                .fit()
                 .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)                //不缓存在硬盘
                 .into(holder.book_picture) ;
         Picasso.with(MyApplication.getContext()).load(UrlHelper.GETAVATAR+onePisData.getUserId()+"/"+onePisData.getAvatar())
+                .error(R.mipmap.ic_launcher_round)
                 .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)                //不缓存在硬盘
                 .into(holder.head_icon);
     }
@@ -80,9 +95,8 @@ public class TradeRecyclerAdapter extends RecyclerView.Adapter<TradeRecyclerAdap
     }
 
     public void setDataList(List<SecondBookAllData> list) {
-        this.mTradedatalist.clear();
+        clearList();
         this.mTradedatalist.addAll(list);
-        notifyDataSetChanged();
     }
 
     public void addAll(List<SecondBookAllData> list) {
@@ -101,8 +115,7 @@ public class TradeRecyclerAdapter extends RecyclerView.Adapter<TradeRecyclerAdap
 //        }
 //    }
 
-    public void clear() {
+    private void clearList() {
        mTradedatalist.clear();
-        notifyDataSetChanged();
     }
 }

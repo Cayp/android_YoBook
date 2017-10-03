@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/talkto"
+      android:title="价格私聊"/>
+
+ <item android:id="@+id/inputprice"
+     android:title="输入价格"   />
+</menu>

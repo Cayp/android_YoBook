@@ -2,10 +2,10 @@ package com.example.book.Fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.example.book.Adapter.TradeRecyclerAdapter;
 import com.example.book.Base.LazyLoadFragment;
 import com.example.book.EntityClass.SecondBookAllData;
@@ -15,7 +15,6 @@ import com.example.book.R;
 import com.example.book.Tools.Constant;
 import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.MyToast;
-import com.example.book.Tools.Mylog;
 import com.example.book.view.AbstractView.PagingLoad;
 import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
@@ -23,17 +22,16 @@ import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.github.jdsjlzx.recyclerview.ProgressStyle;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 
 /**
- * Created by ljp on 2017/9/14.
+ * Created by ljp on 2017/9/28.
  */
 
-public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
+public class ShowTypeBoolFragment2 extends LazyLoadFragment implements PagingLoad{
     @BindView(R.id.loading_progressbar)
     ProgressBar loading_progressbar;
     @BindView(R.id.book_recyclerView)
@@ -43,22 +41,54 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
     TradeRecyclerAdapter tradeRecyclerAdapter;
     LRecyclerViewAdapter lRecyclerViewAdapter;
     GetBookPresenter getBookPresenter;
-
     private List<SecondBookAllData> mdataList;
     private boolean isLoadMore = false;                    //添加判断是否是向下加载更多
     private List<UserDataid_Icon> mList = new ArrayList<>();
     private int page_no = 1;
     private final int PAGE_SIZE = 4;
-    private static final String TAG = "ShowoBookFragment";
+    private int typeId  = Constant.AFTERCLASSBOOK;
+
+    @Override
+    public void requestData() {
+        GetBookPresenter getBookPresenter = new GetBookPresenter(this);
+        getBookPresenter.requestData(page_no,PAGE_SIZE,typeId);
+    }
+
+    @Override
+    public void failRequestData(int error) {
+        switch (error) {
+            case Constant.ERROR_NOMOREUPDATE:
+                lRecyclerView.setNoMore(true);
+                break;
+            case 1:
+                MyToast.toast("wrong");
+        }
+    }
+
+    @Override
+    public void succeedRequestData(List<SecondBookAllData> dataList) {
+        mdataList = dataList;
+    }
+
+    @Override
+    public void setUserNameIcon(UserDataid_Icon userNameIcon) {
+        mList.add(userNameIcon);
+        if(mList.size()==mdataList.size()){
+            combineData();
+            setdata(mdataList);
+            lRecyclerViewAdapter.notifyDataSetChanged();
+            lRecyclerView.refreshComplete(PAGE_SIZE);
+            page_no++;
+        }
+    }
+
     @Override
     public void fetchData() {
         requestData();
-
     }
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        requestData();
         tradeRecyclerAdapter = new TradeRecyclerAdapter();
         lRecyclerViewAdapter = new LRecyclerViewAdapter(tradeRecyclerAdapter);
         lRecyclerView.setAdapter(lRecyclerViewAdapter);
@@ -81,9 +111,7 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
             public void onLoadMore() {
                 clearList();
                 isLoadMore = true;
-                Log.d(TAG, "onLoadMore"+page_no);
                 requestData();
-
             }
         });
 
@@ -93,42 +121,6 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
     protected int setLayoutId() {
         return R.layout.showbook_fragment;
     }
-
-    @Override
-    public void requestData() {
-        getBookPresenter = new GetBookPresenter(this);
-        getBookPresenter.requestData(page_no,PAGE_SIZE,0);
-    }
-
-    @Override
-    public void failRequestData(int error) {
-        switch (error) {
-            case Constant.ERROR_NOMOREUPDATE:
-                lRecyclerView.setNoMore(true);
-                break;
-            case 1:
-                MyToast.toast("wrong");
-        }
-    }
-
-    @Override
-    public void succeedRequestData(List<SecondBookAllData> dataList) {
-        mdataList = dataList;
-    }
-    @Override
-    public void setUserNameIcon(UserDataid_Icon userNameIcon) {
-        mList.add(userNameIcon);
-
-        if(mList.size()==mdataList.size()){
-            Mylog.d(TAG,"yCAYP");
-            combineData();
-            setdata(mdataList);
-            Mylog.d(TAG,"Tsecond");
-            lRecyclerViewAdapter.notifyDataSetChanged();
-            lRecyclerView.refreshComplete(PAGE_SIZE);
-            page_no++;
-        }
-    }
     public void combineData(){
         for(int i=0;i < mdataList.size();i ++){
             mdataList.get(i).setUserName(mList.get(i).getUserName());
@@ -137,20 +129,20 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
     }
     public void clearList(){
         if(mdataList.size()!=0){
-        mdataList.clear();
+            mdataList.clear();
         }
         if(mList.size()!=0){
-        mList.clear();
+            mList.clear();
         }
     }
     public void setdata(List<SecondBookAllData> list){
-        Log.d(TAG, "setdata"+isLoadMore);
-        if(isLoadMore){
-           tradeRecyclerAdapter.addAll(list);
-       }else {
+        if(isLoadMore ){
+            tradeRecyclerAdapter.addAll(list);
+        }else {
             tradeRecyclerAdapter.setDataList(list);
             loadtext.setVisibility(View.GONE);
             loading_progressbar.setVisibility(View.GONE);
-       }
+        }
     }
+
 }

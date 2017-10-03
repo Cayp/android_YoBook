@@ -5,6 +5,8 @@ package com.example.book.Tools;
  */
 
 public class Constant {
+    public static final int CLASSBOOK = 3;
+    public static final int AFTERCLASSBOOK = 1;
     public static final int ERROR_CHECKCODE_CANTGET = 20;
     public static final int ERROR_NO_INTERNET = 21;
     public static final int ERROR_LOGIN_WRONG = 22;
@@ -15,5 +17,6 @@ public class Constant {
     public static final int ERROR_LOGINFAILURE = 27;
     public static final int ERROR_LOGIN_NULL = 28 ;
     public static final int ERROR_NOMOREUPDATE =29;
+    public static final int ERROR_LACKDATA = 30;
 
 }

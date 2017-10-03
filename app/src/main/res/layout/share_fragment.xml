@@ -1,9 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-    <TextView
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+<android.support.design.widget.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff">
+<include layout="@layout/changetoolbar2"
+         android:id="@+id/shareToolbar"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/sharetablayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="2"
-        android:textSize="40dp"/>
-</RelativeLayout>
+        android:layout_height="40dp"
+        app:tabSelectedTextColor="@color/colordarkgray"
+        app:tabTextColor="@color/textcolor2"
+        app:tabIndicatorColor="@color/textcolor2"
+        app:tabIndicatorHeight="4dp">
+    </android.support.design.widget.TabLayout>
+</android.support.design.widget.AppBarLayout>
+     <View
+         android:layout_width="match_parent"
+         android:layout_height="4dp"
+         android:background="@color/spacecolor"/>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/sharePager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+
+</LinearLayout>

@@ -6,4 +6,6 @@
     <dimen name="publishwidth">90dp</dimen>
     <dimen name="publishheight">180dp</dimen>
     <dimen name="textsize">17sp</dimen>
+    <dimen name="default_divider_height">4dp</dimen>
+    <dimen name="default_divider_padding">5dp</dimen>
 </resources>

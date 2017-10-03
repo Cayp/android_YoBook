@@ -4,20 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="1dp"
+    app:cardCornerRadius="2dp"
     android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/item_head"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
         android:background="#ffffff">
-<de.hdodenhof.circleimageview.CircleImageView
+   <de.hdodenhof.circleimageview.CircleImageView
     android:id="@+id/user_icon"
-    android:layout_width="40dp"
-    android:layout_height="40dp"
+    android:layout_width="38dp"
+    android:layout_height="38dp"
     android:layout_centerVertical="true"
     android:layout_marginLeft="15dp"
-    android:src="#000000"
-    app:civ_border_width="8dp"
+    android:src="@mipmap/ic_launcher"
     tools:ignore="RtlHardcoded" />
         <TextView
             android:id="@+id/user_name"
@@ -26,10 +28,28 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/user_icon"
             android:layout_marginLeft="7dp"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textColor="#a5dae4"
             tools:text="hello"
             tools:ignore="HardcodedText,RelativeOverlap,RtlHardcoded" />
+        <RelativeLayout
+            android:id="@+id/typecontainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/more_icon"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/tagshape"
+            tools:ignore="RelativeOverlap,RtlHardcoded">
+            <TextView
+                android:id="@+id/typeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="15sp"
+                android:textColor="@color/colordarkbule"
+                tools:text="课外书"/>
+        </RelativeLayout>
         <ImageView
             android:id="@+id/more_icon"
             android:layout_width="20dp"
@@ -43,8 +63,8 @@
 <RelativeLayout
     android:id="@+id/item_center"
     android:layout_width="match_parent"
-    android:layout_height="110dp"
-    android:layout_marginTop="45dp"
+    android:layout_height="115dp"
+    android:layout_marginTop="40dp"
     android:background="#fafafa"
     tools:ignore="MissingPrefix">
     <ImageView
@@ -84,7 +104,7 @@
     <TextView
         android:id="@+id/head_description"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_height="27dp"
         android:layout_toRightOf="@id/item_picture"
         android:layout_marginTop="35dp"
         android:layout_marginLeft="10dp"
@@ -97,7 +117,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/head_description"
-        android:layout_marginTop="39dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="37dp"
         android:textSize="13sp"
         android:maxLines="3"
         android:ellipsize="end"
@@ -126,7 +147,7 @@
         tools:ignore="RtlHardcoded"
         tools:text="面谈"/>
 </RelativeLayout>
-    <view
+    <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="154dp"
@@ -151,7 +172,7 @@
             <TextView
                 android:id="@+id/like_text"
                 android:layout_width="wrap_content"
-                android:layout_height="15dp"
+                android:layout_height="18dp"
                 android:layout_toRightOf="@id/like_icon"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="4dp"
@@ -160,10 +181,11 @@
                 android:text="待定"
                 tools:ignore="HardcodedText,RtlHardcoded" />
         </RelativeLayout>
-        <view
+        <View
             android:layout_width="@dimen/zerodp"
             android:layout_height="18dp"
             android:layout_weight="2"
+            android:background="@color/colordarkgray"
             android:layout_gravity="center_vertical"/>
         <RelativeLayout
             android:id="@+id/to_chat"
@@ -181,7 +203,7 @@
             <TextView
                 android:id="@+id/to_chat_text"
                 android:layout_width="wrap_content"
-                android:layout_height="15dp"
+                android:layout_height="18dp"
                 android:layout_toRightOf="@id/to_chat_icon"
                 android:layout_marginLeft="4dp"
                 android:layout_centerVertical="true"

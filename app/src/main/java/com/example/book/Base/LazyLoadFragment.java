@@ -28,7 +28,7 @@ public abstract class LazyLoadFragment extends BaseFragment{
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        this.isVisibleToUser = isVisibleToUser;
+        this.isVisibleToUser = getUserVisibleHint();
         prepareFetchData();
     }
 

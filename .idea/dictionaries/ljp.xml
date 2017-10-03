@@ -14,10 +14,12 @@
       <w>colordarkbule</w>
       <w>colororange</w>
       <w>colorwhite</w>
+      <w>dataid</w>
       <w>errorid</w>
       <w>firstoolbar</w>
       <w>fourtablist</w>
       <w>headsearch</w>
+      <w>imagesend</w>
       <w>inputaccount</w>
       <w>inputpassword</w>
       <w>itemcenter</w>
@@ -47,7 +49,9 @@
       <w>registersuccess</w>
       <w>sendbokbutn</w>
       <w>sendbokbutton</w>
+      <w>setdata</w>
       <w>sharebutton</w>
+      <w>sharetablayout</w>
       <w>tablayout</w>
       <w>toregister</w>
       <w>writebutton</w>

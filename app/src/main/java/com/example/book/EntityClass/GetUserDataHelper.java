@@ -1,5 +1,7 @@
 package com.example.book.EntityClass;
 
+import java.util.List;
+
 /**
  * Created by ljp on 2017/9/18.
  */
@@ -61,12 +63,12 @@ public class GetUserDataHelper {
          */
 
         private int id;
-        private String account;
-        private String password;
-        private String username;
-        private String sex;
-        private String brief;
-        private String avatar;
+        private String account =null;
+        private String password = null;
+        private String username = null;
+        private String sex = null;
+        private String brief = null;
+        private String avatar = null;
 
         public int getId() {
             return id;
