@@ -1,6 +1,7 @@
 package com.example.book.view;
 
-import android.app.Activity;
+
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -11,16 +12,13 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.book.Base.BaseActivity;
 import com.example.book.EntityClass.PublishSecBookHelper;
 import com.example.book.MyView.InputDialog;
@@ -77,7 +75,7 @@ public class PublishSecBookActivity extends BaseActivity implements PublishSecBo
     ImageView right_iconT;
     public static final int IMAGE_PICKER = 100;
     private InputDialog inputDialog;
-    private ProgressBar progressBar;
+    private ProgressDialog progressDialog ;
     private static final String TAG = "PublishSecBookActivity";
     private PublishSecBookHelper publishSecBookHelper = new PublishSecBookHelper();
     private View.OnClickListener listener = new View.OnClickListener() {
@@ -172,12 +170,11 @@ public class PublishSecBookActivity extends BaseActivity implements PublishSecBo
         if (resultCode == ImagePicker.RESULT_CODE_ITEMS) {
             if (data != null && requestCode == IMAGE_PICKER) {
                 ArrayList<ImageItem> list = (ArrayList<ImageItem>)data.getSerializableExtra(ImagePicker.EXTRA_RESULT_ITEMS);
-                String imageName = list.get(0).name;
-                Log.d(TAG, "photoname"+list.get(0).name);
+                Log.d(TAG,"photopath"+list.get(0).path);
                 String imagepath = list.get(0).path;
                 ImagePicker.getInstance().getImageLoader().displayImage(this,list.get(0).path,sendPicture,900,900);  //显示图片
                 File imagesend = new File(imagepath);
-                publishSecBookHelper.setCoverName(imageName);
+                publishSecBookHelper.setCoverName(imagepath);
                 publishSecBookHelper.setBookCover(imagesend);
             } else {
                 Toast.makeText(this, "没有数据", Toast.LENGTH_SHORT).show();
@@ -198,7 +195,9 @@ public class PublishSecBookActivity extends BaseActivity implements PublishSecBo
 
     @Override
     public void sendSuceess() {
-      MyToast.toast("成功");
+        hideProgress();
+        MyToast.toast("成功");
+        finish();
     }
 
     @Override
@@ -208,11 +207,19 @@ public class PublishSecBookActivity extends BaseActivity implements PublishSecBo
                MyToast.toast("你还有东西没有填~");
                break;
            case Constant.ERROR_LOGINFAILURE:
+               hideProgress();
                MyToast.toast("发布失败");
                break;
            case Constant.ERROR_JSONGETWRONG:
+               hideProgress();
                MyToast.toast("json解析异常");
                break;
        }
+    }
+    public void showProgress(){
+       progressDialog = ProgressDialog.show(this,null,"发布中..");
+    }
+    public void hideProgress(){
+        progressDialog.dismiss();
     }
 }

@@ -32,4 +32,14 @@ public class PublishSecBookPresenter implements PublishSecBook{
     public void sendFailure(int error) {
      publishSecBook.sendFailure(error);
     }
+
+    @Override
+    public void showProgress() {
+        publishSecBook.showProgress();
+    }
+
+    @Override
+    public void hideProgress() {
+         publishSecBook.hideProgress();
+    }
 }

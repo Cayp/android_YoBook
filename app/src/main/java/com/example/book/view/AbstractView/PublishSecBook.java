@@ -10,4 +10,6 @@ public interface PublishSecBook {
     void sendData(PublishSecBookHelper publishSecBookHelper);
     void sendSuceess();
     void sendFailure(int error);
+    void showProgress();
+    void hideProgress();
 }

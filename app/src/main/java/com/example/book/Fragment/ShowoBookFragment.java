@@ -44,7 +44,7 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
     LRecyclerViewAdapter lRecyclerViewAdapter;
     GetBookPresenter getBookPresenter;
 
-    private List<SecondBookAllData> mdataList;
+    private List<SecondBookAllData> mdataList = new ArrayList<>();
     private boolean isLoadMore = false;                    //添加判断是否是向下加载更多
     private List<UserDataid_Icon> mList = new ArrayList<>();
     private int page_no = 1;
@@ -113,13 +113,15 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
 
     @Override
     public void succeedRequestData(List<SecondBookAllData> dataList) {
-        mdataList = dataList;
+        mdataList.addAll(dataList);
     }
     @Override
     public void setUserNameIcon(UserDataid_Icon userNameIcon) {
         mList.add(userNameIcon);
-
         if(mList.size()==mdataList.size()){
+            for(UserDataid_Icon u : mList){
+                Log.d(TAG, "setUserNameIcon: "+u.getUserName());
+            }
             Mylog.d(TAG,"yCAYP");
             combineData();
             setdata(mdataList);
@@ -130,7 +132,7 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
         }
     }
     public void combineData(){
-        for(int i=0;i < mdataList.size();i ++){
+        for(int i=0;i < mdataList.size();i++){
             mdataList.get(i).setUserName(mList.get(i).getUserName());
             mdataList.get(i).setAvatar(mList.get(i).getAvatar());
         }

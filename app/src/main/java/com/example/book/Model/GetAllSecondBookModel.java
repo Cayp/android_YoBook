@@ -28,6 +28,7 @@ public class GetAllSecondBookModel {
     private ShowBook_TardeHelper showBook_tardeHelper;
     private List<SecondBookAllData> list = new ArrayList<SecondBookAllData>();
     private GetBookPresenter getBookPresenter;
+    private int index = 0; // 标志位
     private static final String TAG = "GetAllSecondBookModel";
 
     public GetAllSecondBookModel(GetBookPresenter getBookPresenter) {
@@ -101,10 +102,10 @@ public class GetAllSecondBookModel {
                                 secondBookAllData.setPrice(bookData.getPrice());
                                 secondBookAllData.setTypedId(bookData.getTypeId());
                                 secondBookAllData.setDescription(bookData.getDescription());
-                                getUseTwoPisData(secondBookAllData.getUserId());
                                 Log.d(TAG, "fuckuserid" + secondBookAllData.getUserId());
                                 list.add(secondBookAllData);
                             }
+                            getUseTwoPisData(list.get(index).getUserId());
                             getBookPresenter.succeedRequestData(list);
                         }
                     }
@@ -136,6 +137,10 @@ public class GetAllSecondBookModel {
                             userDataid_Icon.setAvatar(null);
                         }
                         getBookPresenter.setUserIdIcon(userDataid_Icon);
+                     index++;
+                    if(index < list.size()) {
+                        getUseTwoPisData(list.get(index).getUserId());
+                    }else { index = 0;}               //判断是否请求完
                     Log.d(TAG, "isEmpty"+userDataid_Icon.getUserName());
 
                 }

@@ -46,7 +46,8 @@ public class MyApplication extends Application {
     private void setPhotoPicker(){                         //仿微信调用图册
         ImagePicker imagePicker = ImagePicker.getInstance();
         imagePicker.setImageLoader(new PicassoImageLoader());   //设置图片加载器
-        imagePicker.setShowCamera(true);  //显示拍照按钮
+        imagePicker.setShowCamera(true);  //显示拍照按钮\
+        imagePicker.setMultiMode(false);
         imagePicker.setCrop(true);        //允许裁剪（单选才有效）
         imagePicker.setSaveRectangle(true); //是否按矩形区域保存
         imagePicker.setFocusHeight(1000);

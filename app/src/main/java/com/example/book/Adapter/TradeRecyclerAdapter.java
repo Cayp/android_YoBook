@@ -77,11 +77,9 @@ public class TradeRecyclerAdapter extends RecyclerView.Adapter<TradeRecyclerAdap
         holder.price.setText(onePisData.getPrice());
         Picasso.with(MyApplication.getContext()).load(UrlHelper.GETSECONDBOOKCOVER+onePisData.getUserId()+"/"+onePisData.getBookCover())
                 .fit()
-                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)                //不缓存在硬盘
                 .into(holder.book_picture) ;
         Picasso.with(MyApplication.getContext()).load(UrlHelper.GETAVATAR+onePisData.getUserId()+"/"+onePisData.getAvatar())
                 .error(R.mipmap.ic_launcher_round)
-                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)                //不缓存在硬盘
                 .into(holder.head_icon);
     }
 

@@ -29,6 +29,7 @@ public class PublishSecBookModel {
     public void sendData(PublishSecBookHelper publishSecBookHelper){
     if(checkData(publishSecBookHelper)){
       try{
+          publishSecBookPresenter.showProgress();
           OkHttpUtils.post().url(UrlHelper.PUBLISHSECBOOK)
                             .addParams("name",publishSecBookHelper.getBookName())
                             .addParams("description",publishSecBookHelper.getBookDescription())
