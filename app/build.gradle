@@ -35,4 +35,11 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    //mina
+    compile files('libs/mina-core-2.0.16.jar')
+    compile files('libs/slf4j-api-1.7.21.jar')
+    compile files('libs/slf4j-android-1.6.1-RC1.jar')
+    compile files('libs/mina-core-2.0.7.jar')
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
 }

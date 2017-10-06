@@ -1,6 +1,7 @@
 package com.example.book.view;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.book.Base.BaseActivity;
+import com.example.book.Chat.keepalive.ConnectionService;
+import com.example.book.Chat.utils.AppUtil;
 import com.example.book.Presenter.LoginPresenter;
 import com.example.book.Presenter.LogoutPresenter;
 import com.example.book.R;
@@ -22,7 +25,8 @@ import com.example.book.view.AbstractView.LogoutView;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class LoginActivity extends BaseActivity implements LoginView,LogoutView {
+public class LoginActivity extends BaseActivity implements LoginView, LogoutView {
+    private static final String TAG = "LoginActivity";
     @BindView(R.id.toregister)
     TextView toRegister;
     @BindView(R.id.account)
@@ -35,27 +39,31 @@ public class LoginActivity extends BaseActivity implements LoginView,LogoutView 
     TextView headText;
     private LoginPresenter loginPresenter;
     private LogoutPresenter logoutPresenter;
-    private String account ;
-    private String password ;
-    private ProgressDialog progressDialog ;
-    private static final String TAG = "LoginActivity";
+    private String account;
+    private String password;
+    private ProgressDialog progressDialog;
+
     @Override
     public void login() {
         account = inputaccount.getText().toString().trim();
         password = inputpassword.getText().toString().trim();
         loginPresenter = new LoginPresenter(this);
-        loginPresenter.login(account,password);
+        loginPresenter.login(account, password);
     }
 
     @Override
-    public void loginsuccess(LoginHelper loginHelper) {
+    public void loginsuccess(LoginHelper loginHelper) {//登陆成功，保存用户id，开启长链接
         hideProgress();
-
+        Constant.currentUserId = loginHelper.getData().getId();
+        startService(new Intent(this, ConnectionService.class));
+        AppUtil.saveId(this, Constant.currentUserId);
+        changeActivity(MainActivity.class);
+        finish();
     }
 
     @Override
     public void loginfailure(int error) {
-        switch (error){
+        switch (error) {
             case Constant.ERROR_LOGIN_NULL:
                 MyToast.toast("账号或密码不能为空");
                 break;
@@ -67,9 +75,9 @@ public class LoginActivity extends BaseActivity implements LoginView,LogoutView 
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-    toRegister.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);   // 注册字体加下划线
-    initActionBar(toolbar,true);
-    headText.setText("登录");
+        toRegister.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);   // 注册字体加下划线
+        initActionBar(toolbar, true);
+        headText.setText("登录");
     }
 
     @Override
@@ -77,9 +85,9 @@ public class LoginActivity extends BaseActivity implements LoginView,LogoutView 
         return R.layout.activity_login;
     }
 
-    @OnClick({R.id.login,R.id.toregister})
-    public void onClick(View view){
-        switch (view.getId()){
+    @OnClick({R.id.login, R.id.toregister})
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.login:
                 login();
                 break;
@@ -88,6 +96,7 @@ public class LoginActivity extends BaseActivity implements LoginView,LogoutView 
                 break;
         }
     }
+
     @Override
     public void logout() {
         logoutPresenter = new LogoutPresenter(this);
@@ -106,11 +115,11 @@ public class LoginActivity extends BaseActivity implements LoginView,LogoutView 
 
     @Override
     public void showProgress() {
-        progressDialog = ProgressDialog.show(this,null,"登录中");
+        progressDialog = ProgressDialog.show(this, null, "登录中");
     }
 
     @Override
     public void hideProgress() {
-      progressDialog.dismiss();
+        progressDialog.dismiss();
     }
 }
