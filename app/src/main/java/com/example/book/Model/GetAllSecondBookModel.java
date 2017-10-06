@@ -8,6 +8,7 @@ import com.example.book.EntityClass.ShowBook_TardeHelper;
 import com.example.book.EntityClass.UserDataid_Icon;
 import com.example.book.Presenter.GetBookPresenter;
 import com.example.book.Tools.Constant;
+import com.example.book.Tools.NetworkUtils;
 import com.example.book.Tools.UrlHelper;
 import com.example.book.view.AbstractView.PagingLoad;
 import com.google.gson.Gson;
@@ -36,14 +37,17 @@ public class GetAllSecondBookModel {
     }
 
 
-    public void loadData(int page_no,int page_size,int typeId){
-        try{
-            if(typeId != 0){
-                OkHttpUtils.post().url(UrlHelper.GETSECONDBOOKBYTYPE)
-                        .addParams("type_id",""+typeId)
-                        .addParams("page_no", "" + page_no)
-                        .addParams("page_size", "" + page_size)
-                        .build().execute(new StringCallback() {
+    public void loadData(int page_no,int page_size,int typeId) {
+        if (!NetworkUtils.isConnected()) {
+            getBookPresenter.failRequestData(Constant.ERROR_NO_INTERNET);
+        } else {
+            try {
+                if (typeId != 0) {
+                    OkHttpUtils.post().url(UrlHelper.GETSECONDBOOKBYTYPE)
+                            .addParams("type_id", "" + typeId)
+                            .addParams("page_no", "" + page_no)
+                            .addParams("page_size", "" + page_size)
+                            .build().execute(new StringCallback() {
                         @Override
                         public void onError(Call call, Exception e, int id) {
                             getBookPresenter.failRequestData(1);
@@ -74,46 +78,46 @@ public class GetAllSecondBookModel {
                             }
                         }
                     });
-            }
-            else {
-                OkHttpUtils.post().url(UrlHelper.GETALLSECONDBOOK).addParams("page_no", "" + page_no)
-                        .addParams("page_size", "" + page_size)
-                        .build().execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        getBookPresenter.failRequestData(1);
-                    }
-
-                    @Override
-                    public void onResponse(String response, int id) {
-                        showBook_tardeHelper = new Gson().fromJson(response, ShowBook_TardeHelper.class);
-                        if (showBook_tardeHelper.getCode() == 40000) {
-                            getBookPresenter.failRequestData(Constant.ERROR_NOMOREUPDATE);
-                            Log.d(TAG, "page2" + showBook_tardeHelper.getMessage());
+                } else {
+                    OkHttpUtils.post().url(UrlHelper.GETALLSECONDBOOK).addParams("page_no", "" + page_no)
+                            .addParams("page_size", "" + page_size)
+                            .build().execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            getBookPresenter.failRequestData(1);
                         }
-                        if (showBook_tardeHelper.getCode() == 20000) {
-                            for (int i = 0; i < showBook_tardeHelper.getDataList().size(); i++) {
-                                ShowBook_TardeHelper.BookData bookData = showBook_tardeHelper.getDataList().get(i);
-                                SecondBookAllData secondBookAllData = new SecondBookAllData();
-                                secondBookAllData.setBookId(bookData.getId());
-                                secondBookAllData.setUserId(bookData.getUserId());
-                                secondBookAllData.setBookCover(bookData.getCover());
-                                secondBookAllData.setBookName(bookData.getName());
-                                secondBookAllData.setPrice(bookData.getPrice());
-                                secondBookAllData.setTypedId(bookData.getTypeId());
-                                secondBookAllData.setDescription(bookData.getDescription());
-                                Log.d(TAG, "fuckuserid" + secondBookAllData.getUserId());
-                                list.add(secondBookAllData);
+
+                        @Override
+                        public void onResponse(String response, int id) {
+                            showBook_tardeHelper = new Gson().fromJson(response, ShowBook_TardeHelper.class);
+                            if (showBook_tardeHelper.getCode() == 40000) {
+                                getBookPresenter.failRequestData(Constant.ERROR_NOMOREUPDATE);
+                                Log.d(TAG, "page2" + showBook_tardeHelper.getMessage());
                             }
-                            getUseTwoPisData(list.get(index).getUserId());
-                            getBookPresenter.succeedRequestData(list);
+                            if (showBook_tardeHelper.getCode() == 20000) {
+                                for (int i = 0; i < showBook_tardeHelper.getDataList().size(); i++) {
+                                    ShowBook_TardeHelper.BookData bookData = showBook_tardeHelper.getDataList().get(i);
+                                    SecondBookAllData secondBookAllData = new SecondBookAllData();
+                                    secondBookAllData.setBookId(bookData.getId());
+                                    secondBookAllData.setUserId(bookData.getUserId());
+                                    secondBookAllData.setBookCover(bookData.getCover());
+                                    secondBookAllData.setBookName(bookData.getName());
+                                    secondBookAllData.setPrice(bookData.getPrice());
+                                    secondBookAllData.setTypedId(bookData.getTypeId());
+                                    secondBookAllData.setDescription(bookData.getDescription());
+                                    Log.d(TAG, "fuckuserid" + secondBookAllData.getUserId());
+                                    list.add(secondBookAllData);
+                                }
+                                getUseTwoPisData(list.get(index).getUserId());
+                                getBookPresenter.succeedRequestData(list);
+                            }
                         }
-                    }
-                });
-            }
-        }catch (JsonIOException e){
+                    });
+                }
+            } catch (JsonIOException e) {
 
-            e.printStackTrace();
+                e.printStackTrace();
+            }
         }
     }
     public void getUseTwoPisData(int user_id) {
