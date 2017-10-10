@@ -18,5 +18,10 @@ public class Constant {
     public static final int ERROR_LOGIN_NULL = 28 ;
     public static final int ERROR_NOMOREUPDATE =29;
     public static final int ERROR_LACKDATA = 30;
+    public static int currentUserId = 0;
+    public static final String TIME = "time";
+    public static final String LAST_OPEN = "lastOpen";
+    public static final String ID = "id";
+    public static final String USER_ID = "user_id";
 
 }

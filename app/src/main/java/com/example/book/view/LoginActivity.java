@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.book.Base.BaseActivity;
+import com.example.book.Chat.keepalive.ConnectionService;
+import com.example.book.Chat.utils.AppUtil;
 import com.example.book.Presenter.LoginPresenter;
 import com.example.book.Presenter.LogoutPresenter;
 import com.example.book.R;
@@ -22,7 +24,8 @@ import com.example.book.view.AbstractView.LogoutView;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class LoginActivity extends BaseActivity implements LoginView,LogoutView {
+public class LoginActivity extends BaseActivity implements LoginView, LogoutView {
+    private static final String TAG = "LoginActivity";
     @BindView(R.id.toregister)
     TextView toRegister;
     @BindView(R.id.account)
@@ -50,8 +53,11 @@ public class LoginActivity extends BaseActivity implements LoginView,LogoutView 
     @Override
     public void loginsuccess(LoginHelper loginHelper) {
         hideProgress();
+        Constant.currentUserId = loginHelper.getData().getId();
+        startService(new Intent(this, ConnectionService.class));
+        AppUtil.saveId(this, Constant.currentUserId);
         changeActivity(MainActivity.class);
-
+        finish();
     }
 
     @Override

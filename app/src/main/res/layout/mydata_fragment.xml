@@ -1,11 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<TextView
+<RelativeLayout
+    android:id="@+id/me_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:text="4"
-    android:textSize="40dp"/>
+    android:layout_height="50dp"
+    android:background="@color/colorwhite"
+    tools:ignore="UselessParent">
+    <TextView
+        android:id="@+id/me_toolbar_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="我的信息"
+        android:textSize="18sp"
+        android:textColor="@color/textcolor3"
+        tools:ignore="HardcodedText" />
+    <TextView
+        android:id="@+id/me_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="16dp"
+        android:text="修改"
+        android:textColor="@color/textcolor3"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText,RtlHardcoded" />
 </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/spacecolor"/>
+
+    <RelativeLayout
+        android:id="@+id/me_mid"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zerodp"
+        android:layout_weight="1"
+        android:background="@drawable/mebackground">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/me_headicon"
+            android:layout_width="63dp"
+            android:layout_height="63dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="24dp"
+            android:src="@mipmap/ic_launcher"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/me_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="38dp"
+            android:layout_toRightOf="@id/me_headicon"
+            android:textColor="@color/textcolor3"
+            android:textSize="18sp"
+            tools:ignore="RtlHardcoded"
+            tools:text="Cayp" />
+
+        <TextView
+            android:id="@+id/jianjie22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/me_headicon"
+            android:layout_alignLeft="@+id/me_name"
+            android:layout_alignStart="@+id/me_name"
+            android:text="简介:"
+            android:textColor="@color/textcolor2"
+            android:textSize="14sp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/jianjie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/jianjie22"
+            android:layout_alignBottom="@id/me_headicon"
+            android:text="暂无介绍"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+        <RelativeLayout
+            android:layout_width="293dp"
+            android:layout_height="22dp"
+            android:layout_below="@+id/me_headicon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="17dp">
+            <TextView
+                android:id="@+id/my_share"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="我的分享"
+                android:textSize="16sp"
+                android:textColor="@color/textcolor3"
+                android:layout_marginLeft="15dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+            <View
+                android:id="@+id/split"
+                android:layout_width="1dp"
+                android:layout_height="17dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/my_share"
+                android:layout_marginLeft="13dp"
+                android:background="@color/colordarkgray"
+                tools:ignore="RtlHardcoded" />
+            <TextView
+                android:id="@+id/my_attention"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="关注的人"
+                android:textSize="16sp"
+                android:textColor="@color/textcolor3"
+                android:layout_toRightOf="@+id/split"
+                android:layout_marginLeft="13dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+            <View
+                android:id="@+id/split2"
+                android:layout_width="1dp"
+                android:layout_height="17dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/my_attention"
+                android:layout_marginLeft="13dp"
+                android:background="@color/colordarkgray"
+                tools:ignore="RtlHardcoded" />
+            <TextView
+                android:id="@+id/my_message"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="我的讯息"
+                android:textSize="16sp"
+                android:textColor="@color/textcolor3"
+                android:layout_toRightOf="@+id/split2"
+                android:layout_marginLeft="13dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+        </RelativeLayout>
+    </RelativeLayout>
+<View
+    android:layout_width="match_parent"
+    android:layout_height="7dp"
+    android:background="#eef1f3"/>
+    <RelativeLayout
+        android:id="@+id/me_end"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zerodp"
+        android:layout_weight="2.5">
+
+    </RelativeLayout>
+</LinearLayout>

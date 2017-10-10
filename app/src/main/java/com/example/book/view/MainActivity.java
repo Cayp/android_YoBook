@@ -2,12 +2,15 @@ package com.example.book.view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.example.book.Adapter.MainPagerAdapter;
 import com.example.book.Base.BaseActivity;
+import com.example.book.Chat.utils.AppUtil;
 import com.example.book.Fragment.FindFragment;
 import com.example.book.Fragment.MyDataFragment;
 import com.example.book.Fragment.RecommedFragment;
@@ -19,6 +22,7 @@ import com.example.book.R;
 import com.example.book.Tools.FragmentFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -54,7 +58,6 @@ public class MainActivity extends BaseActivity {
      setViewPager();
      firstRunSelect(0);
 
-    }
     @Override
     protected int setContentViewId() {
         return R.layout.mainactivity;
@@ -101,10 +104,11 @@ public class MainActivity extends BaseActivity {
         fourtablist.add(navbar_me);
     }
     private void showMoreWindow(View view){
-            mMoreWindow = null;
+        if (null == mMoreWindow) {
             mMoreWindow = new MoreWindow(this);
-            mMoreWindow.init();
-            mMoreWindow.showMoreWindow(view);
+        }
+        mMoreWindow.init();
+        mMoreWindow.showMoreWindow(view);
     }
     private void setFragments(){
         fragmentList.add(FragmentFactory.creatFragment(FindFragment.class.getName()));
@@ -120,5 +124,10 @@ public class MainActivity extends BaseActivity {
         selectTab(tab);
         viewPager.setCurrentItem(tab);
     }
-}
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppUtil.saveTime(this);//退出应用，更新最近登录时间
+    }
+}
