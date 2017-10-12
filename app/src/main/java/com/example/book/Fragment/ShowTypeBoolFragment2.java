@@ -17,6 +17,7 @@ import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.MyToast;
 import com.example.book.view.AbstractView.PagingLoad;
 import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
+import com.github.jdsjlzx.interfaces.OnNetWorkErrorListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
@@ -41,7 +42,7 @@ public class ShowTypeBoolFragment2 extends LazyLoadFragment implements PagingLoa
     TradeRecyclerAdapter tradeRecyclerAdapter;
     LRecyclerViewAdapter lRecyclerViewAdapter;
     GetBookPresenter getBookPresenter;
-    private List<SecondBookAllData> mdataList;
+    private List<SecondBookAllData> mdataList = new ArrayList<>();
     private boolean isLoadMore = false;                    //添加判断是否是向下加载更多
     private List<UserDataid_Icon> mList = new ArrayList<>();
     private int page_no = 1;
@@ -61,13 +62,25 @@ public class ShowTypeBoolFragment2 extends LazyLoadFragment implements PagingLoa
                 lRecyclerView.setNoMore(true);
                 break;
             case 1:
-                MyToast.toast("wrong");
+                MyToast.toast("发生未知问题，请重启应用");
+                break;
+            case Constant.ERROR_NO_INTERNET:
+                MyToast.toast("无网络，请检查后下拉刷新");
+                lRecyclerView.refreshComplete(PAGE_SIZE);
+                lRecyclerView.setOnNetWorkErrorListener(new OnNetWorkErrorListener() {
+                    @Override
+                    public void reload() {
+                        requestData();
+                    }
+                });
+                break;
         }
     }
 
+
     @Override
     public void succeedRequestData(List<SecondBookAllData> dataList) {
-        mdataList = dataList;
+        mdataList.addAll(dataList);
     }
 
     @Override

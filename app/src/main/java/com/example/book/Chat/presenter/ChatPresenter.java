@@ -37,6 +37,14 @@ public class ChatPresenter implements Api.SendMessage, Api.GetMessage, Api.ReadM
         chatModule = new ChatModule(this);
     }
 
+    public ChatPresenter(Api.SendMessage sm, Api.GetMessage gm, Api.ReadMessage rm, Api.ReadAllMessage ram) {
+        this.sm = sm;
+        this.gm = gm;
+        this.rm = rm;
+        this.ram = ram;
+       chatModule = new ChatModule(this);
+    }
+
     @Override
     public void sendMessage(int to_id, String content) {
         chatModule.sendMessage(to_id, content);

@@ -1,12 +1,16 @@
 package com.example.book.Model;
 
 import android.text.TextUtils;
+
+import com.example.book.Chat.utils.AppUtil;
 import com.example.book.EntityClass.RegisterHelper;
 import com.example.book.EntityClass.UserRegisterMsg;
 import com.example.book.Presenter.RegisterPresenter;
 import com.example.book.Tools.Constant;
+import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.MyToast;
 import com.example.book.Tools.Mylog;
+import com.example.book.Tools.NetworkUtils;
 import com.example.book.Tools.UrlHelper;
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
@@ -32,36 +36,41 @@ public class RegisterModel {
     public RegisterModel(RegisterPresenter registerPresenter) {
         this.registerPresenter = registerPresenter;
     }
-    public void register(UserRegisterMsg userRegisterMsg){
-        if (checkdata(userRegisterMsg)){
-            Mylog.d(TAG,"进来");
-         try{
-             OkHttpUtils.post().url(UrlHelper.REGISTER_URL)
-                     .addParams("account",userRegisterMsg.getAccount())
-                     .addParams("password",userRegisterMsg.getPassword())
-                     .addParams("username",userRegisterMsg.getUsername())
-                     .addParams("sex",userRegisterMsg.getSex())
-                     .addParams("code",userRegisterMsg.getCode()).build().execute(new StringCallback() {
-                 @Override
-                 public void onError(Call call, Exception e, int id) {
-                     registerPresenter.registerFailure(Constant.ERROR_NO_INTERNET);
-                 }
+    public void register(UserRegisterMsg userRegisterMsg) {
+        if (!NetworkUtils.isConnected()) {
+            registerPresenter.registerFailure(Constant.ERROR_NO_INTERNET);
+        } else {
+            if (checkdata(userRegisterMsg)) {
+                Mylog.d(TAG, "进来");
+                try {
+                    OkHttpUtils.post().url(UrlHelper.REGISTER_URL)
+                            .addParams("account", userRegisterMsg.getAccount())
+                            .addParams("password", userRegisterMsg.getPassword())
+                            .addParams("username", userRegisterMsg.getUsername())
+                            .addParams("sex", userRegisterMsg.getSex())
+                            .addParams("code", userRegisterMsg.getCode()).build().execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            registerPresenter.registerFailure(Constant.ERROR_NO_INTERNET);
+                        }
 
-                 @Override
-                 public void onResponse(String response, int id) {
-                   RegisterHelper registerHelper = new Gson().fromJson(response , RegisterHelper.class);
-                   int code = registerHelper.getCode();
-                     if(code == 40000)
-                         MyToast.toast(registerHelper.getMessage());
-                     else if(code == 20000){
-                         registerPresenter.registersuccess();
-                     }
-                 }
-             });
-         }catch (JsonIOException j){
-             registerPresenter.registerFailure(Constant.ERROR_JSONGETWRONG);
-             j.printStackTrace();
-         }
+                        @Override
+                        public void onResponse(String response, int id) {
+                            AppUtil.saveTime(MyApplication.getContext());
+                            RegisterHelper registerHelper = new Gson().fromJson(response, RegisterHelper.class);
+                            int code = registerHelper.getCode();
+                            if (code == 40000)
+                                MyToast.toast(registerHelper.getMessage());
+                            else if (code == 20000) {
+                                registerPresenter.registersuccess();
+                            }
+                        }
+                    });
+                } catch (JsonIOException j) {
+                    registerPresenter.registerFailure(Constant.ERROR_JSONGETWRONG);
+                    j.printStackTrace();
+                }
+            }
         }
     }
 /*

@@ -84,13 +84,15 @@
     <android.support.design.widget.TextInputLayout
         android:id="@+id/accountwrapper"
         android:layout_width="match_parent"
-        android:layout_height="62dp">
+        android:layout_height="62dp"
+        >
 
         <EditText
             android:id="@+id/account"
             android:layout_width="250dp"
             android:layout_height="51dp"
             android:hint="@string/account"
+            style="@style/inputcolor"
             android:inputType="text"
             />
     </android.support.design.widget.TextInputLayout>
@@ -105,19 +107,22 @@
             android:layout_width="250dp"
             android:layout_height="51dp"
             android:hint="@string/username"
+            style="@style/inputcolor"
             android:inputType="textPersonName"
            />
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
         android:id="@+id/passwordwrapper"
         android:layout_width="wrap_content"
-        android:layout_height="62dp">
+        android:layout_height="62dp"
+    >
         <EditText
             android:id="@+id/password"
             android:layout_width="245dp"
             android:layout_height="55dp"
             android:ems="10"
             android:hint="@string/password"
+            style="@style/inputcolor"
             android:inputType="textPassword"
             />
     </android.support.design.widget.TextInputLayout>
@@ -136,6 +141,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/checkpassword"
+            style="@style/inputcolor"
             android:inputType="textPassword"
         />
     </android.support.design.widget.TextInputLayout>
@@ -147,7 +153,8 @@
         android:layout_marginTop="10dp"
         android:layout_below="@+id/group"
         android:layout_alignLeft="@+id/group"
-        android:layout_alignStart="@+id/group">
+        android:layout_alignStart="@+id/group"
+        >
 
         <EditText
             android:id="@+id/checkcode"

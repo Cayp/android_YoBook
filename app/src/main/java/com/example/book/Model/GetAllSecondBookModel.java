@@ -2,12 +2,14 @@ package com.example.book.Model;
 
 import android.util.Log;
 
+import com.example.book.Chat.utils.AppUtil;
 import com.example.book.EntityClass.GetUserDataHelper;
 import com.example.book.EntityClass.SecondBookAllData;
 import com.example.book.EntityClass.ShowBook_TardeHelper;
 import com.example.book.EntityClass.UserDataid_Icon;
 import com.example.book.Presenter.GetBookPresenter;
 import com.example.book.Tools.Constant;
+import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.NetworkUtils;
 import com.example.book.Tools.UrlHelper;
 import com.example.book.view.AbstractView.PagingLoad;
@@ -55,6 +57,7 @@ public class GetAllSecondBookModel {
 
                         @Override
                         public void onResponse(String response, int id) {
+                            AppUtil.saveTime(MyApplication.getContext());
                             showBook_tardeHelper = new Gson().fromJson(response, ShowBook_TardeHelper.class);
                             if (showBook_tardeHelper.getCode() == 40000) {
                                 getBookPresenter.failRequestData(Constant.ERROR_NOMOREUPDATE);
@@ -89,6 +92,7 @@ public class GetAllSecondBookModel {
 
                         @Override
                         public void onResponse(String response, int id) {
+                            AppUtil.saveTime(MyApplication.getContext());
                             showBook_tardeHelper = new Gson().fromJson(response, ShowBook_TardeHelper.class);
                             if (showBook_tardeHelper.getCode() == 40000) {
                                 getBookPresenter.failRequestData(Constant.ERROR_NOMOREUPDATE);
@@ -131,6 +135,7 @@ public class GetAllSecondBookModel {
 
                 @Override
                 public void onResponse(String response, int id) {
+                    AppUtil.saveTime(MyApplication.getContext());
                     GetUserDataHelper getUserDataHelper = new Gson().fromJson(response, GetUserDataHelper.class);
                     UserDataid_Icon userDataid_Icon = new UserDataid_Icon();
                         if(getUserDataHelper.getCode()==20000) {
@@ -146,7 +151,6 @@ public class GetAllSecondBookModel {
                         getUseTwoPisData(list.get(index).getUserId());
                     }else { index = 0;}               //判断是否请求完
                     Log.d(TAG, "isEmpty"+userDataid_Icon.getUserName());
-
                 }
             });
         } catch (JsonIOException e) {

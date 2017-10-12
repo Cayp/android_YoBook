@@ -52,5 +52,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         Intent intent = new Intent(this,act);
         startActivity(intent);
     }
-    
+
+    protected void changeActivity(Class<?> act ,int userid){
+        Intent intent = new Intent(this,act);
+        intent.putExtra("userid",""+userid);
+        startActivity(intent);
+    }
+
+
 }

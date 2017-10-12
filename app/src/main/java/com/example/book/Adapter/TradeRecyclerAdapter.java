@@ -75,6 +75,7 @@ public class TradeRecyclerAdapter extends RecyclerView.Adapter<TradeRecyclerAdap
         }
         Log.d(TAG, "price"+onePisData.getPrice());
         holder.price.setText(onePisData.getPrice());
+        Log.d(TAG, "onBindViewHolder:"+onePisData.getBookCover());
         Picasso.with(MyApplication.getContext()).load(UrlHelper.GETSECONDBOOKCOVER+onePisData.getUserId()+"/"+onePisData.getBookCover())
                 .fit()
                 .into(holder.book_picture) ;

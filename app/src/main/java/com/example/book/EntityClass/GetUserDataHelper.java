@@ -1,5 +1,7 @@
 package com.example.book.EntityClass;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -16,6 +18,7 @@ public class GetUserDataHelper {
 
     private int code;
     private String message;
+    @SerializedName("data")
     private UserData data;
     private Object dataList;
 

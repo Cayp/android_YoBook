@@ -40,7 +40,7 @@ public class ShowTypedBookFragment extends LazyLoadFragment implements PagingLoa
     TextView loadtext;
     TradeRecyclerAdapter tradeRecyclerAdapter;
     LRecyclerViewAdapter lRecyclerViewAdapter;
-    private List<SecondBookAllData> mdataList;
+    private List<SecondBookAllData> mdataList = new ArrayList<>();
     private boolean isLoadMore = false;                    //添加判断是否是向下加载更多
     private List<UserDataid_Icon> mList = new ArrayList<>();
     private int page_no = 1;
@@ -66,7 +66,7 @@ public class ShowTypedBookFragment extends LazyLoadFragment implements PagingLoa
 
     @Override
     public void succeedRequestData(List<SecondBookAllData> dataList) {
-        mdataList = dataList;
+        mdataList.addAll(dataList);
     }
 
     @Override

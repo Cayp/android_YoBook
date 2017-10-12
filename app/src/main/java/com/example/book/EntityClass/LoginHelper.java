@@ -1,10 +1,13 @@
 package com.example.book.EntityClass;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by ljp on 2017/7/29.
  */
 
 public class LoginHelper {
+
     /**
      * code : 20000
      * message : 登录成功
@@ -14,7 +17,8 @@ public class LoginHelper {
 
     private int code;
     private String message;
-    private User user;
+    @SerializedName("data")
+    private DataBean User;
     private Object dataList;
 
     public int getCode() {
@@ -33,12 +37,12 @@ public class LoginHelper {
         this.message = message;
     }
 
-    public User getData() {
-        return user;
+    public DataBean getUser() {
+        return User;
     }
 
-    public void setData(User user) {
-        this.user = user;
+    public void setUser(DataBean User) {
+        this.User = User;
     }
 
     public Object getDataList() {
@@ -49,7 +53,7 @@ public class LoginHelper {
         this.dataList = dataList;
     }
 
-    public static class User {
+    public static class DataBean {
         /**
          * id : 23
          * account : 13692190631

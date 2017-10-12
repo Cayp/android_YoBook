@@ -39,11 +39,11 @@
         android:layout_below="@+id/include"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="106dp"
+        style="@style/inputcolor"
         tools:ignore="UnknownId">
 
         <EditText
             android:id="@+id/account"
-            style="@style/Widget.AppCompat.EditText"
             android:layout_width="245dp"
             android:layout_height="55dp"
             android:ems="10"
@@ -56,7 +56,9 @@
         android:layout_width="245dp"
         android:layout_height="62dp"
         android:layout_below="@+id/inputaccount"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        style="@style/inputcolor"
+        >
 
         <EditText
             android:id="@+id/password"

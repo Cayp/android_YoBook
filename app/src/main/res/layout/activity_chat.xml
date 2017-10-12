@@ -1,19 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/backgroundchat"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:windowSoftInputMode="stateVisible|adjustResize">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    >
+    <ImageView
+        android:id="@+id/chat_back"
+        android:layout_width="10dp"
+        android:layout_height="18dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/leftback"
+        tools:ignore="ContentDescription,RtlHardcoded" />
+<de.hdodenhof.circleimageview.CircleImageView
+    android:id="@+id/chat_icon"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:layout_toLeftOf="@+id/to_name"
+    android:layout_marginRight="10dp"
+    android:layout_centerVertical="true"
+    android:src="@mipmap/ic_launcher"
+    tools:ignore="RtlHardcoded" />
+    <TextView
+        android:id="@+id/to_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="20sp"
+        android:textColor="@color/textcolor3"
+        android:text="cayp"
+        tools:ignore="HardcodedText,RelativeOverlap" />
 
+    <ImageView
+        android:id="@+id/moreicon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_centerVertical="true"
+        android:background="@drawable/moreicon"
+        tools:ignore="ContentDescription,RtlHardcoded" />
+</RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/spacecolor"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/chat_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:clickable="true">
 
     </android.support.v7.widget.RecyclerView>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/spacecolor"/>
     <LinearLayout
-        android:background="@android:color/black"
+        android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -31,10 +83,11 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:background="@android:color/white"
+                android:background="@drawable/inputwrapper"
                 android:gravity="left|center"
                 android:paddingLeft="10dp"
-                android:hint="消息"/>
+                android:hint="请输入消息"
+                tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry" />
 
         <Button
             android:id="@+id/btn_send"
@@ -44,9 +97,10 @@
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="0.3"
-            android:backgroundTint="@android:color/holo_green_light"
+            android:background="@drawable/chat_right"
             android:hint="发送"
-            android:textColor="@android:color/white"/>
+            android:textColor="#ffffff"
+            tools:ignore="HardcodedText,RtlHardcoded" />
 
     </LinearLayout>
 

@@ -23,5 +23,8 @@ public class Constant {
     public static final String LAST_OPEN = "lastOpen";
     public static final String ID = "id";
     public static final String USER_ID = "user_id";
-
+    public static final String LOGIN_STATUS = "login_status";
+    public static final int CHAT_RIGHT = 31;
+    public static final int CHAT_LEFT = 32;
+    public static final long THREEDAY = 259200000;
 }

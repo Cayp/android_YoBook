@@ -5,9 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import com.example.book.Chat.keepalive.ConnectionService;
 import com.example.book.MyView.PicassoImageLoader;
 import com.lzy.imagepicker.ImagePicker;
-import com.lzy.imagepicker.view.CropImageView;
 import com.squareup.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -44,7 +44,7 @@ public class MyApplication extends Application {
         SharedPreferences sharedPreferences = getSharedPreferences(Constant.TIME, MODE_PRIVATE);
         if (sharedPreferences != null) {
             long lastTime = sharedPreferences.getLong(Constant.LAST_OPEN, 0);
-            if (lastTime != 0 && (System.currentTimeMillis() - lastTime) < 4320) {//登陆未过期，开启长链接
+            if (lastTime != 0 && (System.currentTimeMillis() - lastTime) < Constant.THREEDAY) {//登陆未过期，开启长链接
                 startService(new Intent(this, ConnectionService.class));
             }
         }
@@ -52,6 +52,7 @@ public class MyApplication extends Application {
     }
     public static Context getContext(){
         return  context;
+
     }
 
     private void setId() {

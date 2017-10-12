@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 
 import com.example.book.Tools.Constant;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by Clanner on 2017/9/16.
  */
@@ -21,5 +24,22 @@ public class AppUtil {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(Constant.USER_ID, user_id);
         editor.commit();
+    }
+    public static void saveIsLogin(Context context,boolean isLogin){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(Constant.ID, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(Constant.LOGIN_STATUS,isLogin);
+        editor.commit();
+    }
+    public static String getNowTime(){
+            Date nowTime = new Date(System.currentTimeMillis());
+            SimpleDateFormat sdFormatter = new SimpleDateFormat("yyyy-MM-dd");
+            String retStrFormatNowDate = sdFormatter.format(nowTime);
+            return retStrFormatNowDate;
+    }
+    public static int getUserid(Context context){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(Constant.ID,Context.MODE_PRIVATE);
+        int userid = sharedPreferences.getInt(Constant.USER_ID,0);
+        return  userid;
     }
 }

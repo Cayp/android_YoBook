@@ -109,10 +109,10 @@
                 android:background="@color/colordarkgray"
                 tools:ignore="RtlHardcoded" />
             <TextView
-                android:id="@+id/my_attention"
+                android:id="@+id/my_book"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="关注的人"
+                android:text="上架书籍"
                 android:textSize="16sp"
                 android:textColor="@color/textcolor3"
                 android:layout_toRightOf="@+id/split"
@@ -123,15 +123,15 @@
                 android:layout_width="1dp"
                 android:layout_height="17dp"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/my_attention"
+                android:layout_toRightOf="@+id/my_book"
                 android:layout_marginLeft="13dp"
                 android:background="@color/colordarkgray"
                 tools:ignore="RtlHardcoded" />
             <TextView
-                android:id="@+id/my_message"
+                android:id="@+id/my_note"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="我的讯息"
+                android:text="我的笔记"
                 android:textSize="16sp"
                 android:textColor="@color/textcolor3"
                 android:layout_toRightOf="@+id/split2"
@@ -148,6 +148,183 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/zerodp"
         android:layout_weight="2.5">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="UselessParent">
+    <RelativeLayout
+        android:id="@+id/myfans"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:clickable="true"
+        android:background="@drawable/type_selector">
+        <TextView
+            android:id="@+id/myfanstext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:text="我的粉丝"
+            android:textSize="18sp"
+            android:textColor="@color/textcolor3"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+        <ImageView
+            android:id="@+id/myfans_rightback"
+            android:layout_width="12dp"
+            android:layout_height="18dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/rightback"
+            tools:ignore="ContentDescription,RtlHardcoded" />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/spacecolor"/>
+    <RelativeLayout
+        android:id="@+id/attentions"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:clickable="true"
+        android:background="@drawable/type_selector">
+        <TextView
+            android:id="@+id/attentionstext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:text="关注的人"
+            android:textSize="18sp"
+            android:textColor="@color/textcolor3"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+        <ImageView
+            android:id="@+id/attentions_rightback"
+            android:layout_width="12dp"
+            android:layout_height="18dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/rightback"
+            tools:ignore="ContentDescription,RtlHardcoded" />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/spacecolor"/>
+    <RelativeLayout
+        android:id="@+id/belike"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:clickable="true"
+        android:background="@drawable/type_selector">
+        <TextView
+            android:id="@+id/beliketext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:text="被赞次数"
+            android:textSize="18sp"
+            android:textColor="@color/textcolor3"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+        <ImageView
+            android:id="@+id/belike_rightback"
+            android:layout_width="12dp"
+            android:layout_height="18dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/rightback"
+            tools:ignore="ContentDescription,RtlHardcoded" />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/spacecolor"/>
+    <RelativeLayout
+    android:id="@+id/connectway"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:clickable="true"
+    android:background="@drawable/type_selector">
+    <TextView
+        android:id="@+id/conncetwaytext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="17dp"
+        android:text="联系方式"
+        android:textSize="18sp"
+        android:textColor="@color/textcolor3"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+     <TextView
+         android:id="@+id/connectwayxianshi"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_centerVertical="true"
+         android:layout_toRightOf="@id/conncetwaytext"
+         android:layout_marginLeft="13dp"
+         android:textColor="@color/textcolor3"
+         android:textSize="17sp"
+         tools:text="电话:13630461524"
+         tools:ignore="RelativeOverlap,RtlHardcoded" />
+    <ImageView
+        android:id="@+id/connectway_rightback"
+        android:layout_width="12dp"
+        android:layout_height="18dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/rightback"
+        tools:ignore="ContentDescription,RtlHardcoded" />
+    </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="7dp"
+            android:background="#eef1f3"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="7dp"
+        android:background="#eef1f3"/>
+    <RelativeLayout
+    android:id="@+id/mesetting"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:clickable="true"
+    android:background="@drawable/type_selector">
+    <TextView
+        android:id="@+id/mesettingtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="17dp"
+        android:text="设置"
+        android:textSize="18sp"
+        android:textColor="@color/textcolor3"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+</RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/meabout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:clickable="true"
+        android:background="@drawable/type_selector">
+    <TextView
+        android:id="@+id/meabouttext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="17dp"
+        android:text="关于我们"
+        android:textSize="18sp"
+        android:textColor="@color/textcolor3"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+    </RelativeLayout>
+
+</LinearLayout>
     </RelativeLayout>
 </LinearLayout>

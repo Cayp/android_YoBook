@@ -110,6 +110,7 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
                 break;
             case 1:
                 MyToast.toast("发生未知问题，请重启应用");
+                break;
             case Constant.ERROR_NO_INTERNET:
                 MyToast.toast("无网络，请检查后下拉刷新");
                 lRecyclerView.refreshComplete(PAGE_SIZE);
@@ -119,6 +120,7 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
                         requestData();
                     }
                 });
+                break;
         }
     }
 
@@ -128,22 +130,19 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
     }
     @Override
     public void setUserNameIcon(UserDataid_Icon userNameIcon) {
-        mList.add(userNameIcon);
-        if(mList.size()==mdataList.size()){
-            for(UserDataid_Icon u : mList){
-                Log.d(TAG, "setUserNameIcon: "+u.getUserName());
-            }
-            Mylog.d(TAG,"yCAYP");
+         mList.add(userNameIcon);
+        if (mList.size() == mdataList.size()) {
+            Mylog.d(TAG, "yCAYP");
             combineData();
             setdata(mdataList);
-            Mylog.d(TAG,"Tsecond");
+            Mylog.d(TAG, "Tsecond");
             lRecyclerViewAdapter.notifyDataSetChanged();
             lRecyclerView.refreshComplete(PAGE_SIZE);
             page_no++;
         }
     }
     public void combineData(){
-        for(int i=0;i < mdataList.size();i++){
+        for(int i=0 ;i < mdataList.size();i++){
             mdataList.get(i).setUserName(mList.get(i).getUserName());
             mdataList.get(i).setAvatar(mList.get(i).getAvatar());
         }

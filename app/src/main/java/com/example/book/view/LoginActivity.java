@@ -1,6 +1,7 @@
 package com.example.book.view;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -25,7 +26,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity implements LoginView, LogoutView {
-    private static final String TAG = "LoginActivity";
     @BindView(R.id.toregister)
     TextView toRegister;
     @BindView(R.id.account)
@@ -53,9 +53,9 @@ public class LoginActivity extends BaseActivity implements LoginView, LogoutView
     @Override
     public void loginsuccess(LoginHelper loginHelper) {
         hideProgress();
-        Constant.currentUserId = loginHelper.getData().getId();
+        Constant.currentUserId = loginHelper.getUser().getId();
         startService(new Intent(this, ConnectionService.class));
-        AppUtil.saveId(this, Constant.currentUserId);
+        AppUtil.saveId(this,Constant.currentUserId);
         changeActivity(MainActivity.class);
         finish();
     }

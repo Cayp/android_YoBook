@@ -52,12 +52,12 @@ public class MainActivity extends BaseActivity {
     List<Fragment> fragmentList = new ArrayList<Fragment>();
     @Override
     protected void initView(Bundle savedInstanceState) {
-     layout = LayoutInflater.from(this).inflate(R.layout.mainactivity,null);
-     setNavbarobj();
-     setFragments();
-     setViewPager();
-     firstRunSelect(0);
-
+        layout = LayoutInflater.from(this).inflate(R.layout.mainactivity, null);
+        setNavbarobj();
+        setFragments();
+        setViewPager();
+        firstRunSelect(0);
+    }
     @Override
     protected int setContentViewId() {
         return R.layout.mainactivity;
