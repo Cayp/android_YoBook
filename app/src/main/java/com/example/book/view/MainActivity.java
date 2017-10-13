@@ -19,6 +19,7 @@ import com.example.book.MyView.MoreWindow;
 import com.example.book.MyView.NavbarView;
 import com.example.book.MyView.NoScrollViewPager;
 import com.example.book.R;
+import com.example.book.Tools.Constant;
 import com.example.book.Tools.FragmentFactory;
 
 import java.util.ArrayList;
@@ -115,7 +116,7 @@ public class MainActivity extends BaseActivity {
         fragmentList.add(FragmentFactory.creatFragment(ShareFragment.class.getName()));
         fragmentList.add(FragmentFactory.creatFragment(RecommedFragment.class.getName()));
         fragmentList.add(FragmentFactory.creatFragment(MyDataFragment.class.getName()));
-        mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager(),fragmentList);
+        mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager(),fragmentList, 0);
     }
     private void setViewPager(){
         viewPager.setAdapter(mainPagerAdapter);
@@ -125,9 +126,4 @@ public class MainActivity extends BaseActivity {
         viewPager.setCurrentItem(tab);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        AppUtil.saveTime(this);//退出应用，更新最近登录时间
-    }
 }

@@ -27,4 +27,6 @@ public class Constant {
     public static final int CHAT_RIGHT = 31;
     public static final int CHAT_LEFT = 32;
     public static final long THREEDAY = 259200000;
+    public static final int SHAREVIEWAGER = 33;
+    public static final int FINDVIEWAGER = 34;
 }

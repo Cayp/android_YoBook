@@ -13,6 +13,7 @@ import com.example.book.Adapter.MainPagerAdapter;
 import com.example.book.Base.BaseFragment;
 import com.example.book.Base.LazyLoadFragment;
 import com.example.book.R;
+import com.example.book.Tools.Constant;
 import com.example.book.Tools.FragmentFactory;
 import com.example.book.Tools.MyToast;
 import com.example.book.view.TestActivity;
@@ -91,6 +92,6 @@ public class FindFragment extends LazyLoadFragment {
         fragmentList.add(FragmentFactory.creatFragment(ShowoBookFragment.class.getName()));
         fragmentList.add(FragmentFactory.creatFragment(ShowTypedBookFragment.class.getName()));
         fragmentList.add(FragmentFactory.creatFragment(ShowTypeBoolFragment2.class.getName()));
-        pagerAdapter = new MainPagerAdapter(getFragmentManager(),fragmentList);
+        pagerAdapter = new MainPagerAdapter(getFragmentManager(),fragmentList, Constant.FINDVIEWAGER);
     }
 }

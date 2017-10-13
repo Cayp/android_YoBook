@@ -306,7 +306,10 @@
         android:textColor="@color/textcolor3"
         tools:ignore="HardcodedText,RtlHardcoded" />
 </RelativeLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/spacecolor"/>
     <RelativeLayout
         android:id="@+id/meabout"
         android:layout_width="match_parent"
@@ -324,7 +327,27 @@
         android:textColor="@color/textcolor3"
         tools:ignore="HardcodedText,RtlHardcoded" />
     </RelativeLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/spacecolor"/>
+    <RelativeLayout
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:clickable="true"
+        android:background="@drawable/type_selector">
+        <TextView
+            android:id="@+id/logoutText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:text="退出"
+            android:textSize="18sp"
+            android:textColor="@color/textcolor3"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+    </RelativeLayout>
 </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

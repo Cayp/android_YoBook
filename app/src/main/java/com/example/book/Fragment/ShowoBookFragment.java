@@ -16,6 +16,7 @@ import com.example.book.Tools.Constant;
 import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.MyToast;
 import com.example.book.Tools.Mylog;
+import com.example.book.Tools.NetworkUtils;
 import com.example.book.view.AbstractView.PagingLoad;
 import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
 import com.github.jdsjlzx.interfaces.OnNetWorkErrorListener;
@@ -70,21 +71,20 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
         lRecyclerView.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh() {
-                isLoadMore = false;
-                clearList();
-                page_no = 1;
-                requestData();
+                    isLoadMore = false;
+                    clearList();
+                    page_no = 1;
+                    requestData();
+
             }
         });
         lRecyclerView.setLoadMoreEnabled(true);
         lRecyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
-                clearList();
-                isLoadMore = true;
-                Log.d(TAG, "onLoadMore"+page_no);
-               requestData();
-
+                     clearList();
+                    isLoadMore = true;
+                    requestData();
             }
         });
 
@@ -114,12 +114,6 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
             case Constant.ERROR_NO_INTERNET:
                 MyToast.toast("无网络，请检查后下拉刷新");
                 lRecyclerView.refreshComplete(PAGE_SIZE);
-                lRecyclerView.setOnNetWorkErrorListener(new OnNetWorkErrorListener() {
-                    @Override
-                    public void reload() {
-                        requestData();
-                    }
-                });
                 break;
         }
     }

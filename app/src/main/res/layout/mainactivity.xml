@@ -16,7 +16,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colordarkgray"/>
+        android:background="@color/spacecolor"/>
      <LinearLayout
          android:id="@+id/bottommenu"
          android:layout_width="match_parent"
@@ -44,12 +44,12 @@
          <ImageButton
              android:id="@+id/menubutton"
              android:layout_width="@dimen/zerodp"
-             android:layout_height="75dp"
-             android:layout_weight="1.05"
+             android:layout_height="70dp"
+             android:layout_weight="0.95"
              android:contentDescription=""
              android:layout_gravity="bottom"
              android:background="@drawable/ten4"
-             android:layout_marginBottom="3dp"
+             android:layout_marginBottom="2dp"
              tools:ignore="ContentDescription" />
 
          <com.example.book.MyView.NavbarView

@@ -45,8 +45,7 @@
         <activity android:name=".view.PublishSecBookActivity"
              android:launchMode="singleTask"/>
         <activity android:name=".view.TestActivity"/>
-        <activity android:name=".view.WelcomeActivty"
-            android:launchMode="singleTask">
+        <activity android:name=".view.WelcomeActivty">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

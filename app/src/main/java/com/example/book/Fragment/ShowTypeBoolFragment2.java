@@ -67,12 +67,6 @@ public class ShowTypeBoolFragment2 extends LazyLoadFragment implements PagingLoa
             case Constant.ERROR_NO_INTERNET:
                 MyToast.toast("无网络，请检查后下拉刷新");
                 lRecyclerView.refreshComplete(PAGE_SIZE);
-                lRecyclerView.setOnNetWorkErrorListener(new OnNetWorkErrorListener() {
-                    @Override
-                    public void reload() {
-                        requestData();
-                    }
-                });
                 break;
         }
     }

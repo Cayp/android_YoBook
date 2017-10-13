@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.example.book.Tools.Constant;
+
 import java.util.List;
 
 
@@ -13,10 +15,13 @@ import java.util.List;
 
 public class MainPagerAdapter extends FragmentPagerAdapter {
     private List<Fragment> fragments;
-    private String[] titles=new String[]{"全部","教科书","课外书"};
-    public MainPagerAdapter(FragmentManager fm,List<Fragment> fragments) {
+    private String[] findtitles=new String[]{"全部","教科书","课外书"};
+    private String[] sharetitles = new String[]{"栏目","热门"};
+    private int titlesType;
+    public MainPagerAdapter(FragmentManager fm,List<Fragment> fragments,int titlesType) {
         super(fm);
         this.fragments = fragments;
+        this.titlesType = titlesType;
     }
 
     @Override
@@ -31,6 +36,11 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return titles[position];
+        if(titlesType == Constant.FINDVIEWAGER){
+            return findtitles[position];
+        }else if(titlesType == Constant.SHAREVIEWAGER){
+             return sharetitles[position];
+        }
+        return findtitles[position];
     }
 }

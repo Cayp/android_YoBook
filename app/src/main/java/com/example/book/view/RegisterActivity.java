@@ -54,7 +54,7 @@ public class RegisterActivity extends BaseActivity implements RegisterView,View.
     Button regiseter ;
     @BindView(R.id.passwordcheck)
     EditText checkpassword ;
-    @BindView(R.id.firstoolbar)
+    @BindView(R.id.register_toolbar)
     Toolbar toolbar ;
     @BindView(R.id.head)
     TextView headText ;

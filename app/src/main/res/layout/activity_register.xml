@@ -7,7 +7,8 @@
     android:background="@drawable/loginbackgroud"
     tools:context="com.example.book.view.RegisterActivity"
 >
-<include layout="@layout/toolbar"/>
+<include layout="@layout/toolbar"
+    android:id="@+id/register_toolbar"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
