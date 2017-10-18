@@ -73,10 +73,10 @@ public class GetAllSecondBookModel {
                                     secondBookAllData.setPrice(bookData.getPrice());
                                     secondBookAllData.setTypedId(bookData.getTypeId());
                                     secondBookAllData.setDescription(bookData.getDescription());
-                                    getUseTwoPisData(secondBookAllData.getUserId());
                                     Log.d(TAG, "fuckuserid" + secondBookAllData.getUserId());
                                     list.add(secondBookAllData);
                                 }
+                                getUseTwoPisData(list.get(index).getUserId());
                                 getBookPresenter.succeedRequestData(list);
                             }
                         }

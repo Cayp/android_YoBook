@@ -31,11 +31,8 @@ public class AppUtil {
         editor.putBoolean(Constant.LOGIN_STATUS,isLogin);
         editor.commit();
     }
-    public static String getNowTime(){
-            Date nowTime = new Date(System.currentTimeMillis());
-            SimpleDateFormat sdFormatter = new SimpleDateFormat("yyyy-MM-dd");
-            String retStrFormatNowDate = sdFormatter.format(nowTime);
-            return retStrFormatNowDate;
+    public static long getNowTime(){
+           return System.currentTimeMillis();
     }
     public static int getUserid(Context context){
         SharedPreferences sharedPreferences = context.getSharedPreferences(Constant.ID,Context.MODE_PRIVATE);

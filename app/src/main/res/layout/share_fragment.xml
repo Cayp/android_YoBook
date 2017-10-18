@@ -16,9 +16,9 @@
         android:id="@+id/sharetablayout"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        app:tabSelectedTextColor="@color/colordarkgray"
-        app:tabTextColor="@color/textcolor2"
-        app:tabIndicatorColor="@color/textcolor2"
+        app:tabSelectedTextColor="@color/textcolor3"
+        app:tabTextColor="@color/colordarkgray"
+        app:tabIndicatorColor="@color/colordarkgray"
         app:tabIndicatorHeight="4dp">
     </android.support.design.widget.TabLayout>
 </android.support.design.widget.AppBarLayout>

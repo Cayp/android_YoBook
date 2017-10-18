@@ -19,4 +19,6 @@
     <color name="textcolor3">#292929</color>
     <color name="darkblue">#333399</color>
     <color name="milkwhite">#F5F4F4</color>
+    <color name="textblue">#a5dae4</color>
+    <color name="timecolor">#d4d5d8</color>
 </resources>

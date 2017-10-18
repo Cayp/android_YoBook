@@ -3,6 +3,7 @@ package com.example.book.view;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -125,5 +126,4 @@ public class MainActivity extends BaseActivity {
         selectTab(tab);
         viewPager.setCurrentItem(tab);
     }
-
 }

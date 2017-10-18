@@ -16,10 +16,9 @@ import com.example.book.Tools.Constant;
 import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.MyToast;
 import com.example.book.Tools.Mylog;
-import com.example.book.Tools.NetworkUtils;
+import com.example.book.view.AbstractView.OnItemClickListener;
 import com.example.book.view.AbstractView.PagingLoad;
 import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
-import com.github.jdsjlzx.interfaces.OnNetWorkErrorListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
@@ -62,6 +61,12 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
     protected void initView(View view, Bundle savedInstanceState) {
         requestData();
         tradeRecyclerAdapter = new TradeRecyclerAdapter();
+        tradeRecyclerAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position, List<SecondBookAllData> list) {
+                changeToChat(list.get(position-1).getUserId());
+            }
+        });
         lRecyclerViewAdapter = new LRecyclerViewAdapter(tradeRecyclerAdapter);
         lRecyclerView.setAdapter(lRecyclerViewAdapter);
         lRecyclerView.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));

@@ -1,6 +1,7 @@
 package com.example.book.MyView;
 
 import android.animation.PropertyValuesHolder;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -40,7 +41,8 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
     private int statusBarHeight;
     private Bitmap mBitmap;
     private Bitmap overlay;
-    FrameLayout bottomWindow;
+    private FrameLayout bottomWindow;
+    private RelativeLayout publishlayout;
     private static final String TAG = "MoreWindow";
     private Handler mHandler = new Handler();
     RelativeLayout layout;
@@ -62,10 +64,17 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
         view.setDrawingCacheEnabled(true);
         view.buildDrawingCache(true);
         mBitmap = view.getDrawingCache();
-        float radius = 30;
+        float radius = 4;
+        float scaleFactor = 8;
         int width = mBitmap.getWidth();
         int height = mBitmap.getHeight();
-        overlay = Bitmap.createBitmap(mBitmap, 0, statusBarHeight, width, height - statusBarHeight);
+        overlay = Bitmap.createBitmap( (int)(width/scaleFactor), (int)((height - statusBarHeight)/scaleFactor),Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(overlay);
+        canvas.translate(0,-statusBarHeight/scaleFactor);
+        canvas.scale(1/scaleFactor,1/scaleFactor);
+        Paint paint = new Paint();
+        paint.setFlags(Paint.FILTER_BITMAP_FLAG);
+        canvas.drawBitmap(mBitmap,0,0,paint);
         overlay = FastBlur.doBlur(overlay, (int) radius, false);
         view.destroyDrawingCache(); //清除缓存
         return overlay;
@@ -73,8 +82,9 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
 
     public void showMoreWindow(View anchor) {
         layout = (RelativeLayout) LayoutInflater.from(mContext).inflate(R.layout.publish, null);
+        publishlayout = (RelativeLayout) layout.findViewById(R.id.publishwrapper);
         setContentView(layout);
-        showAnimation(layout);
+        showAnimation(publishlayout);
         setBackgroundDrawable(new BitmapDrawable(null, blur()));
         setOutsideTouchable(true);
         setFocusable(true);
@@ -96,42 +106,22 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
     }
 
     private void showAnimation(ViewGroup layout) {
-        for (int i = 0; i < layout.getChildCount(); i++) {
-            final View child = layout.getChildAt(i);
-            if (child.getId() == R.id.bottomwindow) {
-                continue;
-            }
-            if (child.getId() == R.id.publishwrapper) {
-                child.setVisibility(View.INVISIBLE);
-                mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        child.setVisibility(View.VISIBLE);
+                        layout.setVisibility(View.VISIBLE);
                         PropertyValuesHolder moveAnim = PropertyValuesHolder.ofFloat("translationY", 600, 0);
                         PropertyValuesHolder alphaAnim = PropertyValuesHolder.ofFloat("alpha", 0, 1);
-                        ObjectAnimator fadeAnim = ObjectAnimator.ofPropertyValuesHolder(child, moveAnim, alphaAnim);
+                        ObjectAnimator fadeAnim = ObjectAnimator.ofPropertyValuesHolder(layout, moveAnim, alphaAnim);
                         fadeAnim.setDuration(250);
                         KickBackAnimator kickAnimator = new KickBackAnimator();
                         kickAnimator.setDuration(150);
                         fadeAnim.setEvaluator(kickAnimator);
                         fadeAnim.start();
                     }
-                }, 50);
-            }
-        }
-    }
 
-    private void closeAnimation(ViewGroup layout) {
-        for (int i = 0; i < layout.getChildCount(); i++) {
-            final View child = layout.getChildAt(i);
-            if (child.getId() == R.id.publishwrapper) {
-                mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        child.setVisibility(View.VISIBLE);
+    private void closeAnimation(final ViewGroup layout) {
+                        layout.setVisibility(View.VISIBLE);
                         PropertyValuesHolder moveAnim = PropertyValuesHolder.ofFloat("translationY", 0, 660);
                         PropertyValuesHolder alphaAnim = PropertyValuesHolder.ofFloat("alpha", 1, 0);
-                        ObjectAnimator fadeAnim = ObjectAnimator.ofPropertyValuesHolder(child, moveAnim, alphaAnim); //淡入淡出
+                        ObjectAnimator fadeAnim = ObjectAnimator.ofPropertyValuesHolder(layout, moveAnim, alphaAnim); //淡入淡出
                         fadeAnim.setDuration(300);
                         KickBackAnimator kickAnimator = new KickBackAnimator();
                         kickAnimator.setDuration(150);
@@ -153,7 +143,7 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
 
                             @Override
                             public void onAnimationEnd(Animator animation) {
-                                child.setVisibility(View.GONE);
+                                layout.setVisibility(View.GONE);
                                 dismiss();
                             }
 
@@ -164,14 +154,11 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
                             }
                         });
                     }
-                }, 50);
-            }
-        }
-    }
+
     @Override
     public void onClick(View v) {
+        closeAnimation(publishlayout);
         bottomWindow.setVisibility(View.INVISIBLE);
-        closeAnimation(layout);
         destroy();
     }
 
@@ -191,6 +178,7 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
     }
     public void changeActivity(Class<?> act){
         Intent intent = new Intent(MyApplication.getContext(),act);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         MyApplication.getContext().startActivity(intent);
         this.dismiss();
     }
@@ -204,5 +192,6 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
             System.gc();
         }
     }
+
 
 }

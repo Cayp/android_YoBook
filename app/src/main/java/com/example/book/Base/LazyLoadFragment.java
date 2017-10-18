@@ -1,9 +1,13 @@
 package com.example.book.Base;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+
+import com.example.book.Chat.activity.ChatActivity;
+import com.example.book.Tools.MyApplication;
 
 /**
  * Created by ljp on 2017/9/9.
@@ -37,6 +41,11 @@ public abstract class LazyLoadFragment extends BaseFragment{
             fetchData();
             isDataInitiated = true;
         }
+    }
+    public void changeToChat(int userId){
+        Intent intent = new Intent(MyApplication.getContext(),ChatActivity.class);
+        intent.putExtra("toId",userId);
+        startActivity(intent);
     }
 }
 

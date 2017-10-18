@@ -5,14 +5,15 @@
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="vertical"
-        android:layout_centerVertical="true">
-        <LinearLayout
+        android:layout_centerVertical="true"
+        tools:ignore="UselessParent">
+        <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/zerodp"
             android:layout_weight="0.6"
-            tools:ignore="UselessLeaf"></LinearLayout>
+          />
     <ImageView
         android:id="@+id/navbar_icon"
         android:layout_width="wrap_content"
@@ -30,10 +31,10 @@
             android:layout_gravity="center"
             android:gravity="center"
             tools:text="初始化" />
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/zerodp"
             android:layout_weight="0.5"
-            tools:ignore="UselessLeaf"></LinearLayout>
+            />
     </LinearLayout>
 </RelativeLayout>

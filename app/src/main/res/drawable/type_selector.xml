@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
-        <color android:color="@color/publishhint"/>
+        <color android:color="@color/spacecolor"/>
         <shape android:shape="rectangle">
             <corners android:radius="6dp"/>
         </shape>

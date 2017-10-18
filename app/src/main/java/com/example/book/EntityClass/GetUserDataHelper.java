@@ -1,14 +1,11 @@
 package com.example.book.EntityClass;
 
-import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
-
 /**
  * Created by ljp on 2017/9/18.
  */
 
 public class GetUserDataHelper {
+
     /**
      * code : 20000
      * message : 获取用户信息成功
@@ -18,7 +15,6 @@ public class GetUserDataHelper {
 
     private int code;
     private String message;
-    @SerializedName("data")
     private UserData data;
     private Object dataList;
 
@@ -66,12 +62,12 @@ public class GetUserDataHelper {
          */
 
         private int id;
-        private String account =null;
-        private String password = null;
-        private String username = null;
-        private String sex = null;
-        private String brief = null;
-        private String avatar = null;
+        private Object account;
+        private Object password;
+        private String username;
+        private String sex;
+        private String brief;
+        private String avatar;
 
         public int getId() {
             return id;
@@ -81,19 +77,19 @@ public class GetUserDataHelper {
             this.id = id;
         }
 
-        public String getAccount() {
+        public Object getAccount() {
             return account;
         }
 
-        public void setAccount(String account) {
+        public void setAccount(Object account) {
             this.account = account;
         }
 
-        public String getPassword() {
+        public Object getPassword() {
             return password;
         }
 
-        public void setPassword(String password) {
+        public void setPassword(Object password) {
             this.password = password;
         }
 

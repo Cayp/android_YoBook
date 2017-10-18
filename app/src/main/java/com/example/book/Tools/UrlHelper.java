@@ -23,4 +23,6 @@ public class UrlHelper {
     public static final String GETSECONDBOOKBYTYPE = BASE_URL + "Home/SecondBook/getSecondBookByType";
     public static final String GETALLTYPE = BASE_URL + "Home/Type/getAllType";
     public static final String PUBLISHSECBOOK = BASE_URL + "Home/SecondBook/publishBook";
+    public static final String GETSHARECOVER = BASE_URL + "Share/";
+    public static final String GETALLSHARE = BASE_URL + "Home/Share/getAllShare";
 }

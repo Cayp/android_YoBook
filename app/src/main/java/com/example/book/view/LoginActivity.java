@@ -69,6 +69,12 @@ public class LoginActivity extends BaseActivity implements LoginView, LogoutView
             case Constant.ERROR_LOGIN_WRONG:
                 MyToast.toast("账号或密码错误");
                 break;
+            case Constant.ERROR_NO_INTERNET:
+                MyToast.toast("网络未连接");
+                break;
+            case Constant.ERROR_JSONGETWRONG:
+                MyToast.toast("未知原因错误");
+                break;
         }
     }
 

@@ -46,7 +46,7 @@ public class LoginModel {
                         @Override
                         public void onError(Call call, Exception e, int id) {
                             loginPresenter.hideProgress();
-                            loginPresenter.loginfailure(Constant.ERROR_LOGIN_WRONG);
+                            loginPresenter.loginfailure(Constant.ERROR_JSONGETWRONG);
                         }
 
                         @Override

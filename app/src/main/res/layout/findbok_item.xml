@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clickable="true"
-    android:foreground="?android:attr/selectableItemBackground"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardUseCompatPadding="true"
     app:contentPadding="1dp"
     app:cardCornerRadius="2dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:clickable="true"
+    >
     <RelativeLayout
         android:id="@+id/item_head"
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
             android:layout_toRightOf="@id/user_icon"
             android:layout_marginLeft="7dp"
             android:textSize="20sp"
-            android:textColor="#a5dae4"
+            android:textColor="@color/textblue"
             tools:text="hello"
             tools:ignore="HardcodedText,RelativeOverlap,RtlHardcoded" />
         <RelativeLayout
@@ -162,7 +162,9 @@
             android:id="@+id/like"
             android:layout_width="@dimen/zerodp"
             android:layout_height="match_parent"
-            android:layout_weight="499">
+            android:layout_weight="499"
+            android:clickable="true"
+            android:background="@drawable/type_selector">
             <ImageView
                 android:id="@+id/like_icon"
                 android:layout_width="20dp"
@@ -193,7 +195,9 @@
             android:id="@+id/to_chat"
             android:layout_width="@dimen/zerodp"
             android:layout_height="match_parent"
-            android:layout_weight="499">
+            android:layout_weight="499"
+            android:clickable="true"
+            android:background="@drawable/type_selector">
             <ImageView
                 android:id="@+id/to_chat_icon"
                 android:layout_width="20dp"

@@ -14,6 +14,7 @@ import com.example.book.R;
 import com.example.book.Tools.Constant;
 import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.UrlHelper;
+import com.example.book.view.AbstractView.OnItemClickListener;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
@@ -26,6 +27,7 @@ import java.util.List;
 
 public class TradeRecyclerAdapter extends RecyclerView.Adapter<TradeRecyclerAdapter.ViewHolder> {
     private static final String TAG = "TradeRecyclerAdapter";
+    private OnItemClickListener onItemClickListener;
     private List<SecondBookAllData> mTradedatalist = new ArrayList<>();
     static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView head_icon;
@@ -61,7 +63,7 @@ public class TradeRecyclerAdapter extends RecyclerView.Adapter<TradeRecyclerAdap
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         SecondBookAllData onePisData = mTradedatalist.get(position);
         holder.user_name.setText(onePisData.getUserName());
         holder.book_name.setText(onePisData.getBookName());
@@ -82,6 +84,15 @@ public class TradeRecyclerAdapter extends RecyclerView.Adapter<TradeRecyclerAdap
         Picasso.with(MyApplication.getContext()).load(UrlHelper.GETAVATAR+onePisData.getUserId()+"/"+onePisData.getAvatar())
                 .error(R.mipmap.ic_launcher_round)
                 .into(holder.head_icon);
+        if(onItemClickListener != null){
+            holder.to_chat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = holder.getLayoutPosition();
+                    onItemClickListener.onItemClick(holder.to_chat,position,mTradedatalist);
+                }
+            });
+        }
     }
 
     @Override
@@ -116,5 +127,8 @@ public class TradeRecyclerAdapter extends RecyclerView.Adapter<TradeRecyclerAdap
 
     private void clearList() {
        mTradedatalist.clear();
+    }
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.onItemClickListener = onItemClickListener;
     }
 }
