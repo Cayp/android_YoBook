@@ -25,4 +25,9 @@ public class UrlHelper {
     public static final String PUBLISHSECBOOK = BASE_URL + "Home/SecondBook/publishBook";
     public static final String GETSHARECOVER = BASE_URL + "Share/";
     public static final String GETALLSHARE = BASE_URL + "Home/Share/getAllShare";
+    public static final String GETCOMMENT = BASE_URL + "Home/ShareComment/getShareComment";
+    public static final String WRITECOMMENT = BASE_URL + "Home/ShareComment/addShareComment";
+    public static final String GETSHARESTAR = BASE_URL + "Home/Star/getShareStar";
+    public static final String ADDSTAR = BASE_URL + "Home/Star/addStar";
+    public static final String REMOVESTAR = BASE_URL + "Home/Star/removeStar";
 }

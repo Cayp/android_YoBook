@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.book.Adapter.ChatInAdatper;
 import com.example.book.Base.BaseActivity;
@@ -37,17 +39,21 @@ import rx.Subscription;
  * Created by Clanner on 2017/9/13.
  */
 public class ChatActivity extends BaseActivity implements Api.SendMessage,Api.GetMessage,Api.ReadAllMessage,Api.ReadMessage{
-
+    @BindView(R.id.chatToolbar)
+    Toolbar chatToolbar;
     @BindView(R.id.chat_list)
     RecyclerView chatList;
     @BindView(R.id.edt_message)
     EditText edtMessage;
     @BindView(R.id.chat_icon)
     CircleImageView chat_icon;
+    @BindView(R.id.to_name)
+    TextView to_name;
 //    private List<TalkRecord> talkRecordList = new ArrayList();
     private List<com.example.book.Chat.entity.Message> talkRecordList = new ArrayList<>();
     private int to_id;
     private String to_avatar;
+    private String to_Name;
     private ChatPresenter chatPresenter;
     private Subscription subscription;
     private ChatInAdatper chatInAdatper;
@@ -66,10 +72,13 @@ public class ChatActivity extends BaseActivity implements Api.SendMessage,Api.Ge
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        initActionBar(chatToolbar,true);
         to_id = getIntent().getIntExtra("toId", 0);//传当前聊天的用户id
         to_avatar = getIntent().getStringExtra("toAvatar");
+        to_Name = getIntent().getStringExtra("to_Name");
         chatPresenter = new ChatPresenter(this,this,this,this);
         getMessage();
+        to_name.setText(to_Name);
         Picasso.with(MyApplication.getContext()).load(UrlHelper.GETAVATAR+to_id+"/"+to_avatar)
                 .error(R.mipmap.ic_launcher_round)
                 .into(chat_icon);
@@ -94,7 +103,7 @@ public class ChatActivity extends BaseActivity implements Api.SendMessage,Api.Ge
         });
     }
 
-    @OnClick({R.id.btn_send,R.id.chat_list,R.id.chat_back,R.id.backgroundchat})
+    @OnClick({R.id.btn_send,R.id.chat_list,R.id.backgroundchat})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_send:
@@ -107,8 +116,6 @@ public class ChatActivity extends BaseActivity implements Api.SendMessage,Api.Ge
             }
                 break;
             case R.id.chat_list:
-                break;
-            case R.id.chat_back:
                 break;
             case R.id.backgroundchat:
                 InputMethodManager imm3 = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);

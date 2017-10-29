@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorwhite">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/commentHeadicon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        tools:ignore="RtlHardcoded" />
+    <TextView
+        android:id="@+id/commentUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/commentHeadicon"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="17sp"
+        android:textColor="@color/textcolor2"
+        tools:text="cayp"
+        tools:ignore="RtlHardcoded" />
+    <TextView
+        android:id="@+id/commentContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textcolor3"
+        android:textSize="19sp"
+        android:layout_toRightOf="@+id/commentHeadicon"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        tools:text="哈哈哈哈哈哈啊哈哈啊哈啊哈哈d"
+        tools:ignore="RtlHardcoded" />
+    <TextView
+        android:id="@+id/commentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/commentContent"
+        android:layout_toRightOf="@+id/commentHeadicon"
+        android:layout_marginLeft="10dp"
+        android:textSize="15sp"
+        android:textColor="@color/colordarkgray"
+        tools:text="9:00"
+        tools:ignore="RtlHardcoded" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="7dp"
+        android:layout_below="@id/commentTime">
+    </View>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/spacecolor"/>
+</RelativeLayout>

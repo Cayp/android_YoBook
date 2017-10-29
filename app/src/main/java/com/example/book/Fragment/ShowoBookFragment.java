@@ -64,7 +64,7 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
         tradeRecyclerAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position, List<SecondBookAllData> list) {
-                changeToChat(list.get(position-1).getUserId());
+                changeToChat(list.get(position-1).getUserId(),list.get(position-1).getUserName());
             }
         });
         lRecyclerViewAdapter = new LRecyclerViewAdapter(tradeRecyclerAdapter);

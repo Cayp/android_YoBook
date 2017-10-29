@@ -15,6 +15,7 @@ import com.example.book.R;
 import com.example.book.Tools.Constant;
 import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.MyToast;
+import com.example.book.view.AbstractView.OnItemClickListener;
 import com.example.book.view.AbstractView.PagingLoad;
 import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
 import com.github.jdsjlzx.interfaces.OnNetWorkErrorListener;
@@ -97,6 +98,12 @@ public class ShowTypeBoolFragment2 extends LazyLoadFragment implements PagingLoa
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         tradeRecyclerAdapter = new TradeRecyclerAdapter();
+        tradeRecyclerAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position, List<SecondBookAllData> list) {
+                changeToChat(list.get(position-1).getUserId(),list.get(position-1).getUserName());
+            }
+        });
         lRecyclerViewAdapter = new LRecyclerViewAdapter(tradeRecyclerAdapter);
         lRecyclerView.setAdapter(lRecyclerViewAdapter);
         lRecyclerView.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));

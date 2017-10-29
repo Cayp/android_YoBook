@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.book.Chat.utils.AppUtil;
@@ -13,6 +15,9 @@ import com.example.book.R;
 import com.example.book.Tools.Constant;
 import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.UrlHelper;
+import com.example.book.view.AbstractView.EnterToDetailListener;
+import com.example.book.view.AbstractView.LikeListener;
+import com.example.book.view.AbstractView.WriteCommentListener;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -29,6 +34,9 @@ import rx.internal.operators.OperatorMapNotification;
 
 public class ShareAllRecyclerAdapter extends RecyclerView.Adapter<ShareAllRecyclerAdapter.ViewHolder> {
     private List<GetShareAllHelper> mdataList = new ArrayList<>();
+    private EnterToDetailListener enterToDetailListener;
+    private WriteCommentListener writeCommentListener;
+    private LikeListener likeListener;
     static class ViewHolder extends RecyclerView.ViewHolder{
         CircleImageView headIcon;
         TextView userName;
@@ -40,6 +48,9 @@ public class ShareAllRecyclerAdapter extends RecyclerView.Adapter<ShareAllRecycl
         ImageView shareCover;
         TextView commentSum;
         TextView likeSum;
+        LinearLayout enterToDetail;
+        RelativeLayout commentWrapper;
+        RelativeLayout like;
         public ViewHolder(View itemView) {
             super(itemView);
             headIcon = (CircleImageView)itemView.findViewById(R.id.userheadicon);
@@ -52,6 +63,9 @@ public class ShareAllRecyclerAdapter extends RecyclerView.Adapter<ShareAllRecycl
             shareCover = (ImageView)itemView.findViewById(R.id.sharecover);
             commentSum = (TextView)itemView.findViewById(R.id.commenSum);
             likeSum = (TextView)itemView.findViewById(R.id.likeSum);
+            enterToDetail = (LinearLayout)itemView.findViewById(R.id.enterToDetail);
+            commentWrapper = (RelativeLayout)itemView.findViewById(R.id.commentwrapper);
+            like = (RelativeLayout)itemView.findViewById(R.id.like);
         }
     }
     @Override
@@ -62,14 +76,17 @@ public class ShareAllRecyclerAdapter extends RecyclerView.Adapter<ShareAllRecycl
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
      GetShareAllHelper onePisData = mdataList.get(position);
      holder.userName.setText(onePisData.getUserName());
      holder.bookName.setText("《"+onePisData.getBookName()+"》");
      long timeInterval = AppUtil.getNowTime() - onePisData.getTime();
       if(timeInterval < Constant.TWENTYTHREEHOUR){
          holder.time.setText(""+(int)(timeInterval/Constant.ONEHOUR)+"小时前");
-        }else {
+        } else if(timeInterval < Constant.ONEHOUR){
+          holder.time.setText(""+(int)(timeInterval/Constant.ONEHOUR)+"小时前");
+      }
+      else {
          String date =  explainTime(onePisData.getTime());
          holder.time.setText(date);
       }
@@ -92,7 +109,33 @@ public class ShareAllRecyclerAdapter extends RecyclerView.Adapter<ShareAllRecycl
      Picasso.with(MyApplication.getContext())
              .load(UrlHelper.GETAVATAR + onePisData.getUserId() + "/" + onePisData.getUserIcon())
              .into(holder.headIcon);
-
+     if(enterToDetailListener != null){
+         holder.enterToDetail.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 int position = holder.getLayoutPosition();
+                 enterToDetailListener.EnterToDetail(mdataList.get(position-1));
+             }
+         });
+     }
+     if (writeCommentListener != null){
+         holder.commentWrapper.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 int position = holder.getLayoutPosition();
+                 writeCommentListener.enterToWriteComment(mdataList.get(position-1));
+             }
+         });
+     }
+     if(likeListener!=null){
+         holder.like.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 int position = holder.getLayoutPosition();
+                 likeListener.like(mdataList.get(position-1).getId());
+             }
+         });
+     }
 
     }
 
@@ -117,5 +160,13 @@ public class ShareAllRecyclerAdapter extends RecyclerView.Adapter<ShareAllRecycl
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd HH:mm");
         return simpleDateFormat.format(thatTime);
     }
-    
+    public void setEnterToDetailListener(EnterToDetailListener enterToDetailListener){
+        this.enterToDetailListener = enterToDetailListener;
+    }
+    public void setWriteCommentListener(WriteCommentListener writeCommentListener){
+        this.writeCommentListener = writeCommentListener;
+    }
+    public void setLikeListener(LikeListener likeListener){
+        this.likeListener = likeListener;
+    }
 }

@@ -12,6 +12,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/enterToDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/item_head"
         android:layout_width="match_parent"
@@ -99,6 +104,7 @@
             android:visibility="gone"
             tools:ignore="ContentDescription,RtlHardcoded" />
     </RelativeLayout>
+    </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -112,6 +118,7 @@
             android:layout_width="@dimen/zerodp"
             android:layout_height="match_parent"
             android:layout_weight="499"
+            android:background="@drawable/type_selector"
            >
             <ImageView
                 android:id="@+id/commenticon"
@@ -153,7 +160,8 @@
             android:id="@+id/like"
             android:layout_width="@dimen/zerodp"
             android:layout_height="match_parent"
-            android:layout_weight="499">
+            android:layout_weight="499"
+            android:background="@drawable/type_selector">
             <ImageView
                 android:id="@+id/likeicon"
                 android:layout_width="15dp"

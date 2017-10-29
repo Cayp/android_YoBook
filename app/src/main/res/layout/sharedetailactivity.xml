@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/spacecolor">
+<android.support.v7.widget.Toolbar
+    android:id="@+id/shareDetailToolbar"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_alignParentTop="true"
+    android:background="@color/colorwhite">
+        <TextView
+            android:id="@+id/shareNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textcolor3"
+            android:layout_gravity="center"
+            android:text="分享正文"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
+    <LinearLayout
+        android:id="@+id/shareDetailUserWrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity = "center"
+        android:visibility="gone"
+        >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/share1headicon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            />
+        <TextView
+            android:id="@+id/share1UserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="16sp"
+            android:textColor="@color/textcolor3"
+            tools:text="Cayp"
+            />
+    </LinearLayout>
+</android.support.v7.widget.Toolbar>
+    <View
+        android:id="@+id/spaceView1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/shareDetailToolbar"
+        android:background="@color/spacecolor"/>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spaceView1"
+        >
+    <com.example.book.MyView.MyScrollView
+        android:id="@+id/myscrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="blocksDescendants"
+       >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+          <LinearLayout
+              android:id="@+id/topPart"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:background="@color/colorwhite"
+              >
+
+              <RelativeLayout
+                  android:id="@+id/item_head"
+                  android:layout_width="match_parent"
+                  android:layout_height="55dp">
+                  <de.hdodenhof.circleimageview.CircleImageView
+                      android:id="@+id/userheadicon"
+                      android:layout_width="40dp"
+                      android:layout_height="40dp"
+                      android:layout_centerVertical="true"
+                      android:layout_marginLeft="17dp"
+                      tools:src = "@mipmap/ic_launcher"
+                      tools:ignore="RtlHardcoded" />
+                  <TextView
+                      android:id="@+id/user_name"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_toRightOf="@+id/userheadicon"
+                      android:layout_marginLeft="11dp"
+                      android:layout_marginTop="6dp"
+                      android:textColor="@color/textblue"
+                      android:textSize="20sp"
+                      tools:text="cayp"
+                      tools:ignore="RelativeOverlap,RtlHardcoded" />
+                  <TextView
+                      android:id="@+id/user_time"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_toRightOf="@+id/userheadicon"
+                      android:layout_marginLeft="11dp"
+                      android:layout_marginTop="30dp"
+                      android:textSize="15sp"
+                      android:textColor="@color/timecolor"
+                      tools:text="昨天 12:00"
+                      tools:ignore="RelativeOverlap,RtlHardcoded" />
+                  <ImageView
+                      android:id="@+id/downback"
+                      android:layout_width="17dp"
+                      android:layout_height="9dp"
+                      android:layout_alignParentRight="true"
+                      android:layout_centerVertical="true"
+                      android:layout_marginRight="27dp"
+                      android:src="@drawable/downback"
+                      tools:ignore="ContentDescription,RtlHardcoded" />
+              </RelativeLayout>
+              <TextView
+                  android:id="@+id/bookname"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textColor="@color/textblue"
+                  android:layout_marginLeft="20dp"
+                  android:textSize="18sp"
+                  tools:text="《悲惨世界》"
+                  tools:ignore="RtlHardcoded" />
+              <TextView
+                  android:id="@+id/shareContent"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:textColor="@color/textcolor3"
+                  android:textSize="15sp"
+                  tools:text="故事很好看，沙威:他的悲惨主要体现在最后，他一生的信仰，他唯一相信的Order，他坚持行走的正道，被无法抗拒地动摇了，甚至摧毁了。一种体制内人物的悲哀"
+                  tools:ignore="RtlHardcoded" />
+              <RelativeLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:background="#fafafa">
+
+                  <ImageView
+                      android:id="@+id/sharecover"
+                      android:layout_width="150dp"
+                      android:layout_height="160dp"
+                      android:layout_marginLeft="15dp"
+                      android:visibility="gone"
+                      tools:ignore="ContentDescription,RtlHardcoded" />
+
+                  <View
+                      android:id="@+id/view"
+                      android:layout_width="match_parent"
+                      android:layout_height="10dp"
+                      android:background="@color/spacecolor" />
+              </RelativeLayout>
+          </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/search02"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorwhite"
+        tools:ignore="UselessParent">
+        <android.support.design.widget.TabLayout
+            android:id="@+id/sharetablayout"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            app:tabIndicatorHeight="3dp"
+            app:tabIndicatorColor="@color/colorblue"
+            app:tabTextColor="@color/colorgray"
+            app:tabSelectedTextColor="@color/textcolor3"/>
+     <View
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:background="@color/spacecolor"/>
+         </LinearLayout>
+            </LinearLayout>
+            <View
+                android:id="@+id/midView"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/spacecolor"/>
+
+            <RelativeLayout
+                android:id="@+id/loadingPart"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/colorwhite"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:id="@+id/commentProgress"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="150dp"
+                    tools:ignore="RtlHardcoded" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/commentProgress"
+                    android:text="加载中.."
+                    android:textColor="@color/textcolor2"
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText,RtlHardcoded" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/showNoComment"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+
+                android:background="@color/colorwhite"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/showNoset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="还没有人评论"
+                    android:textColor="@color/colorgray"
+                    android:textSize="16sp"
+                    tools:ignore="HardcodedText" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <com.github.jdsjlzx.recyclerview.LRecyclerView
+                android:id="@+id/shareCommentView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </com.example.book.MyView.MyScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <LinearLayout
+        android:id="@+id/search01"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical"
+        android:layout_below="@id/spaceView1">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:background="@color/colorwhite">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colordarkgray"/>
+    <LinearLayout
+        android:id="@+id/detailWriteComment"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+  >
+        <RelativeLayout
+            android:id="@+id/commentwrapper"
+            android:layout_width="@dimen/zerodp"
+            android:layout_height="match_parent"
+            android:layout_weight="499"
+            android:background="@drawable/type_selector"
+            >
+            <ImageView
+                android:id="@+id/commenticon"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_toLeftOf="@+id/commenText"
+                android:layout_marginRight="5dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/commenticon"
+                tools:ignore="ContentDescription,RtlHardcoded" />
+            <View
+                android:id="@+id/zhongxin"
+                android:layout_width="2dp"
+                android:layout_height="2dp"
+                android:layout_centerInParent="true"/>
+            <TextView
+                android:id="@+id/commenText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/zhongxin"
+                android:text="评论"
+                android:textSize="15sp"
+                android:textColor="@color/textcolor3"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+        </RelativeLayout>
+        <View
+            android:layout_width="@dimen/zerodp"
+            android:layout_height="18dp"
+            android:layout_weight="2"
+            android:background="@color/colordarkgray"
+            android:layout_gravity="center_vertical"/>
+        <RelativeLayout
+            android:id="@+id/like"
+            android:layout_width="@dimen/zerodp"
+            android:layout_height="match_parent"
+            android:layout_weight="499"
+            android:background="@drawable/type_selector">
+            <ImageView
+                android:id="@+id/likeicon"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_toLeftOf="@+id/likeText"
+                android:layout_marginRight="5dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/like"
+                tools:ignore="ContentDescription,RtlHardcoded" />
+            <View
+                android:id="@+id/zhongxin2"
+                android:layout_width="2dp"
+                android:layout_height="2dp"
+                android:layout_centerInParent="true"/>
+            <TextView
+                android:id="@+id/likeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/zhongxin2"
+                android:layout_centerVertical="true"
+                android:text="赞"
+                android:textSize="15sp"
+                android:textColor="@color/textcolor3"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+        </RelativeLayout>
+      </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

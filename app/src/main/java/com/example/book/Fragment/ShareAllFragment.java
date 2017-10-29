@@ -1,5 +1,6 @@
 package com.example.book.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
@@ -9,23 +10,36 @@ import android.widget.TextView;
 import com.example.book.Adapter.ShareAllRecyclerAdapter;
 import com.example.book.Base.LazyLoadFragment;
 import com.example.book.EntityClass.GetShareAllHelper;
+import com.example.book.EntityClass.RegisterHelper;
 import com.example.book.EntityClass.UserDataid_Icon;
 import com.example.book.Presenter.GetShareAllPresenter;
 import com.example.book.R;
 import com.example.book.Tools.Constant;
 import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.MyToast;
+import com.example.book.Tools.NetworkUtils;
+import com.example.book.Tools.UrlHelper;
+import com.example.book.view.AbstractView.EnterToDetailListener;
 import com.example.book.view.AbstractView.GetShare;
+import com.example.book.view.AbstractView.LikeListener;
+import com.example.book.view.AbstractView.WriteCommentListener;
+import com.example.book.view.ShareDetail;
+import com.example.book.view.WriteComment;
 import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.github.jdsjlzx.recyclerview.ProgressStyle;
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import okhttp3.Call;
 
 /**
  * Created by ljp on 2017/10/12.
@@ -55,6 +69,24 @@ public class ShareAllFragment extends LazyLoadFragment implements GetShare{
     protected void initView(View view, Bundle savedInstanceState) {
         getShare(page_no,PAGE_SIZE);
         shareAllRecyclerAdapter = new ShareAllRecyclerAdapter();
+        shareAllRecyclerAdapter.setEnterToDetailListener(new EnterToDetailListener() {
+            @Override
+            public void EnterToDetail(GetShareAllHelper getShareAllHelper) {
+                changeToDetail(getShareAllHelper);
+            }
+        });
+        shareAllRecyclerAdapter.setWriteCommentListener(new WriteCommentListener() {
+            @Override
+            public void enterToWriteComment(GetShareAllHelper getShareAllHelper) {
+               changeToWriteComment(getShareAllHelper);
+            }
+        });
+        shareAllRecyclerAdapter.setLikeListener(new LikeListener() {
+            @Override
+            public void like(int share_id) {
+                    addLike(share_id);
+            }
+        });
         lRecyclerViewAdapter = new LRecyclerViewAdapter(shareAllRecyclerAdapter);
         shareAllPager.setAdapter(lRecyclerViewAdapter);
         shareAllPager.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));
@@ -150,6 +182,77 @@ public class ShareAllFragment extends LazyLoadFragment implements GetShare{
         }
         if(userDataid_iconList.size() != 0){
             userDataid_iconList.clear();
+        }
+    }
+    public void changeToDetail(GetShareAllHelper getShareAllHelper){
+        Intent intent = new Intent(MyApplication.getContext(), ShareDetail.class);
+        intent.putExtra("share_item",getShareAllHelper);
+        startActivity(intent);
+    }
+    public void changeToWriteComment(GetShareAllHelper getShareAllHelper){
+        Intent intent = new Intent(MyApplication.getContext(), WriteComment.class);
+        intent.putExtra("share_id",getShareAllHelper.getId());
+        intent.putExtra("reply_id",getShareAllHelper.getUserId());
+        startActivity(intent);
+    }
+    public void addLike(final int share_id){
+        if(!NetworkUtils.isConnected()){
+            MyToast.toast("没网了~");
+        }else {
+            try{
+                OkHttpUtils.post()
+                           .url(UrlHelper.ADDSTAR)
+                           .addParams("share_id",""+share_id)
+                            .build()
+                            .execute(new StringCallback() {
+                                @Override
+                                public void onError(Call call, Exception e, int id) {
+
+                                }
+
+                                @Override
+                                public void onResponse(String response, int id) {
+                                    RegisterHelper registerHelper = new Gson().fromJson(response,RegisterHelper.class);
+                                    if(registerHelper.getCode()==20000){
+                                        MyToast.toast("点赞成功");
+                                    }else if(registerHelper.getCode()==40000){
+                                           removeStar(share_id);
+                                    }
+                                }
+                            });
+            }catch (JsonIOException j){
+                j.printStackTrace();
+            }
+        }
+    }
+    public void removeStar(int share_id){
+        if(!NetworkUtils.isConnected()){
+         MyToast.toast("没网了~");
+        }else {
+            try{
+                OkHttpUtils.post()
+                        .url(UrlHelper.REMOVESTAR)
+                        .addParams("share_id",""+share_id)
+                        .build()
+                        .execute(new StringCallback() {
+                            @Override
+                            public void onError(Call call, Exception e, int id) {
+
+                            }
+
+                            @Override
+                            public void onResponse(String response, int id) {
+                                RegisterHelper registerHelper = new Gson().fromJson(response,RegisterHelper.class);
+                                if(registerHelper.getCode()==20000){
+                                    MyToast.toast("删除点赞成功");
+                                }else if(registerHelper.getCode()==40000){
+
+                                }
+                            }
+                        });
+            }catch (JsonIOException j){
+                j.printStackTrace();
+            }
         }
     }
 }

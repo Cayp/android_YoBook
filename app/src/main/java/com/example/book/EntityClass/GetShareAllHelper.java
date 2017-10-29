@@ -1,10 +1,12 @@
 package com.example.book.EntityClass;
 
+import java.io.Serializable;
+
 /**
  * Created by ljp on 2017/10/14.
  */
 
-public class GetShareAllHelper {
+public class GetShareAllHelper implements Serializable {
     private int id ;
     private int userId;
     private String userName;

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<android.support.v7.widget.Toolbar
+    android:id="@+id/writeCommentToolbar"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    app:contentInsetStart="0dp"
+    android:background="@color/colorwhite"
+    >
+
+    <TextView
+        android:id="@+id/commentText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:textColor="@color/textcolor3"
+        android:text="发评论"
+        tools:ignore="HardcodedText" />
+        <Button
+            android:id="@+id/commentSend"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/login_button_selector"
+            android:text="发送"
+            android:textColor="@color/colorwhite"
+            android:textSize="15sp"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+
+</android.support.v7.widget.Toolbar>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/spacecolor"/>
+    <EditText
+        android:id="@+id/writeCommentContent"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/inputviewshape"
+        android:hint="写评论..."
+        android:maxLength="128"
+        android:gravity="top|left"
+        android:textColor="@color/textcolor3"
+        tools:text="hello"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+</LinearLayout>
