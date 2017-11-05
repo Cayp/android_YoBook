@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import com.example.book.Chat.keepalive.ConnectionService;
 import com.example.book.MyView.PicassoImageLoader;
 import com.lzy.imagepicker.ImagePicker;
+import com.lzy.imagepicker.view.CropImageView;
 import com.squareup.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -68,11 +69,12 @@ public class MyApplication extends Application {
         imagePicker.setShowCamera(true);  //显示拍照按钮\
         imagePicker.setMultiMode(false);
         imagePicker.setCrop(true);        //允许裁剪（单选才有效）
-        imagePicker.setSaveRectangle(true); //是否按矩形区域保存
+        imagePicker.setSaveRectangle(false); //是否按矩形区域保存
         imagePicker.setFocusHeight(1000);
         imagePicker.setFocusWidth(1000);
         imagePicker.setSelectLimit(1);    //选中数量限制
         imagePicker.setOutPutX(500);//保存文件的宽度。单位像素
         imagePicker.setOutPutY(500);//保存文件的高度。单位像素
     }
+
 }

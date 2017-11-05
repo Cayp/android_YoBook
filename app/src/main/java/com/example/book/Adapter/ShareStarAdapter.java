@@ -44,7 +44,7 @@ public class ShareStarAdapter extends RecyclerView.Adapter<ShareStarAdapter.View
     public void onBindViewHolder(ViewHodler holder, int position) {
        GetShareStarHelper.LIkeUserData onePisData = list.get(position);
        holder.userName.setText(onePisData.getUsername());
-       Picasso.with(MyApplication.getContext()).load(UrlHelper.GETAVATAR + onePisData.getUserId()+"/"+onePisData.getAvatar() )
+       Picasso.with(MyApplication.getContext()).load(UrlHelper.GETAVATAR + onePisData.getAvatar() )
                                                .error(R.mipmap.ic_launcher)
                                                 .into(holder.userIcon);
     }

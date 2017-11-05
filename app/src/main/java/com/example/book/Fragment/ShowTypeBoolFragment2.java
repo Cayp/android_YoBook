@@ -101,7 +101,7 @@ public class ShowTypeBoolFragment2 extends LazyLoadFragment implements PagingLoa
         tradeRecyclerAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position, List<SecondBookAllData> list) {
-                changeToChat(list.get(position-1).getUserId(),list.get(position-1).getUserName());
+                changeToChat(list.get(position-1).getUserId(),list.get(position-1).getUserName(),list.get(position-1).getAvatar());
             }
         });
         lRecyclerViewAdapter = new LRecyclerViewAdapter(tradeRecyclerAdapter);

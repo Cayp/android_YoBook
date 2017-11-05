@@ -19,7 +19,7 @@
     <application
         android:name=".Tools.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -54,6 +54,9 @@
        <activity android:name=".view.ShareDetail">
        </activity>
         <activity android:name=".view.WriteComment"/>
+        <activity android:name=".view.ZxingActivity"/>
+        <activity android:name=".view.ModifyKuangActivity"/>
+        <activity android:name=".view.ModifyUserDataActivity"/>
     </application>
 
 </manifest>

@@ -1,10 +1,15 @@
 package com.example.book.EntityClass;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Created by ljp on 2017/9/18.
  */
 
-public class GetUserDataHelper {
+public class GetUserDataHelper  {
 
     /**
      * code : 20000
@@ -50,7 +55,7 @@ public class GetUserDataHelper {
         this.dataList = dataList;
     }
 
-    public static class UserData {
+    public static class UserData implements Parcelable {
         /**
          * id : 24
          * account : null
@@ -124,5 +129,43 @@ public class GetUserDataHelper {
         public void setAvatar(String avatar) {
             this.avatar = avatar;
         }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeInt(this.id);
+            dest.writeString(this.username);
+            dest.writeString(this.sex);
+            dest.writeString(this.brief);
+            dest.writeString(this.avatar);
+        }
+
+        public UserData() {
+        }
+
+        protected UserData(Parcel in) {
+            this.id = in.readInt();
+            this.username = in.readString();
+            this.sex = in.readString();
+            this.brief = in.readString();
+            this.avatar = in.readString();
+        }
+
+        public static final Parcelable.Creator<UserData> CREATOR = new Parcelable.Creator<UserData>() {
+            @Override
+            public UserData createFromParcel(Parcel source) {
+                return new UserData(source);
+            }
+
+            @Override
+            public UserData[] newArray(int size) {
+                return new UserData[size];
+            }
+        };
     }
+
 }

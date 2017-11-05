@@ -8,6 +8,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.example.book.Adapter.TradeRecyclerAdapter;
 import com.example.book.Base.LazyLoadFragment;
+import com.example.book.Chat.utils.AppUtil;
 import com.example.book.EntityClass.SecondBookAllData;
 import com.example.book.EntityClass.UserDataid_Icon;
 import com.example.book.Presenter.GetBookPresenter;
@@ -64,7 +65,7 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
         tradeRecyclerAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position, List<SecondBookAllData> list) {
-                changeToChat(list.get(position-1).getUserId(),list.get(position-1).getUserName());
+                changeToChat(list.get(position-1).getUserId(),list.get(position-1).getUserName(),list.get(position-1).getAvatar());
             }
         });
         lRecyclerViewAdapter = new LRecyclerViewAdapter(tradeRecyclerAdapter);
@@ -115,6 +116,7 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
                 break;
             case 1:
                 MyToast.toast("发生未知问题，请重启应用");
+                AppUtil.saveIsLogin(MyApplication.getContext(),false);
                 break;
             case Constant.ERROR_NO_INTERNET:
                 MyToast.toast("无网络，请检查后下拉刷新");

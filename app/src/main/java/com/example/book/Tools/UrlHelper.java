@@ -30,4 +30,6 @@ public class UrlHelper {
     public static final String GETSHARESTAR = BASE_URL + "Home/Star/getShareStar";
     public static final String ADDSTAR = BASE_URL + "Home/Star/addStar";
     public static final String REMOVESTAR = BASE_URL + "Home/Star/removeStar";
+    public static final String DOUBANINTERFACE = "https://api.douban.com/v2/book/isbn/";
+    public static final String PUBLISHSHARE = BASE_URL +"Home/Share/publishShare";
 }

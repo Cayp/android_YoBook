@@ -21,28 +21,28 @@
             android:text="分享正文"
             android:textSize="18sp"
             tools:ignore="HardcodedText" />
+
     <LinearLayout
         android:id="@+id/shareDetailUserWrapper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="horizontal"
-        android:layout_gravity = "center"
-        android:visibility="gone"
-        >
+        android:visibility="gone">
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/share1headicon"
             android:layout_width="30dp"
-            android:layout_height="30dp"
-            />
+            android:layout_height="30dp" />
+
         <TextView
             android:id="@+id/share1UserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="16sp"
             android:textColor="@color/textcolor3"
-            tools:text="Cayp"
-            />
+            android:textSize="16sp"
+            tools:text="Cayp" />
     </LinearLayout>
 </android.support.v7.widget.Toolbar>
     <View
@@ -126,6 +126,7 @@
                   android:textColor="@color/textblue"
                   android:layout_marginLeft="20dp"
                   android:textSize="18sp"
+                  android:clickable="true"
                   tools:text="《悲惨世界》"
                   tools:ignore="RtlHardcoded" />
               <TextView
@@ -135,7 +136,7 @@
                   android:layout_marginLeft="10dp"
                   android:textColor="@color/textcolor3"
                   android:textSize="15sp"
-                  tools:text="故事很好看，沙威:他的悲惨主要体现在最后，他一生的信仰，他唯一相信的Order，他坚持行走的正道，被无法抗拒地动摇了，甚至摧毁了。一种体制内人物的悲哀"
+                  tools:text="故事很好dfsdefasdfsedfsadfsdfsd看，沙威:他的悲惨主要体现在最后，他一生的信仰，他唯一相信的Order，他坚持行走的正道，被无法抗拒地动摇了，甚至摧毁了。一种体制内人物的悲哀"
                   tools:ignore="RtlHardcoded" />
               <RelativeLayout
                   android:layout_width="match_parent"

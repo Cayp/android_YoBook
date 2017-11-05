@@ -81,7 +81,7 @@ public class TradeRecyclerAdapter extends RecyclerView.Adapter<TradeRecyclerAdap
         Picasso.with(MyApplication.getContext()).load(UrlHelper.GETSECONDBOOKCOVER+onePisData.getUserId()+"/"+onePisData.getBookCover())
                 .fit()
                 .into(holder.book_picture) ;
-        Picasso.with(MyApplication.getContext()).load(UrlHelper.GETAVATAR+onePisData.getUserId()+"/"+onePisData.getAvatar())
+        Picasso.with(MyApplication.getContext()).load(UrlHelper.GETAVATAR + onePisData.getAvatar())
                 .error(R.mipmap.ic_launcher_round)
                 .into(holder.head_icon);
         if(onItemClickListener != null){

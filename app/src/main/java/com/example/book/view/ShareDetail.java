@@ -24,6 +24,7 @@ import com.example.book.EntityClass.GetShareStarHelper;
 import com.example.book.EntityClass.RegisterHelper;
 import com.example.book.EntityClass.UserDataid_Icon;
 import com.example.book.MyView.MyScrollView;
+import com.example.book.MyView.ShowShareBookDetailDialog;
 import com.example.book.Presenter.GetCommentPresenter;
 import com.example.book.Presenter.GetShareStarPresenter;
 import com.example.book.R;
@@ -183,14 +184,15 @@ public class ShareDetail extends BaseActivity implements OnScrollListener,TabLay
                 search01.addView(view2);
                 search01.setVisibility(View.VISIBLE);
             }
-         } else
-        {if(view2.getParent()!=search02){
+         } else {
+            if(view2.getParent()!=search02){
                 search01.removeView(view2);
                 search02.addView(view2);
                 search01.setVisibility(View.GONE);
 
             }
         }
+
     }
     private void iniTayout(){
         sharetablayout.addTab(sharetablayout.newTab().setText("评论 0"));
@@ -203,23 +205,25 @@ public class ShareDetail extends BaseActivity implements OnScrollListener,TabLay
          user_name.setText(getShareAllHelper.getUserName());
          bookname.setText("《"+getShareAllHelper.getBookName()+"》");
          shareContent.setText(getShareAllHelper.getContent());
-         if(shareCoverPath != null){
+         if(shareCoverPath != null&&shareCoverPath.equals("")){
              Picasso.with(this)
                      .load(UrlHelper.GETSHARECOVER + getShareAllHelper.getUserId() + "/" +getShareAllHelper.getId() + "/" +shareCoverPath)
                      .fit()
                      .into(shareCover);
          }
          Picasso.with(this)
-                 .load(UrlHelper.GETAVATAR + getShareAllHelper.getUserId() + "/" + getShareAllHelper.getUserIcon())
+                 .load(UrlHelper.GETAVATAR  + getShareAllHelper.getUserIcon())
                  .into(userheadicon);
          Picasso.with(this)
-                .load(UrlHelper.GETAVATAR + getShareAllHelper.getUserId() + "/" + getShareAllHelper.getUserIcon())
+                .load(UrlHelper.GETAVATAR + getShareAllHelper.getUserIcon())
                 .into(share1headicon);
         long timeInterval = AppUtil.getNowTime() - getShareAllHelper.getTime();
-        if(timeInterval < Constant.TWENTYTHREEHOUR&& timeInterval >= Constant.ONEHOUR) {
-            user_time.setText("" + (int) (timeInterval / Constant.ONEHOUR) + "小时前");
-        }else if(timeInterval < Constant.ONEHOUR){
-            user_time.setText(""+(int)(timeInterval/Constant.ONEHOUR)+"分钟前");
+        if(timeInterval < Constant.TWENTYTHREEHOUR &&timeInterval >= Constant.ONEHOUR){
+            user_time.setText(""+(int)(timeInterval/Constant.ONEHOUR)+"小时前");
+        }else if(timeInterval < Constant.ONEHOUR&&timeInterval>=Constant.ONEMI){
+           user_time.setText(""+(int)(timeInterval/Constant.ONEMI)+"分钟前");
+        }else if(timeInterval < Constant.ONEMI&&timeInterval>=Constant.ONESEC) {
+           user_time.setText(""+(int)(timeInterval/Constant.ONESEC)+"秒前");
         }else {
             String date =  explainTime(getShareAllHelper.getTime());
             user_time.setText(date);
@@ -365,7 +369,7 @@ public class ShareDetail extends BaseActivity implements OnScrollListener,TabLay
         intent.putExtra("reply_id",getShareAllHelper.getUserId());
         startActivity(intent);
     }
-    @OnClick({R.id.commentwrapper,R.id.like})
+    @OnClick({R.id.commentwrapper,R.id.like,R.id.bookname})
     public void Onclick(View view){
         switch (view.getId()){
             case R.id.commentwrapper:
@@ -374,6 +378,13 @@ public class ShareDetail extends BaseActivity implements OnScrollListener,TabLay
             case R.id.like:
                 addLike(thisShareId);
                 break;
+            case R.id.bookname:
+                if(getShareAllHelper.getIsbn()==null){
+                    MyToast.toast("没有信息");
+                }else {
+                    ShowShareBookDetailDialog showShareBookDetailDialog = new ShowShareBookDetailDialog(this, R.style.Theme_AppCompat_Dialog_Alert, getShareAllHelper.getIsbn());
+                    showShareBookDetailDialog.show();
+                } break;
         }
     }
 

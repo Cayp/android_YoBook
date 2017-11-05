@@ -34,7 +34,9 @@ public class WelcomeActivty extends BaseActivity {
     public boolean isNeedLogin(){
         SharedPreferences sharedPreferences = MyApplication.getContext().getSharedPreferences(Constant.TIME,MODE_PRIVATE);
         Long lastTime = sharedPreferences.getLong(Constant.LAST_OPEN,0);
-        if(lastTime != 0 && (System.currentTimeMillis() - lastTime) < Constant.THREEDAY){
+        SharedPreferences sharedPreferences1 = MyApplication.getContext().getSharedPreferences(Constant.ID,MODE_PRIVATE);
+        boolean isLogin = sharedPreferences1.getBoolean(Constant.LOGIN_STATUS,false);
+        if(lastTime != 0 && (System.currentTimeMillis() - lastTime) < Constant.THREEDAY && isLogin){
             return false;
         }else {
             return true;

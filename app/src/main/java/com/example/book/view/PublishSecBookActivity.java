@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.book.Base.BaseActivity;
+import com.example.book.Chat.utils.AppUtil;
 import com.example.book.EntityClass.PublishSecBookHelper;
 import com.example.book.MyView.InputDialog;
 import com.example.book.Presenter.PublishSecBookPresenter;
@@ -100,6 +101,7 @@ public class PublishSecBookActivity extends BaseActivity implements PublishSecBo
     protected void initView(Bundle savedInstanceState) {
         initActionBar(secToolbar,true);
         publishText.setText("填 写");
+        AppUtil.setImagePicker(1,false,true,Constant.RETCANGLE);
     }
 
     @Override
@@ -150,7 +152,7 @@ public class PublishSecBookActivity extends BaseActivity implements PublishSecBo
                                 publishpayway.setVisibility(View.VISIBLE);
                               return true;
                             case R.id.inputprice:
-                              inputDialog = new InputDialog(PublishSecBookActivity.this,R.style.Theme_AppCompat_Dialog_Alert,listener);
+                              inputDialog = new InputDialog(PublishSecBookActivity.this,R.style.Theme_AppCompat_Dialog_Alert,listener,"请输入价格");
                               inputDialog.show();
                         }
                         return false;

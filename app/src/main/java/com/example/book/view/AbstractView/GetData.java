@@ -8,6 +8,6 @@ import com.example.book.EntityClass.GetUserDataHelper;
 
 public interface GetData {
     void getdata(int id );
-    void success(GetUserDataHelper getUserDataHelper);
+    void success(GetUserDataHelper.UserData getUserData);
     void failure(int error);
 }

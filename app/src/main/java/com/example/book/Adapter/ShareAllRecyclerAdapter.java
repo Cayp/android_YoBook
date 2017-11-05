@@ -81,12 +81,13 @@ public class ShareAllRecyclerAdapter extends RecyclerView.Adapter<ShareAllRecycl
      holder.userName.setText(onePisData.getUserName());
      holder.bookName.setText("《"+onePisData.getBookName()+"》");
      long timeInterval = AppUtil.getNowTime() - onePisData.getTime();
-      if(timeInterval < Constant.TWENTYTHREEHOUR){
+      if(timeInterval < Constant.TWENTYTHREEHOUR &&timeInterval >= Constant.ONEHOUR){
          holder.time.setText(""+(int)(timeInterval/Constant.ONEHOUR)+"小时前");
-        } else if(timeInterval < Constant.ONEHOUR){
-          holder.time.setText(""+(int)(timeInterval/Constant.ONEHOUR)+"小时前");
-      }
-      else {
+      }else if(timeInterval < Constant.ONEHOUR&&timeInterval>=Constant.ONEMI){
+          holder.time.setText(""+(int)(timeInterval/Constant.ONEMI)+"分钟前");
+      }else if(timeInterval < Constant.ONEMI&&timeInterval>=Constant.ONESEC) {
+          holder.time.setText(""+(int)(timeInterval/Constant.ONESEC)+"秒前");
+      }else {
          String date =  explainTime(onePisData.getTime());
          holder.time.setText(date);
       }
@@ -99,7 +100,7 @@ public class ShareAllRecyclerAdapter extends RecyclerView.Adapter<ShareAllRecycl
      }
      holder.commentSum.setText(""+onePisData.getCommentNum()+"");
      holder.likeSum.setText(""+onePisData.getStarNum()+"");
-     if(onePisData.getBookCover() != null){
+     if(onePisData.getBookCover() != null&&!onePisData.getBookCover().equals("")){
          holder.shareCover.setVisibility(View.VISIBLE);
          Picasso.with(MyApplication.getContext())
                  .load(UrlHelper.GETSHARECOVER + onePisData.getUserId()+"/"+onePisData.getId()+"/"+onePisData.getBookCover())
@@ -107,7 +108,7 @@ public class ShareAllRecyclerAdapter extends RecyclerView.Adapter<ShareAllRecycl
                  .into(holder.shareCover);
      }
      Picasso.with(MyApplication.getContext())
-             .load(UrlHelper.GETAVATAR + onePisData.getUserId() + "/" + onePisData.getUserIcon())
+             .load(UrlHelper.GETAVATAR + onePisData.getUserIcon())
              .into(holder.headIcon);
      if(enterToDetailListener != null){
          holder.enterToDetail.setOnClickListener(new View.OnClickListener() {

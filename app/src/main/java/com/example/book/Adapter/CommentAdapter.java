@@ -57,13 +57,16 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
       long timeInterval = AppUtil.getNowTime() - commentItem.getTime();
         if(timeInterval < Constant.TWENTYTHREEHOUR&& timeInterval >= Constant.ONEHOUR) {
             holder.time.setText("" + (int) (timeInterval / Constant.ONEHOUR) + "小时前");
-        }else if(timeInterval < Constant.ONEHOUR){
+        }else if(timeInterval < Constant.ONEHOUR&&timeInterval>=Constant.ONEMI){
             holder.time.setText(""+(int)(timeInterval/Constant.ONEMI)+"分钟前");
-        }else {
+        }else if(timeInterval < Constant.ONEMI&&timeInterval>=Constant.ONESEC) {
+            holder.time.setText(""+(int)(timeInterval/Constant.ONESEC)+"秒前");
+        }
+        else {
             String date =  explainTime(commentItem.getTime());
             holder.time.setText(date);
         }
-        Picasso.with(MyApplication.getContext()).load(UrlHelper.GETAVATAR + commentItem.getUserId()+ "/" + commentItem.getAvatar())
+        Picasso.with(MyApplication.getContext()).load(UrlHelper.GETAVATAR  + commentItem.getAvatar())
                   .error(R.mipmap.ic_launcher)
                   .into(holder.headIcon);
     }

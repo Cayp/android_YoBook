@@ -29,9 +29,9 @@ public class ShareFragment extends LazyLoadFragment{
     ViewPager sharePager;
     MainPagerAdapter mainPagerAdapter ;
     List<Fragment> fragmentList = new ArrayList<>();
+
     @Override
     public void fetchData() {
-
     }
 
     @Override

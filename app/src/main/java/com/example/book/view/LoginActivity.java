@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -57,7 +58,9 @@ public class LoginActivity extends BaseActivity implements LoginView, LogoutView
         startService(new Intent(this, ConnectionService.class));
         AppUtil.saveId(this,Constant.currentUserId);
         changeActivity(MainActivity.class);
+        AppUtil.saveIsLogin(this,true);
         finish();
+
     }
 
     @Override

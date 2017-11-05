@@ -23,8 +23,8 @@ public class GetMydataPresenter implements GetData {
     }
 
     @Override
-    public void success(GetUserDataHelper getUserDataHelper) {
-        getData.success(getUserDataHelper);
+    public void success(GetUserDataHelper.UserData getUserData) {
+        getData.success(getUserData);
     }
 
     @Override

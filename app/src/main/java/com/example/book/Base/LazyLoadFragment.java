@@ -42,10 +42,11 @@ public abstract class LazyLoadFragment extends BaseFragment{
             isDataInitiated = true;
         }
     }
-    public void changeToChat(int userId,String toUserName){
+    public void changeToChat(int userId,String toUserName,String avatar){
         Intent intent = new Intent(MyApplication.getContext(),ChatActivity.class);
         intent.putExtra("toId",userId);
         intent.putExtra("to_Name",toUserName);
+        intent.putExtra("toAvatar",avatar);
         startActivity(intent);
     }
 }

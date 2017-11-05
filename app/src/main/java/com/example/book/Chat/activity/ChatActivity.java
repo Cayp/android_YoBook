@@ -79,7 +79,7 @@ public class ChatActivity extends BaseActivity implements Api.SendMessage,Api.Ge
         chatPresenter = new ChatPresenter(this,this,this,this);
         getMessage();
         to_name.setText(to_Name);
-        Picasso.with(MyApplication.getContext()).load(UrlHelper.GETAVATAR+to_id+"/"+to_avatar)
+        Picasso.with(MyApplication.getContext()).load(UrlHelper.GETAVATAR + to_avatar)
                 .error(R.mipmap.ic_launcher_round)
                 .into(chat_icon);
         subscription = RxBus.getInstance().receive(Notice.class).subscribe(new Subscriber<Notice>() {

@@ -30,6 +30,7 @@ import com.example.book.Tools.FastBlur;
 import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.MyToast;
 import com.example.book.view.PublishSecBookActivity;
+import com.example.book.view.ZxingActivity;
 
 /**
  * Created by ljp on 2017/9/3.
@@ -43,6 +44,7 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
     private Bitmap overlay;
     private FrameLayout bottomWindow;
     private RelativeLayout publishlayout;
+    private boolean isPressback  = false;
     private static final String TAG = "MoreWindow";
     private Handler mHandler = new Handler();
     RelativeLayout layout;
@@ -57,6 +59,7 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
         statusBarHeight = frame.top;
         setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
         setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
+        isPressback = false;
     }
 
     private Bitmap blur() {
@@ -157,9 +160,12 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        closeAnimation(publishlayout);
-        bottomWindow.setVisibility(View.INVISIBLE);
-        destroy();
+        if(!isPressback) {
+            isPressback = true;
+            closeAnimation(publishlayout);
+            bottomWindow.setVisibility(View.INVISIBLE);
+            destroy();
+        }
     }
 
 //    OnclickPublishTouchListener 中调用
@@ -169,7 +175,7 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
                 changeActivity(PublishSecBookActivity.class);
                 break;
             case R.id.sharebutton:
-                MyToast.toast("sharebutton");
+                changeActivity(ZxingActivity.class);
                 break;
             case R.id.writebutton:
                 MyToast.toast("writebutton");

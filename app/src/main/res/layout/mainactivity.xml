@@ -58,7 +58,7 @@
              android:layout_height="match_parent"
              android:layout_weight="1"
              cayp:mIcon="@drawable/icon_recomd_selector"
-             cayp:mText="推荐"
+             cayp:mText="信息"
              cayp:mTextColor="@color/black"/>
          <com.example.book.MyView.NavbarView
              android:id="@+id/Navbar_me"

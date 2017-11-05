@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <android.support.v7.widget.Toolbar
+      android:id="@+id/modifyToolbar"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:background="@color/colorwhite">
+      <View
+          android:layout_width="1dp"
+          android:layout_height="30dp"
+          android:layout_gravity="left"
+          android:background="@color/spacecolor"
+          android:layout_marginLeft="10dp"
+          tools:ignore="RtlHardcoded" />
+     <TextView
+         android:id="@+id/modifytoolbarText"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity ="center"
+         android:layout_marginRight="180dp"
+         android:textColor="@color/textcolor3"
+         android:textSize="19sp"
+         tools:text="更改名字"
+         tools:ignore="RtlHardcoded" />
+      <Button
+          android:id="@+id/modifySend"
+          android:layout_width="50dp"
+          android:layout_height="30dp"
+          android:layout_gravity="right"
+          android:layout_marginRight="10dp"
+          android:textSize="16sp"
+          android:textColor="@color/colorwhite"
+          android:text="保存"
+          android:background="@drawable/login_button_selector"
+          tools:ignore="HardcodedText,RtlHardcoded" />
+  </android.support.v7.widget.Toolbar>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/spacecolor"/>
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="10dp"/>
+    <EditText
+        android:id="@+id/modifyeditView"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:inputType="textMultiLine"
+        android:textColor="@color/textcolor3"
+        android:textSize="17sp"
+        tools:text="哈哈哈哈哈哈哈哈哈哈哈啊哈大蛇丸地方擦拭大碗大碗 awash大哈哈哈哈哈"
+        />
+    <TextView
+        android:id="@+id/hintText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="hello"
+        android:layout_marginLeft="20dp"
+        tools:ignore="RtlHardcoded" />
+</LinearLayout>

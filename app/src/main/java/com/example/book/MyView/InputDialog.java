@@ -28,14 +28,16 @@ public class InputDialog extends Dialog {
     private Button okTo;
     public EditText inputPrice;
     private View.OnClickListener mClickListener;
+    private String hint;
     public InputDialog(@NonNull Context context) {
         super(context);
     }
 
-    public InputDialog(@NonNull Activity context, @StyleRes int themeResId, View.OnClickListener mClickListener) {
+    public InputDialog(@NonNull Activity context, @StyleRes int themeResId, View.OnClickListener mClickListener,String hint) {
         super(context, themeResId);
         this.context =  context;
         this.mClickListener = mClickListener;
+        this.hint = hint;
     }
 
     @Override
@@ -45,6 +47,7 @@ public class InputDialog extends Dialog {
         cancelTo = (Button)findViewById(R.id.cancelto);
         okTo = (Button)findViewById(R.id.okto);
         inputPrice = (EditText)findViewById(R.id.input_pricedialog);
+        inputPrice.setHint(hint);
         okTo.setOnClickListener(mClickListener);
         cancelTo.setOnClickListener(new View.OnClickListener() {
             @Override

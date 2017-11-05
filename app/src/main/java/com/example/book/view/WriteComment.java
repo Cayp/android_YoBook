@@ -85,7 +85,7 @@ public class WriteComment extends BaseActivity implements SendComment{
         String content = commentContent.getText().toString().trim();
         addComment(share_id,content,reply_id);
     }
-    public void showKeyboard(){
+    private void showKeyboard(){
         Timer timer = new Timer();
         timer.schedule(new TimerTask()
         {

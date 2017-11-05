@@ -11,7 +11,7 @@
     <Button
         android:id="@+id/login"
         style="@android:style/Widget.Button"
-        android:layout_width="236dp"
+        android:layout_width="290dp"
         android:layout_height="48dp"
         android:background="@drawable/login_button_selector"
         android:text="@string/login"

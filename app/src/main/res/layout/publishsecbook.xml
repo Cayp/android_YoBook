@@ -78,6 +78,13 @@
             android:layout_marginLeft="10dp"
             android:visibility="visible"
             tools:ignore="ContentDescription,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="**只能选一张.."
+            tools:ignore="HardcodedText,RtlHardcoded" />
     </LinearLayout>
     <View
         android:layout_width="match_parent"

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -19,17 +20,25 @@
         android:textSize="18sp"
         android:textColor="@color/textcolor3"
         tools:ignore="HardcodedText" />
-    <TextView
+    <RelativeLayout
         android:id="@+id/me_setting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:clickable="true"
+        tools:ignore="RtlHardcoded">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:layout_marginRight="16dp"
         android:text="修改"
         android:textColor="@color/textcolor3"
         android:textSize="18sp"
         tools:ignore="HardcodedText,RtlHardcoded" />
+    </RelativeLayout>
 </RelativeLayout>
     <View
         android:layout_width="match_parent"
@@ -49,6 +58,8 @@
             android:layout_height="63dp"
             android:layout_marginLeft="35dp"
             android:layout_marginTop="24dp"
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/spacecolor"
             android:src="@mipmap/ic_launcher"
             tools:ignore="RtlHardcoded" />
 
@@ -96,7 +107,7 @@
                 android:layout_height="match_parent"
                 android:text="我的分享"
                 android:textSize="16sp"
-                android:textColor="@color/textcolor3"
+                android:textColor="@drawable/textselector"
                 android:layout_marginLeft="15dp"
                 tools:ignore="HardcodedText,RtlHardcoded" />
             <View
@@ -114,7 +125,7 @@
                 android:layout_height="match_parent"
                 android:text="上架书籍"
                 android:textSize="16sp"
-                android:textColor="@color/textcolor3"
+                android:textColor="@drawable/textselector"
                 android:layout_toRightOf="@+id/split"
                 android:layout_marginLeft="13dp"
                 tools:ignore="HardcodedText,RtlHardcoded" />
@@ -133,7 +144,7 @@
                 android:layout_height="match_parent"
                 android:text="我的笔记"
                 android:textSize="16sp"
-                android:textColor="@color/textcolor3"
+                android:textColor="@drawable/textselector"
                 android:layout_toRightOf="@+id/split2"
                 android:layout_marginLeft="13dp"
                 tools:ignore="HardcodedText,RtlHardcoded" />

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/milkwhite">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textcolor2"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:textSize="25sp"
+        android:text="详情"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+    <RelativeLayout
+        android:id="@+id/cancelwrapper"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:clickable="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        tools:ignore="RtlHardcoded">
+    <ImageView
+        android:id="@+id/cancelIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/cancelicon"
+        tools:ignore="ContentDescription,RtlHardcoded" />
+    </RelativeLayout>
+</RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/shareBookDetailscrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:id="@+id/midhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/bookCover"
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                tools:ignore="ContentDescription,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/bookauthortext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/bookCover"
+                android:text="作者:"
+                android:textColor="@color/colordarkgray"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/bookauthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/bookauthortext"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/bookauthortext"
+                android:layout_toRightOf="@+id/bookauthortext"
+                android:textColor="@color/textcolor3"
+                android:textSize="18sp"
+                tools:text="sdfaswfaswfsafgaswfcvasw" />
+
+            <TextView
+                android:id="@+id/publishNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="73dp"
+                android:layout_toRightOf="@id/bookCover"
+                android:text="出版商"
+                android:textColor="@color/colordarkgray"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/publishName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/publishNameText"
+                android:layout_marginLeft="3dp"
+                android:layout_toEndOf="@+id/publishNameText"
+                android:layout_toRightOf="@+id/publishNameText"
+                android:textColor="@color/textcolor3"
+                android:textSize="18sp"
+                tools:ignore="RtlHardcoded"
+                tools:text="sssssssssssssss" />
+
+            <TextView
+                android:id="@+id/publishDateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/publishNameText"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@+id/bookCover"
+                android:text="出版日期"
+                android:textColor="@color/colordarkgray"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/publishDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/publishDateText"
+                android:layout_marginLeft="11dp"
+                android:layout_marginStart="11dp"
+                android:layout_toEndOf="@+id/publishDateText"
+                android:layout_toRightOf="@+id/publishDateText"
+                android:textColor="@color/textcolor3"
+                android:textSize="18sp"
+                tools:text="hahahahahahaha" />
+
+            <TextView
+                android:id="@+id/jianjieText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bookCover"
+                android:layout_marginLeft="15dp"
+                android:text="简介:"
+                android:textColor="@color/colordarkgray"
+                android:textSize="20sp"
+                android:visibility="visible"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/jianjie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/jianjieText"
+                android:padding="5dp"
+                android:textColor="@color/textcolor3"
+                android:textSize="18sp"
+                tools:text="本书被广大Android 开发者誉为“Android 学习第一书”。全书系统全面、循序渐进地介绍了Android软件开发的必备知识、经验和技巧。\n第2版基于Android 7.0 对第1 版进行了全面更新，将所有知识点都在最新的Android 系统上进行重新适配，使用 全新的Android Studio 开发工具代替之前的Eclipse，并添加了对Material Design、运行时权限、Gradle、RecyclerView、百分比布局、OkHttp、Lambda 表达式等全新知识点的详细讲解。\n本书内容通俗易懂，由浅入深，既是Android 初学者的入门必备，也是Android 开发者的进阶首选。" />
+
+            <TextView
+                android:id="@+id/subtiletext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/publishDateText"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/bookCover"
+                android:text="类型:"
+                android:textColor="@color/colordarkgray"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/subtile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/bookauthor"
+                android:layout_alignStart="@+id/bookauthor"
+                android:layout_alignTop="@+id/subtiletext"
+                android:textColor="@color/textcolor3"
+                android:textSize="18sp"
+                tools:text="kkkkkkkddddd" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/detailProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zerodp"
+        android:layout_weight="1"
+        android:visibility="visible"
+        tools:ignore="InefficientWeight">
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="154dp" />
+    </RelativeLayout>
+</LinearLayout>

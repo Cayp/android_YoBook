@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/loginbackgroud"
     tools:context="com.example.book.view.RegisterActivity"
 >
 <include layout="@layout/toolbar"
-        android:id="@+id/register_toolbar"/>
+        android:id="@+id/register_toolbar"
+    />
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="@dimen/zerodp"
+        android:layout_weight="1">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -21,15 +24,13 @@
         android:layout_height="43dp"
         android:contentDescription=""
         tools:ignore="ContentDescription"
-        android:layout_alignTop="@+id/checkcodewrapper"
-        android:layout_alignRight="@+id/register"
-        android:layout_alignEnd="@+id/register"
-        android:layout_marginRight="11dp"
-        android:layout_marginEnd="11dp" />
+        android:layout_above="@+id/register"
+        android:layout_alignRight="@+id/group"
+        android:layout_alignEnd="@+id/group" />
 
     <Button
         android:id="@+id/register"
-        android:layout_width="218dp"
+        android:layout_width="290dp"
         android:layout_height="51dp"
         android:text="@string/register"
         android:textColor="@color/colorwhite"
@@ -46,10 +47,9 @@
         android:layout_height="34dp"
         android:orientation="horizontal"
         android:weightSum="1"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="21dp"
         android:layout_below="@+id/linearLayout"
-        android:layout_alignLeft="@+id/register"
-        android:layout_alignStart="@+id/register">
+        android:layout_centerHorizontal="true">
             <RadioButton
                 android:id="@+id/male"
                 android:layout_width="99dp"
@@ -78,7 +78,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:id="@+id/linearLayout"
-    android:layout_marginTop="110dp"
+    android:layout_marginTop="30dp"
     android:layout_alignParentTop="true"
     android:layout_centerHorizontal="true">
 
@@ -90,12 +90,11 @@
 
         <EditText
             android:id="@+id/account"
+            style="@style/inputcolor"
             android:layout_width="250dp"
             android:layout_height="51dp"
             android:hint="@string/account"
-            style="@style/inputcolor"
-            android:inputType="text"
-            />
+            android:inputType="text" />
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
         android:id="@+id/usernamewrapper"
@@ -151,11 +150,10 @@
         android:id="@+id/checkcodewrapper"
         android:layout_width="101dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="9dp"
         android:layout_below="@+id/group"
         android:layout_alignLeft="@+id/group"
-        android:layout_alignStart="@+id/group"
-        >
+        android:layout_alignStart="@+id/group">
 
         <EditText
             android:id="@+id/checkcode"
@@ -174,4 +172,4 @@
     </android.support.design.widget.TextInputLayout>
         </RelativeLayout>
     </ScrollView>
-</RelativeLayout>
+</LinearLayout>

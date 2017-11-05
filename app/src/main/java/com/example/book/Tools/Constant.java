@@ -30,6 +30,13 @@ public class Constant {
     public static final long TWENTYTHREEHOUR = 86400000;
     public static final long ONEHOUR = 3600000;
     public static final long ONEMI = 60000;
+    public static final int  ONESEC = 1000;
     public static final int SHAREVIEWAGER = 33;
     public static final int FINDVIEWAGER = 34;
+    public static final int CANTFOUNDBOOK = 35;
+    public static final int MODIFYNAME = 36;
+    public static final int MODIFYJIANJIE = 37;
+    public static final int RESULT_OK = 38;
+    public static final int RETCANGLE = 39;
+    public static final int CIRCLE = 40;
 }

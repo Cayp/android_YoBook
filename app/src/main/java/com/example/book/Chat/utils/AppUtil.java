@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.example.book.Tools.Constant;
+import com.lzy.imagepicker.ImagePicker;
+import com.lzy.imagepicker.view.CropImageView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,5 +40,16 @@ public class AppUtil {
         SharedPreferences sharedPreferences = context.getSharedPreferences(Constant.ID,Context.MODE_PRIVATE);
         int userid = sharedPreferences.getInt(Constant.USER_ID,0);
         return  userid;
+    }
+    public static void setImagePicker(int pictureNum,boolean isMult,boolean isRectangle,int shape){
+        ImagePicker imagePicker = ImagePicker.getInstance();
+        imagePicker.setMultiMode(isMult);
+        imagePicker.setSelectLimit(pictureNum);
+        imagePicker.setSaveRectangle(isRectangle);
+        if(shape == Constant.RETCANGLE){
+            imagePicker.setStyle(CropImageView.Style.RECTANGLE);
+        }else {
+            imagePicker.setStyle(CropImageView.Style.CIRCLE);
+        }
     }
 }
