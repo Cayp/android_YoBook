@@ -107,6 +107,7 @@
                 android:layout_height="match_parent"
                 android:text="我的分享"
                 android:textSize="16sp"
+                android:clickable="true"
                 android:textColor="@drawable/textselector"
                 android:layout_marginLeft="15dp"
                 tools:ignore="HardcodedText,RtlHardcoded" />
@@ -125,6 +126,7 @@
                 android:layout_height="match_parent"
                 android:text="上架书籍"
                 android:textSize="16sp"
+                android:clickable="true"
                 android:textColor="@drawable/textselector"
                 android:layout_toRightOf="@+id/split"
                 android:layout_marginLeft="13dp"
@@ -144,6 +146,7 @@
                 android:layout_height="match_parent"
                 android:text="我的笔记"
                 android:textSize="16sp"
+                android:clickable="true"
                 android:textColor="@drawable/textselector"
                 android:layout_toRightOf="@+id/split2"
                 android:layout_marginLeft="13dp"

@@ -8,12 +8,14 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.example.book.Tools.MyApplication;
+
 /**
  * Created by Clanner on 2017/2/6.
  */
 
 public class ConnectionService extends Service {
-
+    private static final String TAG = "ConnectionService";
     private ConnectionThread thread;
     private final String ADDRESS = "139.199.165.150";
     private final int PORT = 2916;
@@ -21,7 +23,8 @@ public class ConnectionService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        thread = new ConnectionThread("mina", getApplicationContext());
+        Log.d(TAG, "isStartService");
+        thread = new ConnectionThread("mina", MyApplication.getContext());
         thread.start();
     }
 

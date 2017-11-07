@@ -12,9 +12,13 @@ import com.example.book.Tools.UrlHelper;
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.builder.PostFormBuilder;
+import com.zhy.http.okhttp.callback.StringCallback;
+
 import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -30,48 +34,46 @@ import okhttp3.Response;
 public class PublishShareModel {
     private static final String TAG = "PublishShareModel";
     private PublishSharePresenter publishSharePresenter;
-    private final OkHttpClient okHttpClient = OkHttpUtils.getInstance().getOkHttpClient();
     public PublishShareModel(PublishSharePresenter publishSharePresenter) {
         this.publishSharePresenter = publishSharePresenter;
     }
 
-    public void PublishShare(PublishShareHelper publishShareHelper){
+    public void PublishShare(final PublishShareHelper publishShareHelper){
         if(TextUtils.isEmpty(publishShareHelper.getIsbn())||TextUtils.isEmpty(publishShareHelper.getContent())){
            publishSharePresenter.getFailure(Constant.ERROR_LOGIN_NULL);
         }else{
             if(!NetworkUtils.isConnected()){
             publishSharePresenter.getFailure(Constant.ERROR_NO_INTERNET);
             }else {
-                   MultipartBody.Builder requestBodybuilder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+                try {
+                PostFormBuilder postFormBuilder = OkHttpUtils.post();
                 if(publishShareHelper.getFiles()!=null) {
                     for (int i = 0; i < publishShareHelper.getFiles().size(); i++) {
-                        requestBodybuilder.addFormDataPart("cover", publishShareHelper.getFiles().get(i).getPath(), RequestBody.create(MediaType.parse("image/jpg"), publishShareHelper.getFiles().get(i).getCover()));
+                        postFormBuilder.addFile("cover"
+                                ,publishShareHelper.getFiles().get(i).getPath()
+                                ,publishShareHelper.getFiles().get(i).getCover());
                     }
-                }
-                   RequestBody requestBody = requestBodybuilder.build();
-                    Request request = new Request.Builder()
-                                         .url(UrlHelper.PUBLISHSHARE)
-                                         .post(requestBody)
-                                         .addHeader("content",publishShareHelper.getContent())
-                                         .addHeader("name",publishShareHelper.getName())
-                                         .addHeader("isbn",publishShareHelper.getIsbn())
-                                         .addHeader("type_id",""+publishShareHelper.getTypeId())
-                                         .build();
-                try {
-                   okHttpClient.newCall(request).enqueue(new Callback() {
-                       @Override
-                       public void onFailure(Call call, IOException e) {
-                           publishSharePresenter.getFailure(1);
-                       }
+                    postFormBuilder.addParams("content",publishShareHelper.getContent())
+                                   .addParams("name",publishShareHelper.getName())
+                                   .addParams("isbn",publishShareHelper.getIsbn())
+                                    .addParams("type_id",""+publishShareHelper.getTypeId())
+                                    .build()
+                                    .execute(new StringCallback() {
+                                        @Override
+                                        public void onError(Call call, Exception e, int id) {
+                                            publishSharePresenter.getFailure(1);
+                                        }
 
-                       @Override
-                       public void onResponse(Call call, Response response) throws IOException {
-                       RegisterHelper registerHelper = new Gson().fromJson(response.body().string(),RegisterHelper.class);
-                           if(registerHelper.getCode()==20000){
-                               publishSharePresenter.publishShareSuccess();
-                           }
-                       }
-                   });
+                                        @Override
+                                        public void onResponse(String response, int id) {
+                                        RegisterHelper registerHelper = new Gson().fromJson(response,RegisterHelper.class);
+                                         if(registerHelper.getCode()==20000){
+                                             publishSharePresenter.publishShareSuccess();
+                                         }
+                                        }
+                                    });
+
+                }
                 }catch (JsonIOException j){
                     j.printStackTrace();
                 }

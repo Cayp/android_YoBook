@@ -65,7 +65,7 @@ public class GetShareAllModel {
                                         getShareAllHelper.setId(shareItem.getId());
                                         getShareAllHelper.setUserId(shareItem.getUserId());
                                         getShareAllHelper.setBookName(shareItem.getName());
-                                        getShareAllHelper.setBookCover(shareItem.getCover());
+                                        getShareAllHelper.setBookcovers(shareItem.getCover());
                                         getShareAllHelper.setContent(shareItem.getContent());
                                         getShareAllHelper.setCommentNum(shareItem.getCommentNum());
                                         getShareAllHelper.setStarNum(shareItem.getStarNum());

@@ -138,24 +138,31 @@
                   android:textSize="15sp"
                   tools:text="故事很好dfsdefasdfsedfsadfsdfsd看，沙威:他的悲惨主要体现在最后，他一生的信仰，他唯一相信的Order，他坚持行走的正道，被无法抗拒地动摇了，甚至摧毁了。一种体制内人物的悲哀"
                   tools:ignore="RtlHardcoded" />
+
               <RelativeLayout
+                  android:id="@+id/sharecoverWrapper"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:background="#fafafa">
+                  android:background="#fafafa"
+                  android:visibility="gone">
 
                   <ImageView
                       android:id="@+id/sharecover"
                       android:layout_width="150dp"
                       android:layout_height="160dp"
                       android:layout_marginLeft="15dp"
-                      android:visibility="gone"
+                      android:visibility="visible"
                       tools:ignore="ContentDescription,RtlHardcoded" />
 
-                  <View
-                      android:id="@+id/view"
-                      android:layout_width="match_parent"
-                      android:layout_height="10dp"
-                      android:background="@color/spacecolor" />
+                  <ImageView
+                      android:id="@+id/sharecover1"
+                      android:layout_width="150dp"
+                      android:layout_height="160dp"
+                      android:layout_alignParentRight="true"
+                      android:layout_marginRight="30dp"
+                      android:visibility="visible"
+                      tools:ignore="ContentDescription,RtlHardcoded" />
+
               </RelativeLayout>
           </LinearLayout>
 

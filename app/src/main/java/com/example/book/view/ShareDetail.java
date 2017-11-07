@@ -108,6 +108,10 @@ public class ShareDetail extends BaseActivity implements OnScrollListener,TabLay
     SwipeRefreshLayout swipeRefresh;
     @BindView(R.id.like)
     RelativeLayout like;
+    @BindView(R.id.sharecover1)
+    ImageView shareCover1;
+    @BindView(R.id.sharecoverWrapper)
+    RelativeLayout sharecoverWrapper;
     private static final String TAG = "ShareDetail";
     private GetShareAllHelper getShareAllHelper;
     private CommentAdapter commentAdapter;
@@ -200,17 +204,32 @@ public class ShareDetail extends BaseActivity implements OnScrollListener,TabLay
 
     }
     private void initUserData(GetShareAllHelper getShareAllHelper){
-         String shareCoverPath = getShareAllHelper.getBookCover();
          share1UserName.setText(getShareAllHelper.getUserName());
          user_name.setText(getShareAllHelper.getUserName());
          bookname.setText("《"+getShareAllHelper.getBookName()+"》");
          shareContent.setText(getShareAllHelper.getContent());
-         if(shareCoverPath != null&&shareCoverPath.equals("")){
-             Picasso.with(this)
-                     .load(UrlHelper.GETSHARECOVER + getShareAllHelper.getUserId() + "/" +getShareAllHelper.getId() + "/" +shareCoverPath)
-                     .fit()
-                     .into(shareCover);
-         }
+        if(getShareAllHelper.getBookcovers() != null&&!getShareAllHelper.getBookcovers().equals("")) {
+            sharecoverWrapper.setVisibility(View.VISIBLE);
+            String[] bookCover = getShareAllHelper.getBookcovers().split(",");
+            switch (bookCover.length) {
+                case 1:
+                    Picasso.with(MyApplication.getContext())
+                            .load(UrlHelper.GETSHARECOVER + getShareAllHelper.getUserId() + "/" + getShareAllHelper.getId() + "/" + bookCover[0])
+                            .fit()
+                            .into(shareCover);
+                    break;
+                case 2:
+                    Picasso.with(MyApplication.getContext())
+                            .load(UrlHelper.GETSHARECOVER + getShareAllHelper.getUserId() + "/" + getShareAllHelper.getId() + "/" + bookCover[0])
+                            .fit()
+                            .into(shareCover);
+                    Picasso.with(MyApplication.getContext())
+                            .load(UrlHelper.GETSHARECOVER + getShareAllHelper.getUserId() + "/" + getShareAllHelper.getId() + "/" + bookCover[1])
+                            .fit()
+                            .into(shareCover1);
+                    break;
+            }
+        }
          Picasso.with(this)
                  .load(UrlHelper.GETAVATAR  + getShareAllHelper.getUserIcon())
                  .into(userheadicon);

@@ -1,6 +1,8 @@
 package com.example.book.Fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
@@ -8,7 +10,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.example.book.Adapter.TradeRecyclerAdapter;
 import com.example.book.Base.LazyLoadFragment;
+import com.example.book.Chat.entity.Notice;
 import com.example.book.Chat.utils.AppUtil;
+import com.example.book.Chat.utils.RxBus;
 import com.example.book.EntityClass.SecondBookAllData;
 import com.example.book.EntityClass.UserDataid_Icon;
 import com.example.book.Presenter.GetBookPresenter;
@@ -30,6 +34,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import rx.Subscriber;
+import rx.Subscription;
 
 /**
  * Created by ljp on 2017/9/14.
@@ -42,10 +48,17 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
     LRecyclerView lRecyclerView;
     @BindView(R.id.loading_text)
     TextView loadtext;
-    TradeRecyclerAdapter tradeRecyclerAdapter;
-    LRecyclerViewAdapter lRecyclerViewAdapter;
-    GetBookPresenter getBookPresenter;
-
+    private TradeRecyclerAdapter tradeRecyclerAdapter;
+    private LRecyclerViewAdapter lRecyclerViewAdapter;
+    private GetBookPresenter getBookPresenter;
+    private Subscription subscription;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            MyToast.toast(((Notice) msg.obj).getContent());
+        }
+    };
     private List<SecondBookAllData> mdataList = new ArrayList<>();
     private boolean isLoadMore = false;                    //添加判断是否是向下加载更多
     private List<UserDataid_Icon> mList = new ArrayList<>();
@@ -93,7 +106,26 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
                     requestData();
             }
         });
+        subscription = RxBus.getInstance().receive(Notice.class).subscribe(new Subscriber<Notice>() {
+            @Override
+            public void onCompleted() {
+                Log.e("DEBUG", "完成");
+            }
 
+            @Override
+            public void onError(Throwable e) {
+                Log.e("DEBUG", "错误信息" + e.getMessage());
+            }
+
+            @Override
+            public void onNext(Notice notice) {
+                //到时换成通知栏显示
+                Message message = new Message();
+                message.obj = notice;
+                handler.sendMessage(message);
+                Log.d(TAG, "areuhere?");
+            }
+        });
 
     }
 

@@ -18,6 +18,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 }
 
 dependencies {
@@ -38,8 +39,9 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.github.jdsjlzx:LRecyclerView:1.4.3'
+    compile 'org.litepal.android:core:1.6.0'
     compile 'com.lzy.widget:imagepicker:0.6.1'
-    compile  project(':libzxing')
+    compile project(':libzxing')
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile files('libs/mina-core-2.0.16.jar')

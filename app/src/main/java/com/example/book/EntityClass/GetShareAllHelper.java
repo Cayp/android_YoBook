@@ -1,6 +1,7 @@
 package com.example.book.EntityClass;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by ljp on 2017/10/14.
@@ -13,7 +14,7 @@ public class GetShareAllHelper implements Serializable {
     private String userIcon;
     private String content;
     private String bookName;
-    private String bookCover;
+    private String bookcovers;
     private long time;
     private int commentNum;
     private int starNum;
@@ -67,13 +68,7 @@ public class GetShareAllHelper implements Serializable {
         this.bookName = bookName;
     }
 
-    public String getBookCover() {
-        return bookCover;
-    }
 
-    public void setBookCover(String bookCover) {
-        this.bookCover = bookCover;
-    }
 
     public int getCommentNum() {
         return commentNum;
@@ -105,5 +100,13 @@ public class GetShareAllHelper implements Serializable {
 
     public void setTime(long time) {
         this.time = time;
+    }
+
+    public String getBookcovers() {
+        return bookcovers;
+    }
+
+    public void setBookcovers(String bookcovers) {
+        this.bookcovers = bookcovers;
     }
 }

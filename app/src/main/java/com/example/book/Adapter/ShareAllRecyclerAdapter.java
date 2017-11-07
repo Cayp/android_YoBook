@@ -1,6 +1,7 @@
 package com.example.book.Adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.example.book.Tools.UrlHelper;
 import com.example.book.view.AbstractView.EnterToDetailListener;
 import com.example.book.view.AbstractView.LikeListener;
 import com.example.book.view.AbstractView.WriteCommentListener;
+import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -37,6 +39,7 @@ public class ShareAllRecyclerAdapter extends RecyclerView.Adapter<ShareAllRecycl
     private EnterToDetailListener enterToDetailListener;
     private WriteCommentListener writeCommentListener;
     private LikeListener likeListener;
+    private static final String TAG = "ShareAllRecyclerAdapter";
     static class ViewHolder extends RecyclerView.ViewHolder{
         CircleImageView headIcon;
         TextView userName;
@@ -51,6 +54,8 @@ public class ShareAllRecyclerAdapter extends RecyclerView.Adapter<ShareAllRecycl
         LinearLayout enterToDetail;
         RelativeLayout commentWrapper;
         RelativeLayout like;
+        ImageView shareCover1;
+        RelativeLayout sharecoverWrapper;
         public ViewHolder(View itemView) {
             super(itemView);
             headIcon = (CircleImageView)itemView.findViewById(R.id.userheadicon);
@@ -61,11 +66,13 @@ public class ShareAllRecyclerAdapter extends RecyclerView.Adapter<ShareAllRecycl
             shareContent = (TextView)itemView.findViewById(R.id.shareContent);
             touchGetMore = (TextView)itemView.findViewById(R.id.touchGetMore);
             shareCover = (ImageView)itemView.findViewById(R.id.sharecover);
+            shareCover1 = (ImageView)itemView.findViewById(R.id.sharecover1) ;
             commentSum = (TextView)itemView.findViewById(R.id.commenSum);
             likeSum = (TextView)itemView.findViewById(R.id.likeSum);
             enterToDetail = (LinearLayout)itemView.findViewById(R.id.enterToDetail);
             commentWrapper = (RelativeLayout)itemView.findViewById(R.id.commentwrapper);
             like = (RelativeLayout)itemView.findViewById(R.id.like);
+            sharecoverWrapper = (RelativeLayout)itemView.findViewById(R.id.sharecoverWrapper);
         }
     }
     @Override
@@ -100,12 +107,32 @@ public class ShareAllRecyclerAdapter extends RecyclerView.Adapter<ShareAllRecycl
      }
      holder.commentSum.setText(""+onePisData.getCommentNum()+"");
      holder.likeSum.setText(""+onePisData.getStarNum()+"");
-     if(onePisData.getBookCover() != null&&!onePisData.getBookCover().equals("")){
-         holder.shareCover.setVisibility(View.VISIBLE);
-         Picasso.with(MyApplication.getContext())
-                 .load(UrlHelper.GETSHARECOVER + onePisData.getUserId()+"/"+onePisData.getId()+"/"+onePisData.getBookCover())
-                 .fit()
-                 .into(holder.shareCover);
+     if(onePisData.getBookcovers() != null) {
+         Log.d(TAG, onePisData.getUserName()+"showpicture**"+onePisData.getBookcovers());
+         if (!onePisData.getBookcovers().equals("")) {
+             holder.sharecoverWrapper.setVisibility(View.VISIBLE);
+             String[] bookCover = onePisData.getBookcovers().split(",");
+             switch (bookCover.length) {
+                 case 1:
+                     Picasso.with(MyApplication.getContext())
+                             .load(UrlHelper.GETSHARECOVER + onePisData.getUserId() + "/" + onePisData.getId() + "/" + bookCover[0])
+                             .fit()
+                             .into(holder.shareCover);
+                     break;
+                 case 2:
+                     Picasso.with(MyApplication.getContext())
+                             .load(UrlHelper.GETSHARECOVER + onePisData.getUserId() + "/" + onePisData.getId() + "/" + bookCover[0])
+                             .fit()
+                             .into(holder.shareCover);
+                     Picasso.with(MyApplication.getContext())
+                             .load(UrlHelper.GETSHARECOVER + onePisData.getUserId() + "/" + onePisData.getId() + "/" + bookCover[1])
+                             .fit()
+                             .into(holder.shareCover1);
+                     break;
+             }
+         }
+     }else {
+         holder.sharecoverWrapper.setVisibility(View.GONE);
      }
      Picasso.with(MyApplication.getContext())
              .load(UrlHelper.GETAVATAR + onePisData.getUserIcon())

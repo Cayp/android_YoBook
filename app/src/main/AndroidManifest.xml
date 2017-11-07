@@ -57,6 +57,7 @@
         <activity android:name=".view.ZxingActivity"/>
         <activity android:name=".view.ModifyKuangActivity"/>
         <activity android:name=".view.ModifyUserDataActivity"/>
+        <service
+            android:name=".Chat.keepalive.ConnectionService"/>
     </application>
-
 </manifest>

@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.example.book.Chat.keepalive.ConnectionService;
 import com.example.book.MyView.PicassoImageLoader;
@@ -15,6 +16,8 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.cookie.CookieJarImpl;
 import com.zhy.http.okhttp.cookie.store.PersistentCookieStore;
 
+import org.litepal.LitePal;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -24,12 +27,14 @@ import okhttp3.OkHttpClient;
  */
 
 public class MyApplication extends Application {
+    private static final String TAG = "MyApplication";
     private static Context context;
     private static OkHttpClient okHttpClient;
     @Override
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
+        LitePal.initialize(context);
         CookieJarImpl cookieJar = new CookieJarImpl(new PersistentCookieStore(getApplicationContext()));
         okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(10000L, TimeUnit.MILLISECONDS)
@@ -46,7 +51,10 @@ public class MyApplication extends Application {
         if (sharedPreferences != null) {
             long lastTime = sharedPreferences.getLong(Constant.LAST_OPEN, 0);
             if (lastTime != 0 && (System.currentTimeMillis() - lastTime) < Constant.THREEDAY) {//登陆未过期，开启长链接
-                startService(new Intent(this, ConnectionService.class));
+                Intent intent = new Intent(this, ConnectionService.class);
+                Log.e(TAG, "tartService?" );
+                intent.setAction("android.intent.action.RESPOND_VIA_MESSAGE");
+                startService(intent);
             }
         }
         setId();
