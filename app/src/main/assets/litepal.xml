@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname  value ="ChatStore"/>
+    <version value = "4"/>
+    <list>
+        <mapping class ="com.example.book.EntityClass.ChatBook"/>
+        <mapping class="com.example.book.EntityClass.ChatObjects"/>
+        <mapping class="com.example.book.EntityClass.NoteBook"/>
+        <mapping class="com.example.book.EntityClass.Note"/>
+    </list>
+</litepal>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/milkwhite">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textcolor2"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:textSize="25sp"
+            android:text="已有列表"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+        <RelativeLayout
+            android:id="@+id/cancelwrapper"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:clickable="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            tools:ignore="RtlHardcoded">
+            <ImageView
+                android:id="@+id/cancelIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/cancelicon"
+                tools:ignore="ContentDescription,RtlHardcoded" />
+        </RelativeLayout>
+    </RelativeLayout>
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/exitGrid"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/zerodp"
+    android:layout_weight="1"
+    tools:ignore="InefficientWeight" />
+</LinearLayout>

@@ -21,6 +21,7 @@ import com.example.book.Tools.UrlHelper;
 import com.example.book.view.AbstractView.GetData;
 import com.example.book.view.ModifyKuangActivity;
 import com.example.book.view.ModifyUserDataActivity;
+import com.example.book.view.MyNote;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
@@ -41,6 +42,8 @@ public class MyDataFragment extends LazyLoadFragment implements GetData{
     TextView  synopsis;
     @BindView(R.id.me_setting)
     RelativeLayout meSetting;
+    @BindView(R.id.my_note)
+    TextView myNote;
     private GetUserDataHelper.UserData getUserData;
     private  int currentUserId;
     @Override
@@ -94,7 +97,7 @@ public class MyDataFragment extends LazyLoadFragment implements GetData{
              break;
      }
     }
-    @OnClick({R.id.me_setting})
+    @OnClick({R.id.me_setting,R.id.my_note})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.me_setting:
@@ -103,6 +106,10 @@ public class MyDataFragment extends LazyLoadFragment implements GetData{
                 bundle.putParcelable("userData",getUserData);
                 intent.putExtras(bundle);
                 startActivityForResult(intent,1);
+                break;
+            case R.id.my_note:
+                Intent intent1 = new Intent(MyApplication.getContext(), MyNote.class);
+                startActivity(intent1);
                 break;
         }
     }

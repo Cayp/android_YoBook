@@ -120,6 +120,7 @@ public class ShareAllRecyclerAdapter extends RecyclerView.Adapter<ShareAllRecycl
                              .into(holder.shareCover);
                      break;
                  case 2:
+                     holder.shareCover1.setVisibility(View.VISIBLE);
                      Picasso.with(MyApplication.getContext())
                              .load(UrlHelper.GETSHARECOVER + onePisData.getUserId() + "/" + onePisData.getId() + "/" + bookCover[0])
                              .fit()

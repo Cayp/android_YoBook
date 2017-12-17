@@ -31,6 +31,7 @@
         </activity>
         <activity
             android:name=".Chat.activity.ChatActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
             android:launchMode="singleTask">
         </activity>
         <activity
@@ -57,7 +58,15 @@
         <activity android:name=".view.ZxingActivity"/>
         <activity android:name=".view.ModifyKuangActivity"/>
         <activity android:name=".view.ModifyUserDataActivity"/>
+        <activity android:name=".view.PublishNoteActivity"/>
+        <activity android:name=".view.MyNote"/>
+        <activity android:name=".view.NoteDetailActivity"/>
+        <activity android:name=".view.NoteItemBookActivity"/>
         <service
-            android:name=".Chat.keepalive.ConnectionService"/>
+            android:name=".Chat.keepalive.ConnectionService">
+            <intent-filter>
+                <action android:name="android.intent.action.RESPOND_VIA_MESSAGE"/>
+            </intent-filter>
+        </service>
     </application>
 </manifest>

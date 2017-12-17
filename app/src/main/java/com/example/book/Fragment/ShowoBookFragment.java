@@ -51,14 +51,6 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
     private TradeRecyclerAdapter tradeRecyclerAdapter;
     private LRecyclerViewAdapter lRecyclerViewAdapter;
     private GetBookPresenter getBookPresenter;
-    private Subscription subscription;
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            MyToast.toast(((Notice) msg.obj).getContent());
-        }
-    };
     private List<SecondBookAllData> mdataList = new ArrayList<>();
     private boolean isLoadMore = false;                    //添加判断是否是向下加载更多
     private List<UserDataid_Icon> mList = new ArrayList<>();
@@ -85,7 +77,7 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
         lRecyclerView.setAdapter(lRecyclerViewAdapter);
         lRecyclerView.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));
         lRecyclerView.setRefreshProgressStyle(ProgressStyle.LineSpinFadeLoader);
-        lRecyclerView.setArrowImageView(R.drawable.turnhead);
+//        lRecyclerView.setArrowImageView(R.drawable.turnhead);
         lRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
         lRecyclerView.setOnRefreshListener(new OnRefreshListener() {
             @Override
@@ -106,27 +98,6 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
                     requestData();
             }
         });
-        subscription = RxBus.getInstance().receive(Notice.class).subscribe(new Subscriber<Notice>() {
-            @Override
-            public void onCompleted() {
-                Log.e("DEBUG", "完成");
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Log.e("DEBUG", "错误信息" + e.getMessage());
-            }
-
-            @Override
-            public void onNext(Notice notice) {
-                //到时换成通知栏显示
-                Message message = new Message();
-                message.obj = notice;
-                handler.sendMessage(message);
-                Log.d(TAG, "areuhere?");
-            }
-        });
-
     }
 
     @Override

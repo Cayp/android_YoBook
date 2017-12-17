@@ -3,19 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="wrap_content">
+<View
+    android:layout_width="match_parent"
+    android:layout_height="15dp"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
                 <TextView
                     android:id="@+id/leftText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@mipmap/right"
-                    android:text="发送 "
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/left"
+                    android:maxWidth="330dp"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="15dp"
+                    android:text="sdsdfsdfsf"
                     android:textSize="20sp"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry" />
         </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"/>
 </LinearLayout>

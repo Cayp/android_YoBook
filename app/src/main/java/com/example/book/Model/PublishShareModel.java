@@ -50,10 +50,12 @@ public class PublishShareModel {
                 if(publishShareHelper.getFiles()!=null) {
                     for (int i = 0; i < publishShareHelper.getFiles().size(); i++) {
                         postFormBuilder.addFile("cover"
-                                ,publishShareHelper.getFiles().get(i).getPath()
-                                ,publishShareHelper.getFiles().get(i).getCover());
+                                , publishShareHelper.getFiles().get(i).getPath()
+                                , publishShareHelper.getFiles().get(i).getCover());
                     }
-                    postFormBuilder.addParams("content",publishShareHelper.getContent())
+                }
+                    postFormBuilder.url(UrlHelper.PUBLISHSHARE)
+                                   .addParams("content",publishShareHelper.getContent())
                                    .addParams("name",publishShareHelper.getName())
                                    .addParams("isbn",publishShareHelper.getIsbn())
                                     .addParams("type_id",""+publishShareHelper.getTypeId())
@@ -67,13 +69,13 @@ public class PublishShareModel {
                                         @Override
                                         public void onResponse(String response, int id) {
                                         RegisterHelper registerHelper = new Gson().fromJson(response,RegisterHelper.class);
-                                         if(registerHelper.getCode()==20000){
+                                            Log.e("Zxing","coming?"+registerHelper.getCode())    ;
+                                            if(registerHelper.getCode()==20000){
                                              publishSharePresenter.publishShareSuccess();
                                          }
                                         }
                                     });
-
-                }
+                    
                 }catch (JsonIOException j){
                     j.printStackTrace();
                 }

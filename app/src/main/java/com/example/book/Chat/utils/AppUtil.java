@@ -2,13 +2,21 @@ package com.example.book.Chat.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
+import com.example.book.EntityClass.ChatBook;
+import com.example.book.EntityClass.ChatItem;
+import com.example.book.EntityClass.ChatObjects;
 import com.example.book.Tools.Constant;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.view.CropImageView;
 
+import org.litepal.crud.DataSupport;
+
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Clanner on 2017/9/16.
@@ -51,5 +59,34 @@ public class AppUtil {
         }else {
             imagePicker.setStyle(CropImageView.Style.CIRCLE);
         }
+    }
+    public static boolean isExist(String userId){
+        List<ChatBook> list1 = DataSupport.where("toUserId = ?", userId).find(ChatBook.class);
+         return !(list1.size()==0);
+    }
+    public static boolean islistExist(String userId){
+        List<ChatObjects> list = DataSupport.where("toUserId = ?",userId).find(ChatObjects.class);
+        return !(list.size()==0);
+    }
+    public static List<ChatBook> getChat(String userId){
+        List<ChatBook> list1 = DataSupport.where("toUserId = ?", userId).find(ChatBook.class);
+       return  list1;
+    }
+    public static void saveOneChatRecord(String toUserId ,String content,int direction){
+        ChatBook chatBook = new ChatBook();
+        chatBook.setDirection(direction);
+        if(AppUtil.isExist(toUserId)){
+            List<ChatBook> list2 = AppUtil.getChat(toUserId);
+            chatBook.setId(list2.size()+1);
+        }else {
+            chatBook.setId(1);
+        }
+        chatBook.setContent(content);
+        chatBook.setToUserId(Integer.parseInt(toUserId));
+        chatBook.save();
+    }
+    public static void deleteChatRecord(int  toUserId){
+        DataSupport.deleteAll(ChatBook.class,"toUserId = ?",""+toUserId);
+        DataSupport.deleteAll(ChatObjects.class,"toUserId = ?",""+toUserId);
     }
 }

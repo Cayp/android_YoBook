@@ -29,6 +29,7 @@ import android.widget.RelativeLayout;
 import com.example.book.Tools.FastBlur;
 import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.MyToast;
+import com.example.book.view.PublishNoteActivity;
 import com.example.book.view.PublishSecBookActivity;
 import com.example.book.view.ZxingActivity;
 
@@ -178,7 +179,7 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
                 changeActivity(ZxingActivity.class);
                 break;
             case R.id.writebutton:
-                MyToast.toast("writebutton");
+                changeActivity(PublishNoteActivity.class);
                 break;
         }
     }

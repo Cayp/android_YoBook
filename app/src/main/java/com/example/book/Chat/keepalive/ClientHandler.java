@@ -35,12 +35,15 @@ public class ClientHandler extends IoHandlerAdapter {
 
     @Override
     public void messageReceived(IoSession session, Object originMessage) throws Exception {
+        String message = originMessage.toString();
+        String checkString = message.substring(0,4);
+        Log.e("MINA","MINA"+Constant.currentUserId+"SS"+checkString);
         if (mContext != null) {
-            if (originMessage.toString().equals("1111")) {
-                Log.e("MINA",originMessage.toString()+Constant.currentUserId);
+            if (checkString.equals("1111")) {
+                Log.e("MINA",checkString+Constant.currentUserId);
                 session.write("1112" + ":" + Constant.currentUserId);
             } else {
-                String origin = URLDecoder.decode(originMessage.toString(), "utf-8");
+                String origin = URLDecoder.decode(message, "utf-8");
                 String[] arr = origin.split("-:-");
                 Notice notice = new Notice(arr[0], arr[1]);
                 RxBus.getInstance().post(notice);

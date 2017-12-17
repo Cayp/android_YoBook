@@ -2,6 +2,7 @@ package com.example.book.EntityClass;
 
 import org.litepal.crud.DataSupport;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,7 +11,33 @@ import java.util.List;
 
 public class ChatBook extends DataSupport {
     private int toUserId;
-    private List<ChatItem> chatRecord;
+    private int id;
+    private int direction ;
+    private String content;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     public int getToUserId() {
         return toUserId;
@@ -20,11 +47,4 @@ public class ChatBook extends DataSupport {
         this.toUserId = toUserId;
     }
 
-    public List<ChatItem> getChatRecord() {
-        return chatRecord;
-    }
-
-    public void setChatRecord(List<ChatItem> chatRecord) {
-        this.chatRecord = chatRecord;
-    }
 }

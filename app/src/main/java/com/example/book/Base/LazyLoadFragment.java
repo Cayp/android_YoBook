@@ -47,6 +47,7 @@ public abstract class LazyLoadFragment extends BaseFragment{
         intent.putExtra("toId",userId);
         intent.putExtra("to_Name",toUserName);
         intent.putExtra("toAvatar",avatar);
+        intent.putExtra("flag",1);
         startActivity(intent);
     }
 }

@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:foreground="?android:attr/selectableItemBackground"
     app:cardUseCompatPadding="true"
     app:contentPadding="1dp"
     app:cardCornerRadius="2dp">
@@ -53,6 +54,14 @@
             android:textColor="@color/timecolor"
             tools:text="昨天 12:00"
             tools:ignore="RelativeOverlap,RtlHardcoded" />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/xing"
+            android:layout_toLeftOf="@+id/downback"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            tools:ignore="ContentDescription,RtlHardcoded" />
         <ImageView
             android:id="@+id/downback"
             android:layout_width="17dp"
@@ -120,7 +129,7 @@
                 android:layout_height="160dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="30dp"
-                android:visibility="visible"
+                android:visibility="gone"
                 tools:ignore="ContentDescription,RtlHardcoded" />
         </RelativeLayout>
     </LinearLayout>

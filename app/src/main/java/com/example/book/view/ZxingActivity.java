@@ -193,6 +193,7 @@ public class ZxingActivity extends BaseActivity implements GetBookDetail,Publish
     public void getSuccess(BookDetailHelper bookDetailHelper) {
       this.bookDetailHelper = bookDetailHelper;
       bookname.setText(bookDetailHelper.getTitle());
+      publishShareHelper.setIsbn(bookDetailHelper.getIsbn13());
       publishShareHelper.setName(bookDetailHelper.getTitle());
       publishShareHelper.setTypeId(1);
       if(progressDialog.isShowing()) {

@@ -108,7 +108,6 @@ public class ShowTypeBoolFragment2 extends LazyLoadFragment implements PagingLoa
         lRecyclerView.setAdapter(lRecyclerViewAdapter);
         lRecyclerView.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));
         lRecyclerView.setRefreshProgressStyle(ProgressStyle.LineSpinFadeLoader);
-        lRecyclerView.setArrowImageView(R.drawable.turnhead);
         lRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
         lRecyclerView.setOnRefreshListener(new OnRefreshListener() {
             @Override

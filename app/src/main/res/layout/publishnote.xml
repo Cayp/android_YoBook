@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/pShareToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorwhite">
+        <TextView
+            android:id="@+id/publishShare_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity= "center"
+            android:textColor="@color/textcolor3"
+            android:textSize="17sp"
+            android:text="发布笔记"
+            tools:ignore="HardcodedText" />
+    </android.support.v7.widget.Toolbar>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/spacecolor"/>
+    <RelativeLayout
+        android:id="@+id/addwrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorwhite">
+    <TextView
+        android:id="@+id/exitTochoose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/darkblue"
+        android:textSize="20sp"
+        android:text="从已有中选"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="160dp"/>
+    <ImageView
+        android:id="@+id/addName"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_toRightOf="@id/exitTochoose"
+        android:src="@drawable/add2"/>
+    </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/midPart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            tools:ignore="UselessParent">
+
+            <TextView
+                android:id="@+id/scanConstantText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="扫描结果 :"
+                android:textColor="@color/colordarkgray"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/touchToDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:text="查看详情"
+                android:textColor="@color/colororange"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <RelativeLayout
+                android:id="@+id/resultKuang"
+                android:layout_width="345dp"
+                android:layout_height="45dp"
+                android:layout_below="@id/scanConstantText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/kuang"
+                tools:ignore="RtlHardcoded">
+
+                <TextView
+                    android:id="@+id/bookname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/textcolor3"
+                    android:textSize="18sp"
+                    tools:text="似的撒旦" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_below="@id/resultKuang"
+                android:background="@color/spacecolor" />
+<RelativeLayout
+    android:id="@+id/titlekuang"
+    android:layout_width="345dp"
+    android:layout_height="50dp"
+    android:layout_below="@+id/view4"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/kuang">
+    <EditText
+        android:id="@+id/inputTitle"
+        android:layout_width="335dp"
+        android:layout_height="match_parent"
+        android:gravity="top|left"
+        android:textSize="16sp"
+        android:textColor="@color/textcolor3"
+        android:hint=" 请输入标题...."
+        android:background="@drawable/inputviewshape"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        tools:ignore="HardcodedText,RtlHardcoded,ScrollViewSize" />
+</RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/inputShareKuang"
+                android:layout_width="345dp"
+                android:layout_height="160dp"
+                android:layout_below="@+id/titlekuang"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/kuang">
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:ignore="UselessParent">
+                    <EditText
+                        android:id="@+id/inputShareContent"
+                        android:layout_width="335dp"
+                        android:layout_height="match_parent"
+                        android:gravity="top|left"
+                        android:textSize="16sp"
+                        android:textColor="@color/textcolor3"
+                        android:hint=" 请输入笔记...."
+                        android:background="@drawable/inputviewshape"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        tools:ignore="HardcodedText,RtlHardcoded,ScrollViewSize" />
+                </ScrollView>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@+id/inputShareKuang"
+                android:background="@color/spacecolor" />
+
+        </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/startPart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/zxingScan"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/login_button_selector"
+            android:text="扫一扫"
+            android:textColor="@color/colorwhite"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="2dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/zxingScan"
+            android:background="@color/spacecolor"
+            tools:ignore="RtlHardcoded" />
+
+        <Button
+            android:id="@+id/inputIsbn"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/view3"
+            android:background="@drawable/login_button_selector"
+            android:text="输入条码"
+            android:textColor="@color/colorwhite"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+    </RelativeLayout>
+        <Button
+            android:id="@+id/publishbutton"
+            android:layout_width="341dp"
+            android:layout_height="43dp"
+            android:layout_below="@+id/pictureKuang"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/publishbutton"
+            android:text="纪 录"
+            android:textColor="@color/colorwhite"
+            android:textSize="20sp"
+            android:clickable="true"
+            tools:ignore="HardcodedText,ObsoleteLayoutParam" />
+</LinearLayout>

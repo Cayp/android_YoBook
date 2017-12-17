@@ -31,4 +31,5 @@ public class RxBus {
     private static class RxBusHolder {
         private static final RxBus instance = new RxBus();
     }
+
 }

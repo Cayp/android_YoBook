@@ -91,7 +91,6 @@ public class ShareAllFragment extends LazyLoadFragment implements GetShare{
         shareAllPager.setAdapter(lRecyclerViewAdapter);
         shareAllPager.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));
         shareAllPager.setRefreshProgressStyle(ProgressStyle.LineSpinFadeLoader);
-        shareAllPager.setArrowImageView(R.drawable.turnhead);
         shareAllPager.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
         shareAllPager.setOnRefreshListener(new OnRefreshListener() {
             @Override

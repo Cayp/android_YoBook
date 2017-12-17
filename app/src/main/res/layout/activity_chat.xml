@@ -55,13 +55,19 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@color/spacecolor"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zerodp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        tools:ignore="InefficientWeight">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/chat_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:clickable="true">
-
+        android:clickable="true"
+        tools:ignore="NestedWeights">
     </android.support.v7.widget.RecyclerView>
     <View
         android:layout_width="match_parent"
@@ -104,7 +110,6 @@
             android:hint="发送"
             android:textColor="#ffffff"
             tools:ignore="HardcodedText,RtlHardcoded" />
-
     </LinearLayout>
-
+    </LinearLayout>
 </LinearLayout>

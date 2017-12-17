@@ -47,8 +47,10 @@ public class GetMydataModel {
                             @Override
                             public void onResponse(String response, int id) {
                                 AppUtil.saveTime(MyApplication.getContext());       //记录请求时间
-                                GetUserDataHelper getUserDataHelper = new Gson().fromJson(response , GetUserDataHelper.class);
-                                getMydataPresenter.success(getUserDataHelper.getData());
+                                GetUserDataHelper getUserDataHelper = new Gson().fromJson(response, GetUserDataHelper.class);
+                                if (getUserDataHelper.getCode() == 20000) {
+                                    getMydataPresenter.success(getUserDataHelper.getData());
+                                }
                             }
                         });
             }catch (JsonIOException e){

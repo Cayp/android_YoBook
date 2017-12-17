@@ -1,9 +1,11 @@
 package com.example.book.Tools;
 
 import android.app.Application;
+import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.example.book.Chat.keepalive.ConnectionService;
@@ -34,7 +36,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
-        LitePal.initialize(context);
         CookieJarImpl cookieJar = new CookieJarImpl(new PersistentCookieStore(getApplicationContext()));
         okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(10000L, TimeUnit.MILLISECONDS)
@@ -47,7 +48,10 @@ public class MyApplication extends Application {
                 .build();
         Picasso.setSingletonInstance(picasso);
         setPhotoPicker();
+        LitePal.initialize(context);
+        LitePal.getDatabase();  //开启数据库
         SharedPreferences sharedPreferences = getSharedPreferences(Constant.TIME, MODE_PRIVATE);
+        setId();
         if (sharedPreferences != null) {
             long lastTime = sharedPreferences.getLong(Constant.LAST_OPEN, 0);
             if (lastTime != 0 && (System.currentTimeMillis() - lastTime) < Constant.THREEDAY) {//登陆未过期，开启长链接
@@ -57,13 +61,13 @@ public class MyApplication extends Application {
                 startService(intent);
             }
         }
-        setId();
+
+
     }
     public static Context getContext(){
         return  context;
 
     }
-
     private void setId() {
         SharedPreferences sharedPreferences = getSharedPreferences(Constant.ID, MODE_PRIVATE);
         if (sharedPreferences != null) {
@@ -84,5 +88,4 @@ public class MyApplication extends Application {
         imagePicker.setOutPutX(500);//保存文件的宽度。单位像素
         imagePicker.setOutPutY(500);//保存文件的高度。单位像素
     }
-
 }

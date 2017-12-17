@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   <android.support.v7.widget.Toolbar
+       android:id="@+id/myNoteToolbar"
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:background="@color/colorwhite"
+       >
+       <TextView
+           android:id="@+id/myNoteToolbarText"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="我的笔记"
+           android:textSize="19sp"
+           android:textColor="@color/textcolor3"
+           android:layout_gravity="center"
+           tools:ignore="HardcodedText" />
+
+   </android.support.v7.widget.Toolbar>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/mebackground">
+      <TextView
+          android:id="@+id/noteCountText"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="@color/textcolor3"
+          android:textSize="20sp"
+          android:text="笔记总数量"
+          tools:ignore="HardcodedText,RtlHardcoded"
+          android:layout_centerVertical="true"
+          android:layout_marginLeft="55dp" />
+        <TextView
+            android:id="@+id/noteCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="21sp"
+            android:textColor="#ff0033"
+            android:layout_below="@+id/noteCountText"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="8dp"
+            tools:text="10"
+            tools:ignore="RtlHardcoded" />
+        <TextView
+            android:id="@+id/bookCountText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textcolor3"
+            android:textSize="20sp"
+            android:text="书籍数量"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="60dp"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+        <TextView
+            android:id="@+id/bookCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="21sp"
+            android:textColor="#ff0033"
+            android:layout_below="@id/bookCountText"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="85dp"
+            tools:text="100"
+            tools:ignore="RtlHardcoded" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="60dp"
+            android:background="@color/colordarkgray"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/spacecolor"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:textColor="@color/textcolor2"
+        android:text="**全部书籍，点击进看笔记"
+        tools:ignore="HardcodedText" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/spacecolor"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zerodp"
+        android:layout_weight="1"
+        tools:ignore="InefficientWeight" />
+</LinearLayout>

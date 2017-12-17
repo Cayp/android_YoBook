@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/exitItem"
+    android:layout_width="match_parent"
+    android:layout_height="75dp"
+    android:background="@drawable/type_selector">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/spacecolor"
+        android:layout_alignParentTop="true"/>
+<TextView
+    android:id="@+id/bookname"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="18sp"
+    android:textColor="@color/textcolor3"
+    android:layout_centerVertical="true"
+    android:layout_marginLeft="15dp"
+    tools:ignore="RtlHardcoded" />
+    <TextView
+        android:id="@+id/isbnText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textcolor3"
+        android:textSize="17sp"
+        android:text="isbn:"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@id/bookname"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+    <TextView
+        android:id="@+id/isbn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/textcolor2"
+        android:layout_below="@id/bookname"
+        android:layout_toRightOf="@id/isbnText"
+        android:layout_marginLeft="10dp"
+        tools:ignore="RtlHardcoded" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/spacecolor"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
