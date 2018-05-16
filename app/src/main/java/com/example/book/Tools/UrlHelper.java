@@ -6,7 +6,7 @@ package com.example.book.Tools;
 
 public class UrlHelper {
 
-    private static final String BASE_URL = "http://139.199.165.150/Book/";
+    private static final String BASE_URL = "http://119.29.143.189/Book/";
     public static final String LOGIN_URL = BASE_URL + "Home/User/login";
     public static final String REGISTER_URL = BASE_URL + "Home/User/register";
     public static final String CHECKCODE_URL = BASE_URL + "Home/User/getVerificationCode";
