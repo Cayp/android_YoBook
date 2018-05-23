@@ -41,8 +41,8 @@ import rx.Subscription;
 public class ConnectionService extends Service {
     private static final String TAG = "ConnectionService";
     private ConnectionThread thread;
-    private final String ADDRESS = "139.199.165.150";
-    private final int PORT = 2916;
+    private final String ADDRESS = "119.29.143.189";
+    private final int PORT = 2918;
 
     @Override
     public void onCreate() {

@@ -19,7 +19,7 @@ public class GetBookPresenter
         this.pagingLoad = pagingLoad ;
     }
     public void requestData(int page_no ,int page_size,int typeId){
-        getAllSecondBookModel.loadData(page_no,page_size,typeId);
+//        getAllSecondBookModel.loadData(page_no,page_size,typeId);
     }
     public void succeedRequestData(List<SecondBookAllData> dataList){
         pagingLoad.succeedRequestData(dataList);

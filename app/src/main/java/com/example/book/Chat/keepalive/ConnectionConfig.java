@@ -39,7 +39,7 @@ public class ConnectionConfig {
 
     public static class Builder{
         private Context context;
-        private String ip="139.199.165.150";
+        private String ip="119.29.143.189";
         private int port = 8080;
         private int readBufferSize = 10240;
         private long connectionTimeout = 10000;
