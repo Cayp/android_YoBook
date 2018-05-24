@@ -18,7 +18,6 @@ import com.example.book.Tools.MyToast;
 import com.example.book.view.AbstractView.OnItemClickListener;
 import com.example.book.view.AbstractView.PagingLoad;
 import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
-import com.github.jdsjlzx.interfaces.OnNetWorkErrorListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
@@ -76,18 +75,15 @@ public class ShowTypeBoolFragment2 extends LazyLoadFragment implements PagingLoa
     @Override
     public void succeedRequestData(List<SecondBookAllData> dataList) {
         mdataList.addAll(dataList);
+        setdata(mdataList);
+        lRecyclerViewAdapter.notifyDataSetChanged();
+        lRecyclerView.refreshComplete(PAGE_SIZE);
+        page_no++;
     }
 
     @Override
     public void setUserNameIcon(UserDataid_Icon userNameIcon) {
-        mList.add(userNameIcon);
-        if(mList.size()==mdataList.size()){
-            combineData();
-            setdata(mdataList);
-            lRecyclerViewAdapter.notifyDataSetChanged();
-            lRecyclerView.refreshComplete(PAGE_SIZE);
-            page_no++;
-        }
+
     }
 
     @Override
@@ -134,12 +130,7 @@ public class ShowTypeBoolFragment2 extends LazyLoadFragment implements PagingLoa
     protected int setLayoutId() {
         return R.layout.showbook_fragment;
     }
-    public void combineData(){
-        for(int i=0;i < mdataList.size();i ++){
-            mdataList.get(i).setUserName(mList.get(i).getUserName());
-            mdataList.get(i).setAvatar(mList.get(i).getAvatar());
-        }
-    }
+
     public void clearList(){
         if(mdataList.size()!=0){
             mdataList.clear();

@@ -3,16 +3,13 @@ package com.example.book.Model;
 import android.util.Log;
 
 import com.example.book.Chat.utils.AppUtil;
-import com.example.book.EntityClass.GetUserDataHelper;
 import com.example.book.EntityClass.SecondBookAllData;
 import com.example.book.EntityClass.ShowBook_TardeHelper;
-import com.example.book.EntityClass.UserDataid_Icon;
 import com.example.book.Presenter.GetBookPresenter;
 import com.example.book.Tools.Constant;
 import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.NetworkUtils;
 import com.example.book.Tools.UrlHelper;
-import com.example.book.view.AbstractView.PagingLoad;
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -53,6 +50,7 @@ public class GetAllSecondBookModel {
                         @Override
                         public void onError(Call call, Exception e, int id) {
                             getBookPresenter.failRequestData(1);
+                            Log.d("tTTTTTTt","uuuuuuuuuu");
                         }
 
                         @Override
@@ -64,19 +62,20 @@ public class GetAllSecondBookModel {
                             }
                             if (showBook_tardeHelper.getCode() == 20000) {
                                 for (int i = 0; i < showBook_tardeHelper.getDataList().size(); i++) {
-                                    ShowBook_TardeHelper.BookData bookData = showBook_tardeHelper.getDataList().get(i);
+                                    ShowBook_TardeHelper.DataListBean bookData = showBook_tardeHelper.getDataList().get(i);
                                     SecondBookAllData secondBookAllData = new SecondBookAllData();
                                     secondBookAllData.setBookId(bookData.getId());
                                     secondBookAllData.setUserId(bookData.getUserId());
                                     secondBookAllData.setBookCover(bookData.getCover());
                                     secondBookAllData.setBookName(bookData.getName());
                                     secondBookAllData.setPrice(bookData.getPrice());
-                                    secondBookAllData.setTypedId(bookData.getTypeId());
+                                    secondBookAllData.setTypedId(bookData.getTypeid());
                                     secondBookAllData.setDescription(bookData.getDescription());
-                                    Log.d(TAG, "fuckuserid" + secondBookAllData.getUserId());
+                                    secondBookAllData.setUserName(bookData.getUsername());
+                                    secondBookAllData.setAvatar(bookData.getAvatar());
+                                    Log.d(TAG, "fuckuserid2" + secondBookAllData.getUserId());
                                     list.add(secondBookAllData);
                                 }
-                                getUseTwoPisData(list.get(index).getUserId());
                                 getBookPresenter.succeedRequestData(list);
                             }
                         }
@@ -100,19 +99,20 @@ public class GetAllSecondBookModel {
                             }
                             if (showBook_tardeHelper.getCode() == 20000) {
                                 for (int i = 0; i < showBook_tardeHelper.getDataList().size(); i++) {
-                                    ShowBook_TardeHelper.BookData bookData = showBook_tardeHelper.getDataList().get(i);
+                                    ShowBook_TardeHelper.DataListBean bookData = showBook_tardeHelper.getDataList().get(i);
                                     SecondBookAllData secondBookAllData = new SecondBookAllData();
                                     secondBookAllData.setBookId(bookData.getId());
                                     secondBookAllData.setUserId(bookData.getUserId());
                                     secondBookAllData.setBookCover(bookData.getCover());
                                     secondBookAllData.setBookName(bookData.getName());
                                     secondBookAllData.setPrice(bookData.getPrice());
-                                    secondBookAllData.setTypedId(bookData.getTypeId());
+                                    secondBookAllData.setTypedId(bookData.getTypeid());
                                     secondBookAllData.setDescription(bookData.getDescription());
-                                    Log.d(TAG, "fuckuserid" + secondBookAllData.getUserId());
+                                    secondBookAllData.setUserName(bookData.getUsername());
+                                    secondBookAllData.setAvatar(bookData.getAvatar());
+                                    Log.d(TAG, "fuckuserid1" + secondBookAllData.getUserId());
                                     list.add(secondBookAllData);
                                 }
-                                getUseTwoPisData(list.get(index).getUserId());
                                 getBookPresenter.succeedRequestData(list);
                             }
                         }
@@ -124,6 +124,7 @@ public class GetAllSecondBookModel {
             }
         }
     }
+    /**
     public void getUseTwoPisData(int user_id) {
         try {
 
@@ -157,5 +158,5 @@ public class GetAllSecondBookModel {
             e.printStackTrace();
         }
     }
-
+*/
 }

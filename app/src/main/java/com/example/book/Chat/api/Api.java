@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface Api {
 
-    String BASE_URL = "http://139.199.165.150/Book/";
+    String BASE_URL = "http://119.29.143.189/Book";
     String SEND_MESSAGE_URL = BASE_URL + "Home/Chat/sendMessage";
     String GET_MESSAGE_URL = BASE_URL + "Home/Chat/getUnReadMessage";
     String READ_MESSAGE_URL = BASE_URL + "Home/Chat/readMessage";

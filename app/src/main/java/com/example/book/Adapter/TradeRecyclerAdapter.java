@@ -15,7 +15,6 @@ import com.example.book.Tools.Constant;
 import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.UrlHelper;
 import com.example.book.view.AbstractView.OnItemClickListener;
-import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

@@ -1,7 +1,5 @@
 package com.example.book.Model;
 
-import android.util.Log;
-
 import com.example.book.Chat.utils.AppUtil;
 import com.example.book.EntityClass.GetListShareHelper;
 import com.example.book.EntityClass.GetShareAllHelper;
@@ -60,10 +58,9 @@ public class GetShareAllModel {
                                 }
                                 if (getListShareHelper.getCode() == 20000) {
                                     for (int i = 0; i < getListShareHelper.getDataList().size(); i++) {
-                                        GetListShareHelper.ShareItem shareItem = getListShareHelper.getDataList().get(i);
+                                        GetListShareHelper.DataListBean shareItem = getListShareHelper.getDataList().get(i);
                                         GetShareAllHelper getShareAllHelper = new GetShareAllHelper();
                                         getShareAllHelper.setId(shareItem.getId());
-                                        getShareAllHelper.setUserId(shareItem.getUserId());
                                         getShareAllHelper.setBookName(shareItem.getName());
                                         getShareAllHelper.setBookcovers(shareItem.getCover());
                                         getShareAllHelper.setContent(shareItem.getContent());
@@ -71,6 +68,8 @@ public class GetShareAllModel {
                                         getShareAllHelper.setStarNum(shareItem.getStarNum());
                                         getShareAllHelper.setIsbn(shareItem.getIsbn());
                                         getShareAllHelper.setTime( shareItem.getTime());
+                                        getShareAllHelper.setUserName(shareItem.getUserName());
+                                        getShareAllHelper.setUserIcon(shareItem.getAvatar());
                                         shareList.add(getShareAllHelper);
                                     }
                                     getOnePisUserData(shareList.get(index).getUserId());

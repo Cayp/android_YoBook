@@ -146,18 +146,22 @@ public class ShareAllFragment extends LazyLoadFragment implements GetShare{
     @Override
     public void succeedRequestData(List<GetShareAllHelper> dataList) {
         getShareAllHelperList.addAll(dataList);
+        setdata(getShareAllHelperList);
+        lRecyclerViewAdapter.notifyDataSetChanged();
+        shareAllPager.refreshComplete(PAGE_SIZE);
+        page_no ++;
     }
 
     @Override
     public void setUserNameIcon(UserDataid_Icon userNameIcon) {
-        userDataid_iconList.add(userNameIcon);
+        /*userDataid_iconList.add(userNameIcon);
         if(userDataid_iconList.size() == getShareAllHelperList.size()){
             combineData();
             setdata(getShareAllHelperList);
             lRecyclerViewAdapter.notifyDataSetChanged();
             shareAllPager.refreshComplete(PAGE_SIZE);
             page_no ++;
-        }
+        }*/
     }
     public void combineData(){
         for(int i = 0;i <getShareAllHelperList.size();i++){

@@ -1,18 +1,15 @@
 package com.example.book.Fragment;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.example.book.Adapter.TradeRecyclerAdapter;
 import com.example.book.Base.LazyLoadFragment;
-import com.example.book.Chat.entity.Notice;
 import com.example.book.Chat.utils.AppUtil;
-import com.example.book.Chat.utils.RxBus;
 import com.example.book.EntityClass.SecondBookAllData;
 import com.example.book.EntityClass.UserDataid_Icon;
 import com.example.book.Presenter.GetBookPresenter;
@@ -29,13 +26,10 @@ import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.github.jdsjlzx.recyclerview.ProgressStyle;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import rx.Subscriber;
-import rx.Subscription;
 
 /**
  * Created by ljp on 2017/9/14.
@@ -131,26 +125,18 @@ public class ShowoBookFragment extends LazyLoadFragment implements PagingLoad {
     @Override
     public void succeedRequestData(List<SecondBookAllData> dataList) {
         mdataList.addAll(dataList);
+        setdata(mdataList);
+        Mylog.d(TAG, "Tsecond");
+        lRecyclerViewAdapter.notifyDataSetChanged();
+        lRecyclerView.refreshComplete(PAGE_SIZE);
+        page_no++;
     }
+
     @Override
     public void setUserNameIcon(UserDataid_Icon userNameIcon) {
-         mList.add(userNameIcon);
-        if (mList.size() == mdataList.size()) {
-            Mylog.d(TAG, "yCAYP");
-            combineData();
-            setdata(mdataList);
-            Mylog.d(TAG, "Tsecond");
-            lRecyclerViewAdapter.notifyDataSetChanged();
-            lRecyclerView.refreshComplete(PAGE_SIZE);
-            page_no++;
-        }
+
     }
-    public void combineData(){
-        for(int i=0 ;i < mdataList.size();i++){
-            mdataList.get(i).setUserName(mList.get(i).getUserName());
-            mdataList.get(i).setAvatar(mList.get(i).getAvatar());
-        }
-    }
+
     public void clearList(){
         if(mdataList.size()!=0){
         mdataList.clear();

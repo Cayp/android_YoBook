@@ -5,15 +5,16 @@ package com.example.book.EntityClass;
  */
 
 public class SecondBookAllData {
-    private int bookId ;
-    private String Avatar;
-    private int userId ;
     private String userName ;
+    private String Avatar;
+    private int bookId ;
     private String bookName ;
-    private String bookCover ;
     private String description;
-    private int typedId ;
+    private String bookCover ;
     private String price ;
+    private int userId ;
+    private int typedId ;
+
 
     public int getBookId() {
         return bookId;

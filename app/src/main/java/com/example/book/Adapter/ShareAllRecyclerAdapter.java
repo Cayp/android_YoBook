@@ -19,7 +19,6 @@ import com.example.book.Tools.UrlHelper;
 import com.example.book.view.AbstractView.EnterToDetailListener;
 import com.example.book.view.AbstractView.LikeListener;
 import com.example.book.view.AbstractView.WriteCommentListener;
-import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -28,7 +27,6 @@ import java.util.Date;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import rx.internal.operators.OperatorMapNotification;
 
 /**
  * Created by ljp on 2017/10/14.

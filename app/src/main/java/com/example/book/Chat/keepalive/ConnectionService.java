@@ -6,11 +6,9 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.HandlerThread;
 import android.os.IBinder;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -20,7 +18,6 @@ import com.example.book.Chat.entity.Notice;
 import com.example.book.Chat.utils.AppUtil;
 import com.example.book.Chat.utils.RxBus;
 import com.example.book.EntityClass.ChatBook;
-import com.example.book.EntityClass.ChatItem;
 import com.example.book.EntityClass.ChatObjects;
 import com.example.book.R;
 import com.example.book.Tools.Constant;
@@ -41,8 +38,8 @@ import rx.Subscription;
 public class ConnectionService extends Service {
     private static final String TAG = "ConnectionService";
     private ConnectionThread thread;
-    private final String ADDRESS = "139.199.165.150";
-    private final int PORT = 2916;
+    private final String ADDRESS = "119.29.143.189";
+    private final int PORT = 2918;
 
     @Override
     public void onCreate() {
