@@ -22,7 +22,7 @@ public class GetShareAllPresenter implements GetShare{
 
     @Override
     public void getShare(int page_no, int page_size) {
-    getShareAllModel.getShare(page_no,page_size);
+//    getShareAllModel.getShare(page_no,page_size);
     }
 
     @Override
