@@ -7,11 +7,12 @@ import java.util.List;
  */
 
 public class GetCommentHelper {
+
     /**
      * code : 20000
      * message : 获取评论成功
      * data : null
-     * dataList : [{"id":2,"shareId":7,"content":"很好看哈哈哈","userId":24,"time":1500650729000,"reply_id":0,"replyUsername":"","avatar":null},{"id":3,"shareId":7,"content":"很好看哈哈哈","userId":24,"time":1500651785000,"reply_id":0,"replyUsername":"","avatar":null}]
+     * dataList : [{"id":28,"shareId":12,"content":"di","userId":31,"time":1509808747000,"username":"cayp","avatar":"31/IMG_20171115_225742.jpg"},{"id":27,"shareId":12,"content":"嘻嘻","userId":31,"time":1509808712000,"username":"cayp","avatar":"31/IMG_20171115_225742.jpg"},{"id":25,"shareId":12,"content":"林健鹏好看","userId":31,"time":1509022520000,"username":"cayp","avatar":"31/IMG_20171115_225742.jpg"},{"id":24,"shareId":12,"content":"1111","userId":31,"time":1509022507000,"username":"cayp","avatar":"31/IMG_20171115_225742.jpg"},{"id":23,"shareId":12,"content":"1","userId":31,"time":1509022233000,"username":"cayp","avatar":"31/IMG_20171115_225742.jpg"}]
      */
 
     private int code;
@@ -51,16 +52,15 @@ public class GetCommentHelper {
         this.dataList = dataList;
     }
 
-    public static class CommentItem {
+    public static class CommentItem{
         /**
-         * id : 2
-         * shareId : 7
-         * content : 很好看哈哈哈
-         * userId : 24
-         * time : 1500650729000
-         * reply_id : 0
-         * replyUsername :
-         * avatar : null
+         * id : 28
+         * shareId : 12
+         * content : di
+         * userId : 31
+         * time : 1509808747000
+         * username : cayp
+         * avatar : 31/IMG_20171115_225742.jpg
          */
 
         private int id;
@@ -68,8 +68,7 @@ public class GetCommentHelper {
         private String content;
         private int userId;
         private long time;
-        private int reply_id;
-        private String replyUsername;
+        private String username;
         private String avatar;
 
         public int getId() {
@@ -112,20 +111,12 @@ public class GetCommentHelper {
             this.time = time;
         }
 
-        public int getReply_id() {
-            return reply_id;
+        public String getUsername() {
+            return username;
         }
 
-        public void setReply_id(int reply_id) {
-            this.reply_id = reply_id;
-        }
-
-        public String getReplyUsername() {
-            return replyUsername;
-        }
-
-        public void setReplyUsername(String replyUsername) {
-            this.replyUsername = replyUsername;
+        public void setUsername(String username) {
+            this.username = username;
         }
 
         public String getAvatar() {

@@ -52,7 +52,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
       GetCommentHelper.CommentItem commentItem = commentItemList.get(position);
-      holder.userName.setText(commentItem.getReplyUsername());
+      holder.userName.setText(commentItem.getUsername());
       holder.content.setText(commentItem.getContent());
       long timeInterval = AppUtil.getNowTime() - commentItem.getTime();
         if(timeInterval < Constant.TWENTYTHREEHOUR&& timeInterval >= Constant.ONEHOUR) {

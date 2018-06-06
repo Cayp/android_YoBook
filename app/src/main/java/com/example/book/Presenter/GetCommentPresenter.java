@@ -35,8 +35,5 @@ public class GetCommentPresenter implements GetComment {
     getComment.getCommentFailure(error);
     }
 
-    @Override
-    public void getUserData(UserDataid_Icon userDataid_icon) {
-        getComment.getUserData(userDataid_icon);
-    }
+
 }

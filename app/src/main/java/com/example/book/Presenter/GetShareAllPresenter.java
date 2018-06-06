@@ -22,7 +22,7 @@ public class GetShareAllPresenter implements GetShare{
 
     @Override
     public void getShare(int page_no, int page_size) {
-//    getShareAllModel.getShare(page_no,page_size);
+    getShareAllModel.getShare(page_no,page_size);
     }
 
     @Override
@@ -35,8 +35,5 @@ public class GetShareAllPresenter implements GetShare{
       getShare.succeedRequestData(dataList);
     }
 
-    @Override
-    public void setUserNameIcon(UserDataid_Icon userNameIcon) {
-      getShare.setUserNameIcon(userNameIcon);
-    }
+
 }

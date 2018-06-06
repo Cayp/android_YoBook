@@ -151,24 +151,6 @@ public class ShareAllFragment extends LazyLoadFragment implements GetShare{
         shareAllPager.refreshComplete(PAGE_SIZE);
         page_no ++;
     }
-
-    @Override
-    public void setUserNameIcon(UserDataid_Icon userNameIcon) {
-        /*userDataid_iconList.add(userNameIcon);
-        if(userDataid_iconList.size() == getShareAllHelperList.size()){
-            combineData();
-            setdata(getShareAllHelperList);
-            lRecyclerViewAdapter.notifyDataSetChanged();
-            shareAllPager.refreshComplete(PAGE_SIZE);
-            page_no ++;
-        }*/
-    }
-    public void combineData(){
-        for(int i = 0;i <getShareAllHelperList.size();i++){
-            getShareAllHelperList.get(i).setUserName(userDataid_iconList.get(i).getUserName());
-            getShareAllHelperList.get(i).setUserIcon(userDataid_iconList.get(i).getAvatar());
-        }
-    }
     public void setdata(List<GetShareAllHelper> list){
         if(isLoadMore){
             shareAllRecyclerAdapter.addList(list);
@@ -210,7 +192,7 @@ public class ShareAllFragment extends LazyLoadFragment implements GetShare{
                             .execute(new StringCallback() {
                                 @Override
                                 public void onError(Call call, Exception e, int id) {
-
+                                        MyToast.toast("no");
                                 }
 
                                 @Override

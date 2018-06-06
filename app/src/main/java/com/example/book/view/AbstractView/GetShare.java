@@ -14,6 +14,6 @@ public interface GetShare {
     void getShare(int page_no,int page_size);
     void failRequestData(int Error);
     void succeedRequestData(List<GetShareAllHelper> dataList);
-    void setUserNameIcon(UserDataid_Icon userNameIcon);
+
 
 }

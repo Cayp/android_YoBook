@@ -13,5 +13,4 @@ public interface GetComment {
     void getComment(int share_id,int page_no,int page_size);
     void getCommentSucceed(List<GetCommentHelper.CommentItem> list);
     void getCommentFailure(int error);
-    void getUserData(UserDataid_Icon userDataid_icon);
 }

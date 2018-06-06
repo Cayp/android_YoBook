@@ -255,7 +255,7 @@ public class ShareDetail extends BaseActivity implements OnScrollListener,TabLay
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
         if(tab == sharetablayout.getTabAt(1)){
-         showNoset.setText("还没有人赞");
+            showNoset.setText("还没有人赞");
             shareStarAdapter.setShareStarList(likeList);
             lRecyclerViewAdapter2.notifyDataSetChanged();
             shareCommentView.setAdapter(lRecyclerViewAdapter2);
@@ -289,8 +289,8 @@ public class ShareDetail extends BaseActivity implements OnScrollListener,TabLay
              if (showNoComment.getVisibility()==View.GONE){
                  showNoComment.setVisibility(View.VISIBLE);
                  shareCommentView.setVisibility(View.GONE);
-             }
          }
+        }
         }
     }
 
@@ -324,29 +324,22 @@ public class ShareDetail extends BaseActivity implements OnScrollListener,TabLay
     @Override
     public void getCommentSucceed(List<GetCommentHelper.CommentItem> list) {
         commentItemList.addAll(list);
-    }
-    @Override
-    public void getUserData(UserDataid_Icon userDataid_icon) {
-        userDataList.add(userDataid_icon);
-        if(userDataList.size()==commentItemList.size()){
-            combineData();
-            swipeRefresh.setRefreshing(false);
-            ishaveloaded = true;
+        swipeRefresh.setRefreshing(false);
+        ishaveloaded = true;
+        if(list!=null&&list.size()!=0) {
             showNoComment.setVisibility(View.GONE);
             shareCommentView.setVisibility(View.VISIBLE);
             commentAdapter.setCommentList(commentItemList);
-            sharetablayout.getTabAt(0).setText("评论 "+commentAdapter.getItemCount());
-            shareCommentView.refreshComplete(PAGE_SIZE);
-            swipeRefresh.setRefreshing(false);
-            loadingPart.setVisibility(View.GONE);
+        }else{
+            showNoComment.setVisibility(View.VISIBLE);
         }
+        sharetablayout.getTabAt(0).setText("评论 "+commentAdapter.getItemCount());
+        shareCommentView.refreshComplete(PAGE_SIZE);
+        swipeRefresh.setRefreshing(false);
+        loadingPart.setVisibility(View.GONE);
     }
-   public  void combineData(){
-       for(int i = 0 ;i<commentItemList.size();i++){
-           commentItemList.get(i).setAvatar(userDataList.get(i).getAvatar());
-           commentItemList.get(i).setReplyUsername(userDataList.get(i).getUserName());
-       }
-   }
+
+
    private void clearList(){
        if(commentItemList.size()!=0){
            commentItemList.clear();

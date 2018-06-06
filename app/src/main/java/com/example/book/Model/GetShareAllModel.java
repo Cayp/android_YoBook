@@ -72,7 +72,6 @@ public class GetShareAllModel {
                                         getShareAllHelper.setUserIcon(shareItem.getAvatar());
                                         shareList.add(getShareAllHelper);
                                     }
-                                    getOnePisUserData(shareList.get(index).getUserId());
                                     getShareAllPresenter.succeedRequestData(shareList);
                                 }
                             }
@@ -84,42 +83,5 @@ public class GetShareAllModel {
             }
         }
     }
-    private void getOnePisUserData(int userId){
-        try {
-            OkHttpUtils.post()
-                       .url(UrlHelper.GETUSERINFO)
-                       .addParams("user_id",""+userId)
-                       .build()
-                       .execute(new StringCallback() {
-                           @Override
-                           public void onError(Call call, Exception e, int id) {
-                               getShareAllPresenter.failRequestData(1);
-                           }
 
-                           @Override
-                           public void onResponse(String response, int id) {
-                               GetUserDataHelper getUserDataHelper = new Gson().fromJson(response,GetUserDataHelper.class);
-                               UserDataid_Icon userDataid_Icon = new UserDataid_Icon();
-                               if(getUserDataHelper.getCode()==20000) {
-                                   userDataid_Icon.setUserName(getUserDataHelper.getData().getUsername());
-                                   userDataid_Icon.setAvatar(getUserDataHelper.getData().getAvatar());
-                               }else if(getUserDataHelper.getCode()==40000){
-                                   userDataid_Icon.setUserName("默认名字");
-                                   userDataid_Icon.setAvatar(null);
-                               }
-                               getShareAllPresenter.setUserNameIcon(userDataid_Icon);
-                               index ++;
-                               if(index < shareList.size()){
-                                   getOnePisUserData(shareList.get(index).getUserId());
-                               }else {
-                                   index = 0;
-                               }
-
-                           }
-                       });
-        }catch (JsonIOException e){
-            e.printStackTrace();
-            getShareAllPresenter.failRequestData(Constant.ERROR_JSONGETWRONG);
-        }
-    }
 }

@@ -7,11 +7,12 @@ import java.util.List;
  */
 
 public class GetShareStarHelper {
+
     /**
      * code : 20000
      * message : 获取点赞成功
      * data : null
-     * dataList : [{"id":2,"shareId":7,"userId":24,"username":"Cafe","avatar":null,"sex":"m","brief":null}]
+     * dataList : [{"id":89,"shareId":33,"userId":31,"username":"cayp","avatar":"31/IMG_20180413_142037.jpg"},{"id":97,"shareId":33,"userId":34,"username":"aaaa","avatar":"34/IMG_20171120_202550.jpg"}]
      */
 
     private int code;
@@ -53,13 +54,11 @@ public class GetShareStarHelper {
 
     public static class LIkeUserData {
         /**
-         * id : 2
-         * shareId : 7
-         * userId : 24
-         * username : Cafe
-         * avatar : null
-         * sex : m
-         * brief : null
+         * id : 89
+         * shareId : 33
+         * userId : 31
+         * username : cayp
+         * avatar : 31/IMG_20180413_142037.jpg
          */
 
         private int id;
@@ -67,8 +66,6 @@ public class GetShareStarHelper {
         private int userId;
         private String username;
         private String avatar;
-        private String sex;
-        private Object brief;
 
         public int getId() {
             return id;
@@ -108,22 +105,6 @@ public class GetShareStarHelper {
 
         public void setAvatar(String avatar) {
             this.avatar = avatar;
-        }
-
-        public String getSex() {
-            return sex;
-        }
-
-        public void setSex(String sex) {
-            this.sex = sex;
-        }
-
-        public Object getBrief() {
-            return brief;
-        }
-
-        public void setBrief(Object brief) {
-            this.brief = brief;
         }
     }
 }
