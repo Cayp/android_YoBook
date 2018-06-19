@@ -3,15 +3,15 @@ package com.example.book.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.book.Base.BaseFragment;
+import com.example.book.Base.ActivityCollector;
 import com.example.book.Base.LazyLoadFragment;
 import com.example.book.Chat.utils.AppUtil;
 import com.example.book.EntityClass.GetUserDataHelper;
-import com.example.book.Model.ModifyUserInfoModel;
 import com.example.book.Presenter.GetMydataPresenter;
 import com.example.book.R;
 import com.example.book.Tools.Constant;
@@ -19,7 +19,6 @@ import com.example.book.Tools.MyApplication;
 import com.example.book.Tools.MyToast;
 import com.example.book.Tools.UrlHelper;
 import com.example.book.view.AbstractView.GetData;
-import com.example.book.view.ModifyKuangActivity;
 import com.example.book.view.ModifyUserDataActivity;
 import com.example.book.view.MyNote;
 import com.squareup.picasso.MemoryPolicy;
@@ -44,6 +43,10 @@ public class MyDataFragment extends LazyLoadFragment implements GetData{
     RelativeLayout meSetting;
     @BindView(R.id.my_note)
     TextView myNote;
+    @BindView(R.id.logout)
+    RelativeLayout logOut;
+
+
     private GetUserDataHelper.UserData getUserData;
     private  int currentUserId;
     @Override
@@ -97,7 +100,7 @@ public class MyDataFragment extends LazyLoadFragment implements GetData{
              break;
      }
     }
-    @OnClick({R.id.me_setting,R.id.my_note})
+    @OnClick({R.id.me_setting,R.id.my_note,R.id.logout})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.me_setting:
@@ -110,6 +113,10 @@ public class MyDataFragment extends LazyLoadFragment implements GetData{
             case R.id.my_note:
                 Intent intent1 = new Intent(MyApplication.getContext(), MyNote.class);
                 startActivity(intent1);
+                break;
+            case R.id.logout:
+                Log.d("test4026","123");
+                ActivityCollector.finishAll();
                 break;
         }
     }
